@@ -1,13 +1,14 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/time/time",
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "TimeDoser",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,24 @@
+<view style="padding-top: 30%">
+
+</view>
+
+<view class="time-setting" bindtap="showModal" data-target="ChooseModal">
+    <img src="/colorui/icon/settle.png" />
+</view>
+
+
+<view class="cu-modal bottom-modal {{modalName=='ChooseModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+        <view class="grid col-3 padding-sm">
+            <view wx:for="{{checkbox}}" class="padding-xs" wx:key="{{index}}">
+                <button class="cu-btn orange lg block {{item.checked?'bg-orange':'line-orange'}}"
+                        bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{item.name}}
+                    <view class="cu-tag sm round {{item.checked?'bg-white text-orange':'bg-orange'}}"
+                          wx:if="{{item.hot}}">HOT
+                    </view>
+                </button>
+            </view>
+        </view>
+    </view>
+</view>
+

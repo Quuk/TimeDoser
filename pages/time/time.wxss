@@ -1,0 +1,10 @@
+page{
+    /* 禁止滑动 */
+    position: fixed;
+}
+
+.time-setting {
+    height: 300rpx;
+    width: 30%;
+    border: #800b00 solid 1px;
+}
