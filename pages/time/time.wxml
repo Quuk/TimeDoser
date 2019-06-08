@@ -1,24 +1,25 @@
-<view style="padding-top: 30%">
-
-</view>
-
-<view class="time-setting" bindtap="showModal" data-target="ChooseModal">
-    <img src="/colorui/icon/settle.png" />
-</view>
-
-
-<view class="cu-modal bottom-modal {{modalName=='ChooseModal'?'show':''}}" bindtap="hideModal">
-    <view class="cu-dialog" catchtap>
-        <view class="grid col-3 padding-sm">
-            <view wx:for="{{checkbox}}" class="padding-xs" wx:key="{{index}}">
-                <button class="cu-btn orange lg block {{item.checked?'bg-orange':'line-orange'}}"
-                        bindtap="ChooseCheckbox" data-value="{{item.value}}"> {{item.name}}
-                    <view class="cu-tag sm round {{item.checked?'bg-white text-orange':'bg-orange'}}"
-                          wx:if="{{item.hot}}">HOT
-                    </view>
-                </button>
+<view style="margin-top: 10%">
+    <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true"
+            autoplay="true"
+            interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3"
+            indicator-active-color="#0081ff">
+        <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
+            <view class="swiper-item">
+                <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+                <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}"
+                       objectFit="cover" wx:if="{{item.type=='video'}}"></video>
             </view>
-        </view>
+        </swiper-item>
+    </swiper>
+</view>
+
+
+<view class="box" style="margin-top: 15%">
+    <view class="tet">
+        <text class="cuIcon-time"></text>
+        <text>test</text>
+        <text class="cuIcon-time"></text>
     </view>
 </view>
 
+<view></view>

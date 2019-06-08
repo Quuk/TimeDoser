@@ -1,10 +1,40 @@
 page{
-    /* 禁止滑动 */
-    position: fixed;
+    background: #f4f4f4;
 }
 
-.time-setting {
-    height: 300rpx;
-    width: 30%;
-    border: #800b00 solid 1px;
+.tower-swiper .tower-item {
+    transform: scale(calc(0.5 + var(--index) / 10));
+    margin-left: calc(var(--left) * 100rpx - 150rpx);
+    z-index: var(--index);
+}
+
+.tet {
+    /* 圆角 */
+    border-radius: 20rpx;
+    border: lightcoral solid 1px;
+    width: 80%;
+    height: 80%;
+
+    /*动态布局*/
+    display: flex;
+    /*水平居中*/
+    align-items: center;
+    /*垂直居左*/
+    justify-content: center;
+}
+
+.box {
+    margin-top: 15%;
+    border: #ff8053 solid 1px;
+
+    width: 100%;
+    height: 300px;
+
+    /*动态布局*/
+    display: flex;
+    /*水平居中*/
+    align-items: center;
+    /*垂直居左*/
+    justify-content: center;
+
 }
