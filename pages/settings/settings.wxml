@@ -1,3 +1,8 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">设置</view>
+</cu-custom>
+
 <view style="margin-top: 10%">
     <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true"
             autoplay="true"
