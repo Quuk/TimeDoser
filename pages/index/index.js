@@ -1,5 +1,6 @@
 Page({
     data: {
+        timeDisable: false,
         second: 59,
         minute: 24
     },
@@ -10,7 +11,10 @@ Page({
             url: '/pages/settings/settings'
         })
     },
-    setTime(){
+    setTime() {
+        this.setData({
+            timeDisable: true,
+        });
         setTime(this);
     }
 });
@@ -22,7 +26,7 @@ function setTime(that) {
     if (second === 0) {
         if (minute === 0) {
             that.setData({
-                second: "Time Out..."
+                timeDisable: false,
             });
             return;
         } else {
