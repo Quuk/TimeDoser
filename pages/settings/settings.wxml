@@ -18,6 +18,10 @@
     </swiper>
 </view>
 
+<view class="container">
+    <canvas canvas-id="pieCanvas" class="canvas" style="height:300px" bindtouchstart="touchHandler"></canvas>
+</view>
+
 
 <view class="box" style="margin-top: 15%">
     <view class="tet">

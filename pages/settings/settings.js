@@ -1,3 +1,4 @@
+const wxCharts = require('../../utils/wxcharts.js');
 Page({
     data: {
         cardCur: 0,
@@ -32,6 +33,25 @@ Page({
         }],
     },
     onLoad() {
+        new wxCharts({
+            canvasId: 'pieCanvas',
+            type: 'pie',
+            series: [{
+                name: 'cat1',
+                data: 50,
+            }, {
+                name: 'cat2',
+                data: 30,
+            }, {
+                name: 'cat3',
+                data: 20,
+            }],
+            width: 360,
+            height: 300,
+            dataLabel: true
+        });
+
+
         this.towerSwiper('swiperList');
         // 初始化towerSwiper 传已有的数组名即可
     },
