@@ -15,13 +15,29 @@ Page({
         this.setData({
             timeDisable: true,
         });
+        clear(this);
         setTime(this);
+    },
+    stop() {
+        this.setData({
+            timeDisable: false,
+        });
+        clear(this);
     }
 });
+
+function clear(that) {
+    that.setData({
+        second: 59,
+        minute: 24
+    });
+}
 
 function setTime(that) {
     let second = that.data.second;
     let minute = that.data.minute;
+
+    if (!that.data.timeDisable) return;
 
     if (second === 0) {
         if (minute === 0) {

@@ -6,10 +6,28 @@ page {
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-top: 10%;
     height: 200px;
     width: 200px;
     border-radius: 100%;
-    border: red 1px solid;
+    border: #ffa859 1px solid;
 }
+
+.time-settings {
+    height: 65rpx;
+    width: 75rpx;
+    opacity: 0.7;
+}
+
+.time-setting {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.time-seiz{
+    height: 65rpx;
+    width: 75rpx;
+    opacity: 0.7;
+}
+

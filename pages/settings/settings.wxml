@@ -1,34 +1,16 @@
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+<cu-custom isBack="{{true}}">
     <view slot="backText">返回</view>
     <view slot="content">设置</view>
 </cu-custom>
 
-<view style="margin-top: 10%">
-    <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true"
-            autoplay="true"
-            interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3"
-            indicator-active-color="#0081ff">
-        <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
-            <view class="swiper-item">
-                <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
-                <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}"
-                       objectFit="cover" wx:if="{{item.type=='video'}}"></video>
-            </view>
-        </swiper-item>
-    </swiper>
+<!--<view class="container">-->
+<!--<canvas canvas-id="pieCanvas" class="canvas" style="height:300px" bindtouchstart="touchHandler"></canvas>-->
+<!--</view>-->
+<!--bgColor="bg-gradual-blue"-->
+
+
+<view class="page-wait">
+    <image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit" class="gif-white response"
+           style="height:240rpx"></image>
+    <text style="color: #6d6d6d;">页面正在施工....</text>
 </view>
-
-<view class="container">
-    <canvas canvas-id="pieCanvas" class="canvas" style="height:300px" bindtouchstart="touchHandler"></canvas>
-</view>
-
-
-<view class="box" style="margin-top: 15%">
-    <view class="tet">
-        <text class="cuIcon-time"></text>
-        <text>test</text>
-        <text class="cuIcon-time"></text>
-    </view>
-</view>
-
-<view></view>

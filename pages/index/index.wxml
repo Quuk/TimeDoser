@@ -1,15 +1,14 @@
 <!-- 开始番茄时钟 -->
-<view class="pageBox" wx:if="{{timeDisable}}">
+<view class="pageBox">
     <view class="pageHead"/>
     <view id="time">
-        <text class="cuIcon-time"></text>
-        <text>{{minute}}分{{second}}秒</text>
-        <text class="cuIcon-time"></text>
+        <text wx:if="{{timeDisable}}">{{minute}}分{{second}}秒</text>
+        <text wx:else bindtap="setTime">点击开始一个番茄</text>
     </view>
-</view>
 
-<!-- 未开始番茄时钟 -->
-<view class="padding flex flex-direction" wx:else>
-    <button class="cu-btn bg-red margin-tb-sm lg" bindtap="setTime">开始一个番茄时钟</button>
-    <button class="cu-btn bg-grey lg" bindtap="toSetting">设置</button>
+    <view class="padding flex flex-direction time-setting">
+        <button class="cu-btn bg-red margin-tb-sm lg" bindtap="stop" wx:if="{{timeDisable}}">停止</button>
+        <button class="cu-btn bg-red margin-tb-sm lg" bindtap="setTime" wx:else>开始一个番茄时钟</button>
+        <button class="cu-btn bg-grey lg" bindtap="toSetting">设置</button>
+    </view>
 </view>
