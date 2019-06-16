@@ -9,6 +9,7 @@
     <view class="padding flex flex-direction time-setting">
         <button class="cu-btn bg-red margin-tb-sm lg" bindtap="stop" wx:if="{{timeDisable}}">停止</button>
         <button class="cu-btn bg-red margin-tb-sm lg" bindtap="setTime" wx:else>开始一个番茄时钟</button>
-        <button class="cu-btn bg-grey lg" bindtap="toSetting">设置</button>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"  wx:if="{{!hasUserInfo && canIUse}}"> 获取头像昵称</button>
+        <button class="cu-btn bg-grey lg" bindtap="toSetting" bindgetuserinfo="getUserInfo" wx:else>设置</button>
     </view>
 </view>

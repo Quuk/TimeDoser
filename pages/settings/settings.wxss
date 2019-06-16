@@ -2,12 +2,9 @@ page {
     background: #ffffff;
 }
 
-.page-wait {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30%;
+.setting-head-box {
+    background: aliceblue;
+    height: 400rpx;
     width: 100%;
-    font-size: 15px;
 }
+

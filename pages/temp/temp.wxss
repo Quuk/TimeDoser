@@ -1,0 +1,10 @@
+page {
+    background: #ffffff;
+}
+
+.page-wait {
+    margin-top: 30%;
+    width: 100%;
+    font-size: 15px;
+}
+

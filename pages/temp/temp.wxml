@@ -1,0 +1,11 @@
+<view class="setting-head-box">
+    <cu-custom isBack="{{true}}">
+        <view slot="backText">返回</view>
+    </cu-custom>
+</view>
+
+<view class="page-wait pageBox">
+    <image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit" class="gif-white response"
+           style="height:240rpx"></image>
+    <text style="color: #6d6d6d;">页面正在施工....</text>
+</view>
