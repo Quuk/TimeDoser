@@ -1,5 +1,5 @@
 page {
-    background: #ffffff;
+    background: #e4e4e4;
 }
 
 .setting-head-box {
@@ -8,3 +8,14 @@ page {
     width: 100%;
 }
 
+.setting-minute {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}
+
+.setting-minute-input {
+    height: 20px;
+    width: 50px;
+}

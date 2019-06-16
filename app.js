@@ -52,6 +52,7 @@ App({
     },
     globalData: {
         baseUser: null,
-        userInfo: null
+        userInfo: null,
+        minute:25
     }
 });

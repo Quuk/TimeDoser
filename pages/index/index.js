@@ -1,10 +1,14 @@
+const app = getApp();
 Page({
     data: {
         timeDisable: false,
         second: 59,
-        minute: 24
+        minute: 25
     },
     onLoad() {
+        this.setData({
+            minute: app.globalData.minute - 1
+        });
     },
     toSetting() {
         wx.navigateTo({
@@ -29,13 +33,13 @@ Page({
 function clear(that) {
     that.setData({
         second: 59,
-        minute: 24
+        minute: app.globalData.minute - 1
     });
 }
 
 function setTime(that) {
     let second = that.data.second;
-    let minute = that.data.minute;
+    let minute = app.globalData.minute;
 
     if (!that.data.timeDisable) return;
 
