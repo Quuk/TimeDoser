@@ -10,7 +10,6 @@ page {
     width: 96rpx;
     height: 96rpx;
     border-radius: 100%;
-    border: #facba7 1px solid;
     background: #fbf9ff;
     box-shadow: #ffaf8a 0 0 12px;
 }
@@ -42,6 +41,24 @@ page {
 }
 
 .index-bac {
-    background: coral;
+    background: #e2e3ff;
     padding-bottom: 50rpx;
+}
+
+.setting-head-box {
+    background: aliceblue;
+    height: 400rpx;
+    width: 100%;
+}
+
+.setting-minute {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}
+
+.setting-minute-input {
+    height: 20px;
+    width: 50px;
 }

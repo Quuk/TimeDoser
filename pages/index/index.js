@@ -5,7 +5,9 @@ Page({
         timeDisable: false,
         second: 59,
         minute: 25,
-        userInfo: {}
+        userInfo: {},
+        hasUserInfo: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
     },
     onLoad() {
         this.setData({
@@ -71,6 +73,22 @@ Page({
             timeDisable: false,
         });
         clear(this);
+    },
+    getUserInfo: function (e) {
+        console.log(e);
+        app.globalData.userInfo = e.detail.userInfo;
+        this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
+        })
+    },
+    toUpdataInfoPage() {
+        wx.navigateTo({
+            url: '/pages/temp/temp'
+        })
+    },
+    timeSubmit(data) {
+        app.globalData.minute = data.detail.value;
     }
 });
 
