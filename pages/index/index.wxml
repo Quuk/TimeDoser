@@ -2,8 +2,8 @@
 <view class="pageBox">
     <view class="pageHead"/>
     <view id="time">
-        <text wx:if="{{timeDisable}}">{{minute}}分{{second}}秒</text>
-        <text wx:else bindtap="setTime">点击开始一个番茄</text>
+        <text class="time-style" wx:if="{{timeDisable}}">{{minute}} : {{second}}</text>
+        <text wx:else bindtap="setTime">点击开始一个番茄时钟</text>
     </view>
 
     <view class="padding flex flex-direction time-setting">
