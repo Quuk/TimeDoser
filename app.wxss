@@ -18,6 +18,6 @@
     justify-content: center;
 }
 
-.pageHead{
+.pageHead {
     margin-top: 20%;
 }

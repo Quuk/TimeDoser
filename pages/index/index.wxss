@@ -1,5 +1,5 @@
 page {
-    background: #cff1ff;
+    background: aliceblue;
 }
 
 #time {
@@ -7,12 +7,12 @@ page {
     align-items: center;
     justify-content: center;
     margin-top: 10%;
-    height: 400rpx;
-    width: 400rpx;
+    width: 96rpx;
+    height: 96rpx;
     border-radius: 100%;
-    border: #facba7 3px solid;
+    border: #facba7 1px solid;
     background: #fbf9ff;
-    box-shadow: #ffaf8a 0 0 30px;
+    box-shadow: #ffaf8a 0 0 12px;
 }
 
 .time-settings {
@@ -37,7 +37,11 @@ page {
     margin: 0;
     padding: 0;
     line-height: 1.5em;
-    font-size: 48px;
+    font-size: 12px;
     color: #4d4d4d;
+}
 
+.index-bac {
+    background: coral;
+    padding-bottom: 50rpx;
 }

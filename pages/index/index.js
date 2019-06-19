@@ -1,14 +1,41 @@
 const app = getApp();
+
 Page({
     data: {
         timeDisable: false,
         second: 59,
-        minute: 25
+        minute: 25,
+        userInfo: {}
     },
     onLoad() {
         this.setData({
             minute: app.globalData.minute - 1
         });
+
+        if (app.globalData.userInfo) {
+            this.setData({
+                userInfo: app.globalData.userInfo,
+                hasUserInfo: true,
+                minute: app.globalData.minute
+            })
+        } else if (this.data.canIUse) {
+            app.userInfoReadyCallback = res => {
+                this.setData({
+                    userInfo: res.userInfo,
+                    hasUserInfo: true
+                })
+            }
+        } else {
+            wx.getUserInfo({
+                success: res => {
+                    app.globalData.userInfo = res.userInfo;
+                    this.setData({
+                        userInfo: res.userInfo,
+                        hasUserInfo: true
+                    })
+                }
+            })
+        }
     },
     toSetting() {
         wx.navigateTo({
@@ -16,14 +43,31 @@ Page({
         })
     },
     setTime() {
+
+        const animationImg = wx.createAnimation({
+            duration: 1000,
+            timingFunction: "ease"
+        });
+        animationImg.scale(4).translateY(20).step();
+
         this.setData({
+            animationImg: animationImg.export(),
             timeDisable: true,
         });
+
         clear(this);
         setTime(this);
     },
     stop() {
+
+        const animationImg = wx.createAnimation({
+            duration: 1000,
+            timingFunction: "ease",
+        });
+        animationImg.scale(1).translateY(0).step();
+
         this.setData({
+            animationImg: animationImg.export(),
             timeDisable: false,
         });
         clear(this);
