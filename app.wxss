@@ -21,3 +21,10 @@
 .pageHead {
     margin-top: 20%;
 }
+
+.header {
+    height: 50px;
+    width: 50px;
+    border: 1px solid red;
+    border-radius: 25px;
+}

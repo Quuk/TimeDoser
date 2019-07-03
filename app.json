@@ -1,8 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/settings/settings",
-    "pages/temp/temp"
+    "pages/class/class",
+    "pages/my/home/home",
+    "pages/my/upList/upList",
+    "pages/time/time",
+    "pages/todoList/todoList"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

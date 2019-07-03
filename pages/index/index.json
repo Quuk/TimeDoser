@@ -1,6 +1,10 @@
 {
+  "disableScroll": true,
   "usingComponents": {
-    "i-icon": "../../dist/icon/index"
-  },
-  "disableScroll": true
+    "timeDoser": "/pages/time/time",
+    "todoList": "/pages/todoList/todoList",
+    "class": "/pages/class/class",
+    "my": "/pages/my/home/home"
+  }
 }
+

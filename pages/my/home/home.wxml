@@ -1,10 +1,6 @@
 <view class="setting-head-box">
-    <cu-custom isBack="{{true}}">
-        <view slot="backText">返回</view>
-    </cu-custom>
     <view class="pageBox">
-        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称
-        </button>
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
         <block wx:else>
             <image class="cu-avatar round lg" src="{{userInfo.avatarUrl}}"/>
             <text class="userinfo-nickname">{{userInfo.nickName}}</text>
@@ -18,9 +14,10 @@
             <text class="cuIcon-time text-cyan"></text>
             <text class="text-grey">设置番茄时长</text>
         </view>
-        <view class="action setting-minute" >
+        <view class="action setting-minute">
             <view class="setting-minute setting-minute-input">
-                <input type="number" placeholder="{{ minute }}" value="{{ minute }}" maxlength="3" bindblur="timeSubmit"/>
+                <input type="number" placeholder="{{ minute }}" value="{{ minute }}" maxlength="3"
+                       bindblur="timeSubmit"/>
             </view>
             <text class="text-grey text-sm">分钟</text>
 

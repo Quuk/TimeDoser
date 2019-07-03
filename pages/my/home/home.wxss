@@ -1,8 +1,9 @@
-page {
-    background: #e4e4e4;
-}
+@import "/colorui/main.wxss";
+@import "/colorui/icon.wxss";
+@import "/app.wxss";
 
 .setting-head-box {
+    padding-top: 150rpx;
     background: aliceblue;
     height: 400rpx;
     width: 100%;
