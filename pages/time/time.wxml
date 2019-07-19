@@ -1,3 +1,5 @@
+<view class="pageHeadColor"/>
+
 <!-- 开始番茄时钟 -->
 <view class="pageBox index-bac">
     <view class="pageHead"/>

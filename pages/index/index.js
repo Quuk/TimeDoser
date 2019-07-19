@@ -1,6 +1,6 @@
 Page({
     data: {
-        PageCur: 'timeDoser'
+        PageCur: 'my'
     },
     NavChange(e) {
         this.setData({

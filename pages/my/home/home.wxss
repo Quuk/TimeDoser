@@ -20,3 +20,9 @@
     height: 20px;
     width: 50px;
 }
+
+.pageBac {
+    height: 1000px;
+    width: 100%;
+    background: #d5d5d5;
+}

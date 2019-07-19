@@ -21,6 +21,8 @@ Component({
     lifetimes: {
         // 在组件实例进入页面节点树时执行
         attached: function () {
+
+            // 获取登录人信息
             if (app.globalData.userInfo) {
                 this.setData({
                     userInfo: app.globalData.userInfo,
@@ -39,7 +41,7 @@ Component({
                 // 在没有 open-type=getUserInfo 版本的兼容处理
                 wx.getUserInfo({
                     success: res => {
-                        app.globalData.userInfo = res.userInfo
+                        app.globalData.userInfo = res.userInfo;
                         this.setData({
                             userInfo: res.userInfo,
                             hasUserInfo: true
@@ -47,6 +49,25 @@ Component({
                     }
                 })
             }
+
+            // 查看登录人是否记录在后台系统中,没有则添加
+            wx.request({
+                url: `${common.getUrl.url}/login/getBaseInfo`,
+                data: {
+                    appCode: res.code
+                },
+                method: 'GET',
+                header: common.HEADER,
+                success: data => {
+                    // 存入全局变量
+                    this.globalData.baseUser = data.data.data;
+                    // 存入缓存区
+                    wx.setStorage({
+                        key: 'baseUser',
+                        data: data.data.data
+                    })
+                }
+            });
         }
     },
 });
