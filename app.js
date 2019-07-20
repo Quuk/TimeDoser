@@ -1,3 +1,5 @@
+const common = require('common.js');
+
 //app.js
 App({
     onLaunch: function () {
@@ -20,6 +22,37 @@ App({
                         }
                     })
                 }
+            }
+        });
+
+        // 获取用于登录的loginCode
+        wx.login({
+            success: data => {
+                const code = data.code;
+
+                // 查看登录人是否记录在后台系统中,没有则添加
+                wx.request({
+                    url: `${common.default.getUrl.url}/login/getBaseInfo`,
+                    data: {
+                        appCode: code
+                    },
+                    method: 'GET',
+                    header: common.HEADER,
+
+                    success: data => {
+
+                        // 如果有数据的话则添加到全局变量中
+                        if (data.statusCode === 200 && data.data.code === '000') {
+                            this.globalData.baseUser = data.data.data;
+
+                            // 同时存入缓存区
+                            wx.setStorage({
+                                key: 'baseUser',
+                                data: data.data.data
+                            })
+                        }
+                    }
+                });
             }
         });
 

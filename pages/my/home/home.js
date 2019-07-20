@@ -49,25 +49,6 @@ Component({
                     }
                 })
             }
-
-            // 查看登录人是否记录在后台系统中,没有则添加
-            wx.request({
-                url: `${common.getUrl.url}/login/getBaseInfo`,
-                data: {
-                    appCode: res.code
-                },
-                method: 'GET',
-                header: common.HEADER,
-                success: data => {
-                    // 存入全局变量
-                    this.globalData.baseUser = data.data.data;
-                    // 存入缓存区
-                    wx.setStorage({
-                        key: 'baseUser',
-                        data: data.data.data
-                    })
-                }
-            });
         }
     },
 });
