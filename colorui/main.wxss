@@ -3774,6 +3774,10 @@ scroll-view.cu-steps .cu-item {
           文本
  ==================== */
 
+.text-xxs {
+	font-size: 17rpx;
+}
+
 .text-xs {
 	font-size: 20rpx;
 }

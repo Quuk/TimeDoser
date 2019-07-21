@@ -7,3 +7,7 @@ page {
     width: 100%;
     font-size: 15px;
 }
+
+.todo-card-opacity {
+    opacity:0.8;
+}

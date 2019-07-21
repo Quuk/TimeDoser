@@ -2,7 +2,7 @@
 
 .setting-head-box {
     padding-top: 150rpx;
-    background: aliceblue;
+    background: #f0f8ff;
     height: 400rpx;
     width: 100%;
 }
@@ -22,5 +22,5 @@
 .pageBac {
     height: 1000px;
     width: 100%;
-    background: #d5d5d5;
+    background: #eaeaea;
 }

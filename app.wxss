@@ -1,6 +1,10 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
 
+.scrollPage {
+    height: 100vh;
+}
+
 .container {
     height: 100%;
     display: flex;
@@ -19,7 +23,12 @@
 }
 
 .pageHead {
-    margin-top: 20%;
+    margin-top: 80rpx;
+}
+
+.pageEnd {
+    margin-bottom: 400rpx;
+
 }
 
 .header {

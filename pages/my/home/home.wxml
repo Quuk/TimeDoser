@@ -25,13 +25,6 @@
             </view>
         </view>
 
-        <view class="cu-item" open-type="contact">
-            <button class="cu-btn content" open-type="contact">
-                <text class="cuIcon-community text-cyan"></text>
-                <text class="text-grey">联系作者</text>
-            </button>
-        </view>
-
         <navigator class="cu-item arrow" url="/pages/my/upList/upList">
             <view class="content">
                 <text class="cuIcon-creative text-cyan"></text>

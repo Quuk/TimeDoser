@@ -1,4 +1,5 @@
 <wxs module="dateUtil" src="../../../utils/dateUtils.wxs"></wxs>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
 
 <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
     <view slot="backText">返回</view>
@@ -36,53 +37,56 @@
         <text class="bg-grey" style="width:2rem"></text>
     </view>
     <view class="text-gray text-sm version-remark">
-        <view class="version-remark-logo" open-type="contact">
+        <button class="cu-btn version-remark-logo" open-type="contact">
             <text class="cuIcon-command text-gray"/>
-            <text class="text-xs">联系作者</text>
-        </view>
-        <view class="version-remark-logo">
+            <text class="text-xxs text-gray">联系作者</text>
+        </button>
+        <button class="cu-btn version-remark-logo">
             <text class="cuIcon-time lg text-gray"></text>
-            <text class="text-xs">留言</text>
-        </view>
+            <text class="text-xxs text-gray">留言</text>
+        </button>
     </view>
 </view>
 
 <view class="bg-white padding flex">
     <view class="version-avatar ">
         <view class="cu-avatar round sm"
-              style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Taric.png);"></view>
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/icon/WechatIMG4.jpeg);"></view>
     </view>
     <view class="version-content">
         <view class="text-grey">
-            <text class="text-sm text-bold padding-xs ">瓦洛兰之盾-塔里克</text>
-            <view class="cu-tag round bg-orange sm">战士</view>
+            <text class="text-sm text-bold padding-xs">tcyeee</text>
+            <view class="cu-tag round bg-orange sm">作者</view>
         </view>
         <view class="text-gray flex ">
             <text class="text-sm padding-xs">
-                塔里克是保护者星灵，用超乎寻常的力量守护着符文之地的生命、仁爱以及万物之美。塔里克由于渎职而被放逐，离开了祖国德玛西亚，前去攀登巨神峰寻找救赎，但他找到的却是来自星界的更高层的召唤。现在的塔里克与古代巨神族的神力相融合，以瓦洛兰之盾的身份，永不疲倦地警惕着阴险狡诈的虚空腐化之力
+                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
             </text>
         </view>
         <view class="text-grey text-xs padding-xs">22:20</view>
     </view>
 </view>
+
 <view class="bg-white padding flex">
     <view class="version-avatar ">
         <view class="cu-avatar round sm"
-              style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Taric.png);"></view>
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/icon/WechatIMG4.jpeg);"></view>
     </view>
     <view class="version-content">
         <view class="text-grey">
-            <text class="text-sm text-bold padding-xs ">瓦洛兰之盾-塔里克</text>
-            <view class="cu-tag round bg-orange sm">战士</view>
+            <text class="text-sm text-bold padding-xs">tcyeee</text>
+            <view class="cu-tag round bg-orange sm">作者</view>
         </view>
         <view class="text-gray flex ">
             <text class="text-sm padding-xs">
-                塔里克是保护者星灵，用超乎寻常的力量守护着符文之地的生命、仁爱以及万物之美。塔里克由于渎职而被放逐，离开了祖国德玛西亚，前去攀登巨神峰寻找救赎，但他找到的却是来自星界的更高层的召唤。现在的塔里克与古代巨神族的神力相融合，以瓦洛兰之盾的身份，永不疲倦地警惕着阴险狡诈的虚空腐化之力
+                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
             </text>
         </view>
         <view class="text-grey text-xs padding-xs">22:20</view>
     </view>
 </view>
+
+
 <view class="bg-white padding  margin-top-xs"/>
 <view class="cu-bar align-start bg-white">
     <view class="action border-title">
@@ -97,9 +101,11 @@
         <view class="content">
             <view class="cu-capsule radius">
                 <view class="cu-tag bg-cyan">version</view>
-                <view class="cu-tag line-cyan">{{itemName.version}}</view>
+                <text class="cu-tag line-cyan">{{itemName.version}}</text>
             </view>
-            <view class="margin-top">{{itemName.detail}}</view>
+            <view class="margin-top">
+                <text class="margin-top">{{itemName.detail}}</text>
+            </view>
         </view>
     </view>
 </view>

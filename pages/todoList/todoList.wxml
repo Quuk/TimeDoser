@@ -1,5 +1,69 @@
-<view class="page-wait pageBox">
-    <image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit" class="gif-white response"
-           style="height:240rpx"></image>
-    <text style="color: #6d6d6d;">todoList 页面正在施工....</text>
-</view>
+<view class="pageHead"/>
+
+<scroll-view scroll-y class="scrollPage">
+
+    <view class="padding text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/12.jpeg);">
+            <view class="text-black text-bold text-df">这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="padding-sm text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/1215A08EC0D7F44BF13133EDBD499675.jpg);">
+            <view>这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="padding-sm text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/13.jpeg);">
+            <view>这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="padding-sm text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/91ff5ae3a046335fc54d05aa48711f1c66cf2063cb177-rsePSx_fw658.jpeg);">
+            <view>这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="padding-sm text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big91005.jpg);">
+            <view>这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="padding-sm text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/12.jpeg);">
+            <view>这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="padding-sm text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/1215A08EC0D7F44BF13133EDBD499675.jpg);">
+            <view>这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="padding-sm text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/13.jpeg);">
+            <view>这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="padding-sm text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/91ff5ae3a046335fc54d05aa48711f1c66cf2063cb177-rsePSx_fw658.jpeg);">
+            <view>这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="padding-sm text-center">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+              style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big91005.jpg);">
+            <view>这是一个待办任务</view>
+        </view>
+    </view>
+    <view class="pageEnd pageBox">
+        <text class="cuIcon-add text-gray padding-top-xl"/>
+        <text class="text-gray text-xs">新加一个任务</text>
+    </view>
+</scroll-view>
