@@ -6,14 +6,9 @@ Page({
         hasUserInfo: false,
         minute: 25
     },
-    toUpdataInfoPage() {
-        wx.navigateTo({
-            url: '/pages/temp/temp'
-        })
-    },
     timeSubmit(data) {
         app.globalData.minute = data.detail.value;
-    }
+    },
 });
 
 

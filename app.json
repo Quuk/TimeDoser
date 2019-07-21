@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/class/class",
-    "pages/my/home/home",
     "pages/my/upList/upList",
+    "pages/my/home/home",
     "pages/time/time",
+    "pages/class/class",
     "pages/todoList/todoList"
 
   ],

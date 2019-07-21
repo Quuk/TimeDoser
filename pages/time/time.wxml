@@ -3,7 +3,7 @@
 <!-- 开始番茄时钟 -->
 <view class="pageBox index-bac">
     <view class="pageHead"/>
-    <view id="time" animation="{{animationImg}}">
+    <view class="time" animation="{{animationImg}}">
         <text class="time-style" wx:if="{{timeDisable}}">{{minute}} : {{second}}</text>
         <text wx:else class="cuIcon-time lg text-gray"/>
     </view>

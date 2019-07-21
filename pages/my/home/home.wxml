@@ -22,7 +22,6 @@
                            bindblur="timeSubmit"/>
                 </view>
                 <text class="text-grey text-sm">分钟</text>
-
             </view>
         </view>
 
@@ -32,11 +31,13 @@
                 <text class="text-grey">联系作者</text>
             </button>
         </view>
-        <view class="cu-item arrow">
-            <view class="content" bindtap="toUpdataInfoPage">
+
+        <navigator class="cu-item arrow" url="/pages/my/upList/upList">
+            <view class="content">
                 <text class="cuIcon-creative text-cyan"></text>
                 <text class="text-grey">更新说明</text>
             </view>
-        </view>
+        </navigator>
+
     </view>
 </view>

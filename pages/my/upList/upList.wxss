@@ -1,9 +1,27 @@
-page {
-    background: #ffffff;
-}
-
 .page-wait {
     margin-top: 30%;
     width: 100%;
     font-size: 15px;
 }
+
+.version-content {
+    position: relative;
+}
+
+.version-avatar {
+    padding-right: 16rpx;
+}
+
+.version-remark-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 30rpx;
+}
+
+.version-remark {
+    display: flex;
+    flex-direction: row;
+}
+
