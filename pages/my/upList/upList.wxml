@@ -63,7 +63,7 @@
                 {{itemName.context}}
             </text>
         </view>
-        <view class="text-grey text-xs padding-xs">{{itemName.creatdate}}</view>
+        <view class="text-grey text-xs padding-xs">{{dateUtil.dateFormat(itemName.createdate,'MM-dd hh:mm')}}</view>
     </view>
 </view>
 
