@@ -6,12 +6,14 @@ Page({});
 Component({
     data: {
         thisVersion: null,
-        versionDetails: null
+        versionDetails: null,
+        suggestMessage: null
     },
 
     // 在组件实例进入页面节点树时执行
     attached: function () {
-        // 在这里获取更新信息
+
+        // 获取版本更新信息
         if (this.data.thisVersion == null && this.data.versionDetails == null) {
             wx.request({
                 url: `${common.default.getUrl.url}/version/queryVersionUpdate`,
@@ -24,10 +26,23 @@ Component({
                             thisVersion: data.data.data.thisVersion,
                             versionDetails: data.data.data.versionDetails,
                         });
-                        console.log(this.data.versionDetails);
                     }
                 }
             });
         }
+
+        // 留言板
+        wx.request({
+            url: `${common.default.getUrl.url}/message/queryAllMessage`,
+            header: common.HEADER,
+            method: 'GET',
+
+            success: data => {
+                console.log(data.data.data);
+                this.setData({
+                    suggestMessage: data.data.data
+                });
+            }
+        });
     }
 });

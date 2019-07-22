@@ -9,7 +9,7 @@
 <view class="cu-card case no-card">
     <view class="cu-item shadow">
         <view class="image">
-            <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="widthFix"></image>
+            <image src="{{thisVersion.imgUrl}}" mode="widthFix"></image>
             <view class="cu-tag bg-blue">{{thisVersion.version}}</view>
             <view class="cu-bar bg-shadeBottom">
                 <text class="text-cut">添加了卡片效果</text>
@@ -33,7 +33,7 @@
 <view class="cu-bar align-start bg-white">
     <view class="action border-title">
         <text class="text-xl text-bold">留言板</text>
-        (3)
+        ({{suggestMessage.Count}})
         <text class="bg-grey" style="width:2rem"></text>
     </view>
     <view class="text-gray text-sm version-remark">
@@ -48,41 +48,22 @@
     </view>
 </view>
 
-<view class="bg-white padding flex">
+<view class="bg-white padding flex" wx:for="{{suggestMessage.Data}}" wx:key wx:for-item="itemName">
     <view class="version-avatar ">
-        <view class="cu-avatar round sm"
-              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/icon/WechatIMG4.jpeg);"></view>
+        <image class="cu-avatar round sm" src="{{itemName.avatarUrl}}"/>
     </view>
     <view class="version-content">
         <view class="text-grey">
-            <text class="text-sm text-bold padding-xs">tcyeee</text>
-            <view class="cu-tag round bg-orange sm">作者</view>
+            <text class="text-sm text-bold padding-xs">{{itemName.username}}</text>
+            <view wx:if="{{itemName.accountType==99}}" class="cu-tag round bg-orange sm">作者</view>
+            <view wx:if="{{itemName.accountType==98}}" class="cu-tag round bg-orange sm">管理员</view>
         </view>
         <view class="text-gray flex ">
             <text class="text-sm padding-xs">
-                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
+                {{itemName.context}}
             </text>
         </view>
-        <view class="text-grey text-xs padding-xs">22:20</view>
-    </view>
-</view>
-
-<view class="bg-white padding flex">
-    <view class="version-avatar ">
-        <view class="cu-avatar round sm"
-              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/icon/WechatIMG4.jpeg);"></view>
-    </view>
-    <view class="version-content">
-        <view class="text-grey">
-            <text class="text-sm text-bold padding-xs">tcyeee</text>
-            <view class="cu-tag round bg-orange sm">作者</view>
-        </view>
-        <view class="text-gray flex ">
-            <text class="text-sm padding-xs">
-                测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本
-            </text>
-        </view>
-        <view class="text-grey text-xs padding-xs">22:20</view>
+        <view class="text-grey text-xs padding-xs">{{itemName.creatdate}}</view>
     </view>
 </view>
 
