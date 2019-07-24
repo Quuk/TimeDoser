@@ -43,11 +43,12 @@
         </button>
         <button class="cu-btn version-remark-logo">
             <text class="cuIcon-time lg text-gray"></text>
-            <text class="text-xxs text-gray">留言</text>
+            <text class="text-xxs text-gray">赞赏</text>
         </button>
     </view>
 </view>
 
+<!-- 留言 -->
 <view class="bg-white padding flex" wx:for="{{suggestMessage.Data}}" wx:key wx:for-item="itemName">
     <view class="version-avatar ">
         <image class="cu-avatar round sm" src="{{itemName.avatarUrl}}"/>
@@ -67,6 +68,13 @@
     </view>
 </view>
 
+<!-- 输入框 -->
+<view class="bg-white padding flex">
+    <view class="version-avatar ">
+        <image class="cu-avatar round sm" src="https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/13.jpeg"/>
+    </view>
+    <input class="version-input" type="text" placeholder="添加评论..." bindconfirm="addOne"/>
+</view>
 
 <view class="bg-white padding  margin-top-xs"/>
 <view class="cu-bar align-start bg-white">

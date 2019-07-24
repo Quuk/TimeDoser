@@ -27,3 +27,11 @@
     flex-direction: row;
 }
 
+.version-input{
+    width: 100%;
+    border: 1px #a38f72 solid;
+    border-radius: 100rpx;
+    padding: 0 10px 0 10px;
+    font-size: 13px;
+    color: #868686;
+}
