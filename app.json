@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/my/upList/upList",
     "pages/index/index",
+    "pages/my/upList/upList",
     "pages/my/home/home",
     "pages/time/time",
     "pages/class/class",

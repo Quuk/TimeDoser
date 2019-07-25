@@ -1,10 +1,10 @@
+const common = require('../../../common.js');
 const app = getApp();
 
 Page({
     data: {
-        userInfo: {},
-        hasUserInfo: false,
-        minute: 25
+        userInfo: null,
+        baseUser: null
     },
     timeSubmit(data) {
         app.globalData.minute = data.detail.value;
@@ -14,36 +14,51 @@ Page({
 
 Component({
     lifetimes: {
-        // 在组件实例进入页面节点树时执行
         attached: function () {
-
-            // 获取登录人信息
-            if (app.globalData.userInfo) {
-                this.setData({
-                    userInfo: app.globalData.userInfo,
-                    hasUserInfo: true
-                })
-            } else if (this.data.canIUse) {
-                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-                // 所以此处加入 callback 以防止这种情况
-                app.userInfoReadyCallback = res => {
-                    this.setData({
-                        userInfo: res.userInfo,
-                        hasUserInfo: true
-                    })
-                }
-            } else {
-                // 在没有 open-type=getUserInfo 版本的兼容处理
-                wx.getUserInfo({
-                    success: res => {
-                        app.globalData.userInfo = res.userInfo;
-                        this.setData({
-                            userInfo: res.userInfo,
-                            hasUserInfo: true
-                        })
-                    }
-                })
-            }
+            setUserInfo(this);
         }
     },
 });
+
+
+// 验证缓存中是否有用户信息,没有就加上
+function setUserInfo(this_) {
+    wx.getSetting({
+        success: res => {
+            if (res.authSetting['scope.userInfo']) {
+                wx.getUserInfo({
+                    success: res => {
+                        this_.setData({
+                            userInfo: res.userInfo
+                        });
+                        login(this_, res.userInfo);
+                    }
+                });
+            }
+        }
+    })
+}
+
+// 登录接口
+function login(this_, userInfo) {
+    wx.login({
+        success: data => {
+            wx.request({
+                url: `${common.default.getUrl.url}/login/getBaseInfo`,
+                header: common.HEADER,
+                data: {
+                    appCode: data.code,
+                    userInfo: userInfo
+                },
+                success: data => {
+                    if (data.statusCode === 200 && data.data.code === '000') {
+                        this_.setData({
+                            baseUser: data.data.data
+                        });
+                    }
+                }
+            });
+        }
+    });
+}
+
