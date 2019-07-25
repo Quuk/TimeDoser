@@ -1,7 +1,7 @@
 const common = new function () {
 
-    const baseUrl = "https://igo12.top";  // 本地开发
-    // const baseUrl = "http://127.0.0.1:1901";
+    // const baseUrl = "https://igo12.top";  // 线上
+    const baseUrl = "http://127.0.0.1:1901"; // 本地开发
     return {
         getUrl: {
             url: baseUrl
