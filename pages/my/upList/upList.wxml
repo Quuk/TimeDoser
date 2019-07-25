@@ -51,11 +51,13 @@
 <!-- 留言 -->
 <view class="bg-white padding flex" wx:for="{{suggestMessage.Data}}" wx:key wx:for-item="itemName">
     <view class="version-avatar ">
-        <image class="cu-avatar round sm" src="{{itemName.avatarUrl}}"/>
+        <image class="cu-avatar round sm" wx:if="{{itemName.avatarUrl}}" src="{{itemName.avatarUrl}}"/>
+        <image class="cu-avatar round sm" wx:else/>
     </view>
     <view class="version-content">
         <view class="text-grey">
-            <text class="text-sm text-bold padding-xs">{{itemName.username}}</text>
+            <text class="text-sm text-bold padding-xs" wx:if="{{itemName.username}}">{{itemName.username}}</text>
+            <text class="text-sm text-bold padding-xs" wx:else>游客</text>
             <view wx:if="{{itemName.accountType==99}}" class="cu-tag round bg-orange sm">作者</view>
             <view wx:if="{{itemName.accountType==98}}" class="cu-tag round bg-orange sm">管理员</view>
         </view>
@@ -64,9 +66,22 @@
                 {{itemName.context}}
             </text>
         </view>
-        <view class="version-remark">
-            <view class="text-grey text-xs padding-xs">{{dateUtil.dateFormat(itemName.createdate,'MM-dd hh:mm')}}</view>
-            <view class="text-grey text-xs padding-xs" data-index="{{itemName.messageId}}" bindtap="deleteMessage">删除</view>
+        <view class="version-remark  solid-bottom justify-between">
+            <view class="version-remark">
+                <view class="text-grey text-xs padding-xs">{{dateUtil.dateFormat(itemName.createdate,'MM-dd hh:mm')}}
+                </view>
+                <view class="text-grey text-xs padding-xs" data-index="{{itemName.messageId}}" bindtap="deleteMessage">
+                    删除
+                </view>
+            </view>
+
+            <view class="text-gray text-sm ">
+                <text class="cuIcon-appreciatefill margin-lr-xs"></text>
+                20
+                <text class="cuIcon-messagefill margin-lr-xs"></text>
+                30
+            </view>
+
         </view>
     </view>
 </view>
@@ -76,7 +91,7 @@
     <view class="version-avatar ">
         <image class="cu-avatar round sm" src="https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/13.jpeg"/>
     </view>
-    <input class="version-input" type="text" placeholder="添加评论..." bindconfirm="addOne"/>
+    <input class="version-input" type="text" placeholder="添加评论..." bindconfirm="addOne" value='{{inputValue}}'/>
 </view>
 
 <view class="bg-white padding  margin-top-xs"/>

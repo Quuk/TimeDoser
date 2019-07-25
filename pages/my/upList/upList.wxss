@@ -6,6 +6,7 @@
 
 .version-content {
     position: relative;
+    width: 100%;
 }
 
 .version-avatar {
@@ -34,4 +35,8 @@
     padding: 0 10px 0 10px;
     font-size: 13px;
     color: #868686;
+}
+
+.temp{
+    border: red 1px solid;
 }

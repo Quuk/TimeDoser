@@ -7,15 +7,19 @@ Component({
         thisVersion: null,
         versionDetails: null,
         suggestMessage: null,
+        inputValue: null,
     },
     methods: {
 
         // 添加一条留言
         addOne(e) {
+            this.setData({
+                'inputValue': ''
+            });
+
             wx.request({
                 url: `${common.default.getUrl.url}/message/addMessage`,
                 header: common.HEADER,
-                method: 'GET',
                 data: {
                     message: e.detail.value
                 },
@@ -25,8 +29,8 @@ Component({
                         getMessageInfo(this);
                     } else {
                         wx.showToast({
-                            title: 'loading',
-                            icon: 'success',
+                            title: '添加失败',
+                            icon: 'loading',
                             mask: true,
                             duration: 500
                         })
