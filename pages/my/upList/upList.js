@@ -1,4 +1,4 @@
-const common = require('../../../common.js');
+import common from "../../../common.js";
 
 Page({});
 
@@ -8,6 +8,7 @@ Component({
         versionDetails: null,
         suggestMessage: null,
         inputValue: null,
+        baseUser: wx.getStorageSync("baseUser"),
     },
     methods: {
 
@@ -18,7 +19,7 @@ Component({
             });
 
             wx.request({
-                url: `${common.default.getUrl.url}/message/addMessage`,
+                url: `${common.URL}/message/addMessage`,
                 header: common.HEADER,
                 data: {
                     message: e.detail.value
@@ -50,6 +51,8 @@ Component({
             })
         }
     },
+    created: function () {
+    },
     attached: function () {
         getDevelopInfo(this); // 获取更新信息
         getMessageInfo(this); // 获取留言板信息
@@ -69,7 +72,7 @@ function getDevelopInfo(this_) {
         },
         fail() {
             wx.request({
-                url: `${common.default.getUrl.url}/version/queryVersionUpdate`,
+                url: `${common.URL}/version/queryVersionUpdate`,
                 header: common.HEADER,
                 method: 'GET',
                 success: data => {
@@ -86,11 +89,10 @@ function getDevelopInfo(this_) {
     });
 }
 
-
 // 获取留言板信息
 function getMessageInfo(this_) {
     wx.request({
-        url: `${common.default.getUrl.url}/message/queryAllMessage`,
+        url: `${common.URL}/message/queryAllMessage`,
         header: common.HEADER,
         success: data => {
             wx.setStorageSync("suggestMessage", data.data.data);
@@ -104,7 +106,7 @@ function getMessageInfo(this_) {
 // 删除一条留言
 function deleteMessage(messageId, this_) {
     wx.request({
-        url: `${common.default.getUrl.url}/message/deleteMessage`,
+        url: `${common.URL}/message/deleteMessage`,
         header: common.HEADER,
         data: {
             id: messageId

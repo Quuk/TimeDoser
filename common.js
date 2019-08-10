@@ -1,15 +1,22 @@
-const common = new function () {
+const baseUrl = "http://127.0.0.1:1901";  // 本地开发
+// const baseUrl = "https://igo12.top";  // 线上开发
 
-    // const baseUrl = "https://igo12.top";  // 线上
-    const baseUrl = "http://127.0.0.1:1901"; // 本地开发
+const common = new function () {
     return {
-        getUrl: {
-            url: baseUrl
+        URL: baseUrl,
+        HEADER: {
+            'Content-Type': 'application/json',
+            'X_Auth_Token': getToken()
         },
-        HEADER
+        HEADER_NOTOKEN: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
     };
 };
-
 export default common;
-export const HEADER = {'Content-Type': 'application/json'};
 
+// 获取全局信息
+function getToken() {
+    let baseUser = wx.getStorageSync("baseUser");
+    return baseUser == null ? null : baseUser.token;
+}

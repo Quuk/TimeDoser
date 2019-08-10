@@ -1,5 +1,32 @@
+import common from 'common.js';
+
 App({
     onLaunch: function () {
+
+        // 登录接口
+        wx.login({
+            success: data => {
+                console.log("开始登录.....");
+                wx.request({
+                    url: `${common.URL}/login/getBaseInfo`,
+                    header: common.HEADER_NOTOKEN,
+                    data: {appCode: data.code},
+                    method: "POST",
+                    success: data => {
+                        if (data.statusCode === 200 && data.data.code === '000') {
+                            console.log("登录成功....");
+                            // 存入全局变量
+                            this.globalData.baseUser = data.data.data;
+                            // 存入缓存区
+                            wx.setStorage({
+                                key: 'baseUser',
+                                data: data.data.data
+                            });
+                        }
+                    }
+                });
+            }
+        });
 
         wx.getSystemInfo({
             success: e => {
