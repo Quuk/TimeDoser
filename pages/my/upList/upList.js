@@ -1,5 +1,8 @@
 import common from "../../../common.js";
 
+const app = getApp();
+
+
 Page({});
 
 Component({
@@ -9,6 +12,7 @@ Component({
         suggestMessage: null,
         inputValue: null,
         baseUser: wx.getStorageSync("baseUser"),
+        userInfo: wx.getStorageSync("userInfo"),
     },
     methods: {
 
@@ -52,6 +56,7 @@ Component({
         }
     },
     created: function () {
+        console.log(this.data.userInfo.avatarUrl);
     },
     attached: function () {
         getDevelopInfo(this); // 获取更新信息

@@ -16,6 +16,16 @@ Component({
             this.setData({
                 userInfo: e.detail.userInfo,
                 hasUserInfo: true
+            });
+            wx.request({
+                url: `${common.URL}/user/updateUserInfo`,
+                header: {
+                    'X_Auth_Token': this.data.baseUser.token
+                },
+                data: {userInfo: e.detail.userInfo},
+                success(res) {
+                    console.log("添加成功");
+                }
             })
         }
     },
@@ -45,11 +55,21 @@ function setUserInfo(this_) {
                                 userInfo: res.userInfo,
                                 hasUserInfo: true,
                             });
+                            app.globalData.userInfo = res.userInfo;
+                            wx.setStorage({
+                                key: 'userInfo',
+                                data: res.userInfo
+                            });
                         }
                     });
                 }
             }
         })
+    }
+
+    // 全局基础信息加载
+    if (app.globalData.userInfo == null) {
+        app.globalData.userInfo = this_.data.userInfo;
     }
 
     // 用户基础信息加载
@@ -60,19 +80,12 @@ function setUserInfo(this_) {
             baseUser: app.globalData.baseUser
         });
     }
-
-
 }
 
 // 登录接口
 function login(this_) {
-
-
     wx.login({
         success: data => {
-            console.log(app.globalData.baseUser);
-
-
             wx.request({
                 url: `${common.URL}/login/getBaseInfo`,
                 header: common.HEADER,
@@ -86,7 +99,6 @@ function login(this_) {
                         });
                         // 存入全局变量
                         app.globalData.baseUser = data.data.data;
-                        console.log(app.globalData.baseUser)
 
                         // 存入缓存区
                         wx.setStorage({

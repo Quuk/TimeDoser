@@ -52,7 +52,7 @@
 <view class="bg-white padding flex" wx:for="{{suggestMessage.Data}}" wx:key wx:for-item="itemName">
     <view class="version-avatar ">
         <image class="cu-avatar round sm" wx:if="{{itemName.avatarUrl}}" src="{{itemName.avatarUrl}}"/>
-        <image class="cu-avatar round sm" wx:else/>
+        <image class="cu-avatar round sm" wx:else src="/dist/img/defultChat(1).jpg"/>
     </view>
     <view class="version-content">
         <view class="text-grey">
@@ -90,7 +90,8 @@
 <!-- 输入框 -->
 <view class="bg-white padding flex">
     <view class="version-avatar ">
-        <image class="cu-avatar round sm" src="https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/13.jpeg"/>
+        <image class="cu-avatar round sm" wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}"/>
+        <image class="cu-avatar round sm" wx:else src="/dist/img/defultChat(2).jpeg"/>
     </view>
     <input class="version-input" type="text" placeholder="添加评论..." bindconfirm="addOne" value='{{inputValue}}'/>
 </view>
@@ -99,7 +100,6 @@
 <view class="cu-bar align-start bg-white">
     <view class="action border-title">
         <text class="text-xl text-bold">更新记录</text>
-        <text class="bg-grey" style="width:2rem"></text>
     </view>
 </view>
 
