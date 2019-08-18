@@ -1,5 +1,0 @@
-<view class="page-wait pageBox">
-    <image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit" class="gif-white response"
-           style="height:240rpx"></image>
-    <text style="color: #6d6d6d;">class 页面正在施工....</text>
-</view>
