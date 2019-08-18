@@ -17,19 +17,6 @@
     </view>
 
     <view class="cu-list menu sm-border card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-        <view class="cu-item">
-            <view class="content">
-                <text class="cuIcon-time text-cyan"></text>
-                <text class="text-grey">设置番茄时长</text>
-            </view>
-            <view class="action setting-minute">
-                <view class="setting-minute setting-minute-input">
-                    <input type="number" placeholder="{{ minute }}" value="{{ minute }}" maxlength="3"
-                           bindblur="timeSubmit"/>
-                </view>
-                <text class="text-grey text-sm">分钟</text>
-            </view>
-        </view>
 
         <navigator class="cu-item arrow" url="/pages/my/upList/upList">
             <view class="content">

@@ -8,7 +8,7 @@
         <view class="cuIcon-cu-image">
             <text class="cuIcon-time lg text-{{PageCur=='timeDoser'?'green':'gray'}}"/>
         </view>
-        <view class="text-{{PageCur=='timeDoser'?'green':'gray'}}">TimeDoser</view>
+        <view class="text-{{PageCur=='timeDoser'?'green':'gray'}}">Report</view>
     </view>
     <view class="action" bindtap="NavChange" data-cur="todoList">
         <view class="cuIcon-cu-image">
@@ -19,14 +19,14 @@
     <view class="action" bindtap="NavChange" data-cur="class">
         <view class="cuIcon-cu-image">
             <text class="cuIcon-group lg text-{{PageCur=='class'?'green':'gray'}}"/>
-            <view class="cu-tag badge">99</view>
+<!--            <view class="cu-tag badge">99</view>-->
         </view>
         <view class="text-{{PageCur=='class'?'green':'gray'}}">Class</view>
     </view>
     <view class="action" bindtap="NavChange" data-cur="my">
         <view class="cuIcon-cu-image">
             <text class="cuIcon-my lg text-{{PageCur=='my'?'green':'gray'}}"/>
-            <view class="cu-tag badge"/>
+<!--            <view class="cu-tag badge"/>-->
         </view>
         <view class="text-{{PageCur=='my'?'green':'gray'}}">My</view>
     </view>

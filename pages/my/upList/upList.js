@@ -56,11 +56,12 @@ Component({
         }
     },
     created: function () {
-        console.log(this.data.userInfo.avatarUrl);
     },
     attached: function () {
         getDevelopInfo(this); // 获取更新信息
         getMessageInfo(this); // 获取留言板信息
+        console.log(this.data.userInfo);
+
     },
 });
 

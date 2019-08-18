@@ -1,6 +1,6 @@
 Page({
     data: {
-        PageCur: 'my'
+        PageCur: 'todoList'
     },
     NavChange(e) {
         this.setData({

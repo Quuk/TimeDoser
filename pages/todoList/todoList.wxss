@@ -1,3 +1,5 @@
+@import "/app.wxss";
+
 page {
     background: #ffffff;
 }
@@ -10,4 +12,9 @@ page {
 
 .todo-card-opacity {
     opacity:0.8;
+}
+
+.todolist-card-main{
+    height: 100%;
+    width:100%;
 }

@@ -7,18 +7,6 @@
     width: 100%;
 }
 
-.setting-minute {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: right;
-}
-
-.setting-minute-input {
-    height: 20px;
-    width: 50px;
-}
-
 .pageBac {
     height: 1000px;
     width: 100%;
