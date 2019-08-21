@@ -128,5 +128,12 @@ Page({
         const logs = wx.getStorageSync('logs') || [];
         logs.unshift(log);
         wx.setStorageSync('logs', logs)
+    },
+
+    over:function () {
+        wx.redirectTo({
+            url: '/pages/index/index'
+        });
+
     }
 });

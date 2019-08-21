@@ -68,29 +68,17 @@ Component({
 
 // 获取更新信息
 function getDevelopInfo(this_) {
-    wx.getStorage({
-        key: 'versionInfo',
-        success(res) {
-            this_.setData({
-                thisVersion: res.data.thisVersion,
-                versionDetails: res.data.versionDetails,
-            });
-        },
-        fail() {
-            wx.request({
-                url: `${common.URL}/version/queryVersionUpdate`,
-                header: common.HEADER,
-                method: 'GET',
-                success: data => {
-                    if (data.statusCode === 200 && data.data.code === '000') {
-                        wx.setStorageSync("versionInfo", data.data.data);
-                        this_.setData({
-                            thisVersion: data.data.data.thisVersion,
-                            versionDetails: data.data.data.versionDetails,
-                        });
-                    }
-                }
-            });
+    wx.request({
+        url: `${common.URL}/version/queryVersionUpdate`,
+        header: common.HEADER,
+        method: 'GET',
+        success: data => {
+            if (data.statusCode === 200 && data.data.code === '000') {
+                this_.setData({
+                    thisVersion: data.data.data.thisVersion,
+                    versionDetails: data.data.data.versionDetails,
+                });
+            }
         }
     });
 }

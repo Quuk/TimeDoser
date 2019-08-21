@@ -12,7 +12,7 @@
             <image src="{{thisVersion.imgUrl}}" mode="widthFix"></image>
             <view class="cu-tag bg-blue">{{thisVersion.version}}</view>
             <view class="cu-bar bg-shadeBottom">
-                <text class="text-cut">添加了卡片效果</text>
+                <text class="text-cut">{{thisVersion.context}}</text>
             </view>
         </view>
     </view>

@@ -41,13 +41,12 @@
 
     </view>
 
-
-    <view class="padding-sm text-center" bindtap="toStart">
+<!--    <view class="padding-sm text-center" bindtap="toStart">
         <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
               style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/13.jpeg);">
             <view>这是一个待办任务</view>
         </view>
-    </view>
+    </view>-->
 
     <!-- 底部留白 -->
     <view class="blank-box"/>
