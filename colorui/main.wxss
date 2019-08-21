@@ -3179,6 +3179,11 @@ scroll-view.cu-steps .cu-item {
 	margin-bottom: 50rpx;
 }
 
+.margin-tb-xxl {
+	margin-top: 80rpx;
+	margin-bottom: 80rpx;
+}
+
 .padding-0 {
 	padding: 0;
 }

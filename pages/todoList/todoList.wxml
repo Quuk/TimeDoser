@@ -7,26 +7,40 @@
         <text class="text-gray text-xs">添加一个新的任务</text>
     </view>
 
-    <view class="padding-sm text-center" bindtap="toStart" wx:for="{{allTask}}" wx:key bindtap="toStart">
-        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity flex"
-              style="background: burlywood;">
-            <!--              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/1215A08EC0D7F44BF13133EDBD499675.jpg);"-->
-            <view class="todolist-card-main flex align-start flex-direction ">
-                <view class="margin-bottom-sm text-black text-bold text-df">{{item.name}}</view>
-                <view class="cu-capsule radius margin-right-xs">
-                    <view class="cu-tag bg-brown sm">
-                        <text class="cuIcon-time"></text>
-                    </view>
-                    <view class="cu-tag line-brown sm">
-                        {{item.tomatoWorkTime}}min
+
+    <view class="radius shadow-blur margin-lr-sm margin-tb-xxl bg-img todo-card-opacity flex justify-between"
+          wx:for="{{allTask}}" style="background: burlywood;" wx:key>
+
+        <view class="flex flex-direction">
+
+            <!-- 关闭任务 -->
+            <view class="flex align-start">
+                <text class="cuIcon-close shadow-lg" bindtap="deleteOne" data-id="{{item.id}}"/>
+            </view>
+
+            <view class="flex padding-lr-lg padding-tb-sm">
+                <view class=" todolist-card-main flex align-start flex-direction ">
+                    <view class="margin-bottom-sm text-black text-bold text-df">{{item.name}}</view>
+                    <view class="cu-capsule radius margin-right-xs">
+                        <view class="cu-tag bg-brown sm">
+                            <text class="cuIcon-time"/>
+                        </view>
+                        <view class="cu-tag line-brown sm">
+                            {{item.tomatoWorkTime}}min
+                        </view>
                     </view>
                 </view>
             </view>
-            <view class="padding">
-                <text class="cuIcon-right"/>
-            </view>
         </view>
+
+        <!-- 开始任务 -->
+        <view class="todolist-card-start" bindtap="toStart" data-minute="{{item.tomatoWorkTime}}"
+              data-name="{{item.name}}">
+            <text class="cuIcon-right"/>
+        </view>
+
     </view>
+
 
     <view class="padding-sm text-center" bindtap="toStart">
         <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
@@ -34,6 +48,9 @@
             <view>这是一个待办任务</view>
         </view>
     </view>
+
+    <!-- 底部留白 -->
+    <view class="blank-box"/>
 
     <!-- 对话框 -->
     <view class="cu-modal {{showModal?'show':''}}">
@@ -48,11 +65,11 @@
                 <view>
                     <view class="cu-form-group">
                         <view class="title">番茄名称</view>
-                        <input placeholder="给你的番茄取个名字吧" name="name" maxlength="11"/>
+                        <input placeholder="给你的番茄取个名字吧" name="name" maxlength="11" value='{{form_name}}'/>
                     </view>
                     <view class="cu-form-group">
                         <view class="title">番茄时长</view>
-                        <input value="25" name="minute" maxlength="2"/>
+                        <input value="{{form_minute}}" name="minute" maxlength="2"/>
                         <view>分钟</view>
                     </view>
                 </view>
@@ -64,7 +81,6 @@
                 </view>
             </view>
         </form>
-
     </view>
 
 </scroll-view>

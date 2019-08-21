@@ -1,0 +1,119 @@
+<wxs module="dateUtil" src="../../../utils/dateUtils.wxs"></wxs>
+<wxs module="filter" src="../../../utils/filter.wxs"></wxs>
+
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">更新说明</view>
+</cu-custom>
+
+<view class="cu-card case no-card">
+    <view class="cu-item shadow">
+        <view class="image">
+            <image src="{{thisVersion.imgUrl}}" mode="widthFix"></image>
+            <view class="cu-tag bg-blue">{{thisVersion.version}}</view>
+            <view class="cu-bar bg-shadeBottom">
+                <text class="text-cut">添加了卡片效果</text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-white padding">
+        <view class="grid col-1 margin-bottom text-left ">
+            <text>{{thisVersion.detail}}</text>
+        </view>
+        <view>
+            <view class="text-gray text-sm flex justify-between">
+                {{dateUtil.dateFormat(thisVersion.createdate,'yyyy-MM-dd')}}
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="bg-white padding  margin-top-xs"/>
+
+<view class="cu-bar align-start bg-white">
+    <view class="action border-title">
+        <text class="text-xl text-bold">留言板</text>
+        ({{suggestMessage.Count}})
+        <text class="bg-grey" style="width:2rem"></text>
+    </view>
+    <view class="text-gray text-sm version-remark">
+        <button class="cu-btn version-remark-logo" open-type="contact">
+            <text class="cuIcon-command text-gray"/>
+            <text class="text-xxs text-gray">联系作者</text>
+        </button>
+        <button class="cu-btn version-remark-logo">
+            <text class="cuIcon-time lg text-gray"></text>
+            <text class="text-xxs text-gray">赞赏</text>
+        </button>
+    </view>
+</view>
+
+<!-- 留言 -->
+<view class="bg-white padding flex" wx:for="{{suggestMessage.Data}}" wx:key wx:for-item="itemName">
+    <view class="version-avatar ">
+        <image class="cu-avatar round sm" wx:if="{{itemName.avatarUrl}}" src="{{itemName.avatarUrl}}"/>
+        <image class="cu-avatar round sm" wx:else src="/dist/img/defultChat(1).jpg"/>
+    </view>
+    <view class="version-content">
+        <view class="text-grey">
+            <text class="text-sm text-bold padding-xs" wx:if="{{itemName.username}}">{{itemName.username}}</text>
+            <text class="text-sm text-bold padding-xs" wx:else>游客</text>
+            <view wx:if="{{itemName.accountType==99}}" class="cu-tag round bg-orange sm">作者</view>
+            <view wx:if="{{itemName.accountType==98}}" class="cu-tag round bg-orange sm">管理员</view>
+        </view>
+        <view class="text-gray flex ">
+            <text class="text-sm padding-xs">
+                {{itemName.context}}
+            </text>
+        </view>
+        <view class="version-remark  solid-bottom justify-between">
+            <view class="version-remark">
+                <view class="text-grey text-xs padding-xs">{{dateUtil.dateFormat(itemName.createdate,'MM-dd hh:mm')}}
+                </view>
+                <view wx:if="{{baseUser.userId == itemName.userId}}" class="text-grey text-xs padding-xs"
+                      data-index="{{itemName.messageId}}" bindtap="deleteMessage">
+                    删除
+                </view>
+                <view></view>
+            </view>
+
+            <view class="text-gray text-sm ">
+                <text class="cuIcon-appreciatefill margin-lr-xs"></text>
+                20
+                <text class="cuIcon-messagefill margin-lr-xs"></text>
+                30
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 输入框 -->
+<view class="bg-white padding flex">
+    <view class="version-avatar ">
+        <image class="cu-avatar round sm" wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}"/>
+        <image class="cu-avatar round sm" wx:else src="/dist/img/defultChat(2).jpeg"/>
+    </view>
+    <input class="version-input" type="text" placeholder="添加评论..." bindconfirm="addOne" value='{{inputValue}}'/>
+</view>
+
+<view class="bg-white padding  margin-top-xs"/>
+<view class="cu-bar align-start bg-white">
+    <view class="action border-title">
+        <text class="text-xl text-bold">更新记录</text>
+    </view>
+</view>
+
+<view class="cu-timeline" wx:for="{{versionDetails}}" wx:key wx:for-item="itemName">
+    <view class="cu-time">{{dateUtil.dateFormat(itemName.createdate,'MM-dd')}}</view>
+    <view class="cu-item">
+        <view class="content">
+            <view class="cu-capsule radius">
+                <view class="cu-tag bg-cyan">version</view>
+                <text class="cu-tag line-cyan">{{itemName.version}}</text>
+            </view>
+            <view class="margin-top">
+                <text class="margin-top">{{itemName.detail}}</text>
+            </view>
+        </view>
+    </view>
+</view>

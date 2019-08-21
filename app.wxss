@@ -15,3 +15,7 @@
 .test {
     border: red 1px solid;
 }
+
+.blank-box {
+    height: 30%;
+}

@@ -18,3 +18,10 @@ page {
     height: 100%;
     width:100%;
 }
+
+.todolist-card-start{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -5,11 +5,11 @@ const common = new function () {
     return {
         URL: baseUrl,
         HEADER: {
-            'Content-Type': 'application/json',
+            'content-type': 'application/x-www-form-urlencoded',
             'X_Auth_Token': getToken()
         },
         HEADER_NOTOKEN: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'content-type': 'application/x-www-form-urlencoded',
         },
         sout(msg) {
             wx.showToast({
