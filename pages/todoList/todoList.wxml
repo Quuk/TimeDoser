@@ -2,32 +2,69 @@
 
 <scroll-view scroll-y class="scrollPage">
 
-    <view class="margin-bottom-xl pageBox" bindtap="toStart">
+    <view class="margin-bottom-xl pageBox" bindtap="showModal">
         <text class="cuIcon-add text-gray padding-top-xl"/>
         <text class="text-gray text-xs">添加一个新的任务</text>
     </view>
 
-    <view class="padding-sm text-center" bindtap="toStart">
-        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
+    <view class="padding-sm text-center" bindtap="toStart" wx:for="{{allTask}}" wx:key bindtap="toStart">
+        <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity flex"
               style="background: burlywood;">
             <!--              style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/1215A08EC0D7F44BF13133EDBD499675.jpg);"-->
-            <view class="todolist-card-main flex align-start flex-direction">
-                <view class="margin-bottom-sm text-black text-bold text-df">这是一个待办任务</view>
+            <view class="todolist-card-main flex align-start flex-direction ">
+                <view class="margin-bottom-sm text-black text-bold text-df">{{item.name}}</view>
                 <view class="cu-capsule radius margin-right-xs">
                     <view class="cu-tag bg-brown sm">
                         <text class="cuIcon-time"></text>
                     </view>
                     <view class="cu-tag line-brown sm">
-                        23min
+                        {{item.tomatoWorkTime}}min
                     </view>
                 </view>
             </view>
+            <view class="padding">
+                <text class="cuIcon-right"/>
+            </view>
         </view>
     </view>
+
     <view class="padding-sm text-center" bindtap="toStart">
         <view class="padding-xl radius shadow-blur bg-red margin-top bg-img todo-card-opacity"
               style="background-image:url(https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/bac/13.jpeg);">
             <view>这是一个待办任务</view>
         </view>
     </view>
+
+    <!-- 对话框 -->
+    <view class="cu-modal {{showModal?'show':''}}">
+        <form bindsubmit="addOne">
+            <view class="cu-dialog">
+                <view class="cu-bar bg-white justify-end">
+                    <view class="content">新建一个番茄</view>
+                    <view class="action" bindtap="hideModal">
+                        <text class="cuIcon-close text-red"></text>
+                    </view>
+                </view>
+                <view>
+                    <view class="cu-form-group">
+                        <view class="title">番茄名称</view>
+                        <input placeholder="给你的番茄取个名字吧" name="name" maxlength="11"/>
+                    </view>
+                    <view class="cu-form-group">
+                        <view class="title">番茄时长</view>
+                        <input value="25" name="minute" maxlength="2"/>
+                        <view>分钟</view>
+                    </view>
+                </view>
+                <view class="cu-bar bg-white justify-end">
+                    <view class="action">
+                        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+                        <button class="cu-btn bg-green margin-left" bindtap="reseat" formType="submit">确定</button>
+                    </view>
+                </view>
+            </view>
+        </form>
+
+    </view>
+
 </scroll-view>
