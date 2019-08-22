@@ -148,6 +148,7 @@ Page({
 
     over: function () {
         this.finishTask(this.id);
+        wx.removeStorage({key:'allTask'});
         wx.redirectTo({
             url: '/pages/index/index'
         });

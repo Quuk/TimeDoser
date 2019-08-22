@@ -1,10 +1,10 @@
-<timeDoser wx:if="{{PageCur=='timeDoser'}}"/>
+<report wx:if="{{PageCur=='report'}}"/>
 <todoList wx:if="{{PageCur=='todoList'}}"/>
 <class wx:if="{{PageCur=='class'}}"/>
 <my wx:if="{{PageCur=='my'}}"/>
 
 <view class="cu-bar tabbar bg-white shadow foot">
-    <view class="action" bindtap="NavChange" data-cur="timeDoser">
+    <view class="action" bindtap="NavChange" data-cur="report">
         <view class="cuIcon-cu-image">
             <text class="cuIcon-time lg text-{{PageCur=='timeDoser'?'green':'gray'}}"/>
         </view>

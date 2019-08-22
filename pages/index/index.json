@@ -1,7 +1,7 @@
 {
   "disableScroll": true,
   "usingComponents": {
-    "timeDoser": "/pages/report/report",
+    "report": "/pages/report/report",
     "todoList": "/pages/todoList/todoList",
     "class": "/pages/class/class",
     "my": "/pages/my/home/home"

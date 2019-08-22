@@ -48,6 +48,7 @@ Component({
                         common.sout("添加成功");
 
                         // 重新加载页面
+                        wx.removeStorage({key:'allTask'});
                         getAllTask(this);
 
                         // 清空表格数据
@@ -76,6 +77,7 @@ Component({
                         common.sout("删除成功");
 
                         // 重新加载页面
+                        wx.removeStorage({key:'allTask'});
                         getAllTask(this);
                     }
                 }
@@ -90,8 +92,23 @@ Component({
 
         // 重新开始任务
         toReStart(e) {
-            let id = e.currentTarget.dataset.id;
-            common.sout("重新开始任务+" + id);
+            common.sout("重新开始此项任务");
+            wx.request({
+                url: `${common.URL}/planTask/restartOne`,
+                header: common.HEADER,
+                dataType: 'json',
+                method: "POST",
+                data: {
+                    taskId: e.currentTarget.dataset.id
+                },
+                success: data => {
+                    if (data.statusCode === 200 && data.data.code === '000') {
+                        // 重新加载页面
+                        wx.removeStorage({key:'allTask'});
+                        getAllTask(this);
+                    }
+                }
+            });
         },
 
         // 展示添加弹窗
@@ -116,15 +133,27 @@ Component({
  * @param that
  */
 function getAllTask(that) {
-    wx.request({
-        url: `${common.URL}/planTask/getAllTask_12`,
-        header: common.HEADER,
-        method: "POST",
-        success: data => {
-            if (data.statusCode === 200 && data.data.code === '000') {
-                that.setData({allTask: data.data.data});
-                console.log(data.data.data)
-            }
+    wx.getStorage({
+        key: 'allTask',
+        success(res) {
+            that.setData({allTask: res.data});
+        },
+        fail() {
+            wx.request({
+                url: `${common.URL}/planTask/getAllTask_12`,
+                header: common.HEADER,
+                method: "POST",
+                success: data => {
+                    console.log("请求页面信息");
+                    if (data.statusCode === 200 && data.data.code === '000') {
+                        that.setData({allTask: data.data.data});
+                        wx.setStorage({
+                            key: 'allTask',
+                            data: data.data.data
+                        })
+                    }
+                }
+            });
         }
     });
 }

@@ -1,5 +1,8 @@
-<view class="page-wait pageBox">
-    <image src="https://image.weilanwl.com/gif/loading-white.gif" mode="aspectFit" class="gif-white response"
-           style="height:240rpx"></image>
-    <text style="color: #6d6d6d;">report 页面正在施工....</text>
+<view class="padding-top-xxl"/>
+
+<view class="cu-bar align-start bg-white margin-top-xs">
+    <view class="action border-title">
+        <text class="text-xl text-bold">自习教室</text>
+        <text class="bg-grey" style="width:2rem"></text>
+    </view>
 </view>

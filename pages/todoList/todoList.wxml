@@ -108,7 +108,7 @@
                 <view>
                     <view class="cu-form-group">
                         <view class="title">番茄名称</view>
-                        <input placeholder="给你的番茄取个名字吧" name="name" maxlength="11" value='{{form_name}}' focus="true"/>
+                        <input placeholder="给你的番茄取个名字吧" name="name" maxlength="11" value='{{form_name}}'/>
                     </view>
                     <view class="cu-form-group">
                         <view class="title">番茄时长</view>
