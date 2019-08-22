@@ -1,4 +1,6 @@
 import util from "../../utils/util.js";
+import common from '../../common.js';
+
 
 const initDeg = {
     left: 45,
@@ -19,7 +21,8 @@ Page({
     onLoad: function (e) {
         this.leftDeg = e.minute;
         this.logName = e.logName;
-        this.startTimer(e.minute, e.logName);
+        this.id = e.id;
+        this.startTimer(e.minute, e.logName, e.id);
     },
     onShow: function () {
         if (this.data.isRuning) return;
@@ -85,6 +88,19 @@ Page({
         this.timer && clearInterval(this.timer)
     },
 
+    // 完成一个任务
+    finishTask: function (id) {
+        wx.request({
+            url: `${common.URL}/planTask/finishOne`,
+            header: common.HEADER,
+            dataType: 'json',
+            method: "POST",
+            data: {
+                taskId: id
+            }
+        });
+    },
+
     updateTimer: function () {
         let log = this.data.log;
         let now = Date.now();
@@ -130,10 +146,10 @@ Page({
         wx.setStorageSync('logs', logs)
     },
 
-    over:function () {
+    over: function () {
+        this.finishTask(this.id);
         wx.redirectTo({
             url: '/pages/index/index'
         });
-
     }
 });

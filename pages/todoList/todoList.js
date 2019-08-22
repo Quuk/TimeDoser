@@ -13,15 +13,26 @@ Component({
         getAllTask(this)
     },
     methods: {
+
+        // 开始任务
         toStart(e) {
             let minute = e.currentTarget.dataset.minute;
             let name = e.currentTarget.dataset.name;
+            let id = e.currentTarget.dataset.id;
 
             wx.navigateTo({
-                url: "/pages/timeDoser/timeDoser?minute=" + minute + "&logName=" + name
+                url: "/pages/timeDoser/timeDoser?minute=" + minute + "&logName=" + name + "&id=" + id
             });
         },
+
+        // 添加任务
         addOne(data) {
+
+            if (data.detail.value.minute === "0") {
+                common.sout("时间不可设置为0");
+                return;
+            }
+
             wx.request({
                 url: `${common.URL}/planTask/addOne`,
                 header: common.HEADER,
@@ -44,13 +55,13 @@ Component({
                             form_name: '',
                             form_minute: 25
                         })
-
                     }
-
                 }
             });
             this.hideModal();
         },
+
+        // 删除任务
         deleteOne(e) {
             wx.request({
                 url: `${common.URL}/planTask/deleteOne`,
@@ -70,23 +81,33 @@ Component({
                 }
             });
         },
-        showModal(e) {
+
+
+        // 监测输入
+        minuteCheck(e) {
+            this.setData({form_minute: e.detail.value.replace(/[^0-9]/ig, "")})
+        },
+
+        // 重新开始任务
+        toReStart(e) {
+            let id = e.currentTarget.dataset.id;
+            common.sout("重新开始任务+" + id);
+        },
+
+        // 展示添加弹窗
+        showModal() {
             this.setData({
                 showModal: true
             })
         },
-        hideModal(e) {
+
+        // 隐藏添加弹窗
+        hideModal() {
             this.setData({
                 showModal: false
             })
         },
-        PickerChange(e) {
-            this.setData({
-                index: e.detail.value
-            })
-        },
     }
-
 });
 
 /**
@@ -96,12 +117,13 @@ Component({
  */
 function getAllTask(that) {
     wx.request({
-        url: `${common.URL}/planTask/getAllTask`,
+        url: `${common.URL}/planTask/getAllTask_12`,
         header: common.HEADER,
         method: "POST",
         success: data => {
             if (data.statusCode === 200 && data.data.code === '000') {
                 that.setData({allTask: data.data.data});
+                console.log(data.data.data)
             }
         }
     });

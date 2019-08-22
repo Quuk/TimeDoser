@@ -1,9 +1,8 @@
 <wxs module="dateUtil" src="../../../utils/dateUtils.wxs"></wxs>
 <wxs module="filter" src="../../../utils/filter.wxs"></wxs>
 
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+<cu-custom isBack="{{true}}">
     <view slot="backText">返回</view>
-    <view slot="content">更新说明</view>
 </cu-custom>
 
 <view class="cu-card case no-card">
