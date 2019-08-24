@@ -69,7 +69,7 @@
             <view class="version-remark">
                 <view class="text-grey text-xs padding-xs">{{dateUtil.dateFormat(itemName.createdate,'MM-dd hh:mm')}}
                 </view>
-                <view wx:if="{{baseUser.userId == itemName.userId}}" class="text-grey text-xs padding-xs"
+                <view wx:if="{{baseUser.id == itemName.userId}}" class="text-grey text-xs padding-xs"
                       data-index="{{itemName.messageId}}" bindtap="deleteMessage">
                     删除
                 </view>

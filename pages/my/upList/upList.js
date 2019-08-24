@@ -15,7 +15,6 @@ Component({
         userInfo: wx.getStorageSync("userInfo"),
     },
     methods: {
-
         // 添加一条留言
         addOne(e) {
             this.setData({
@@ -56,12 +55,13 @@ Component({
         }
     },
     created: function () {
+
     },
     attached: function () {
         getDevelopInfo(this); // 获取更新信息
         getMessageInfo(this); // 获取留言板信息
-        console.log(this.data.userInfo);
-
+        console.log(this.data.baseUser);
+        console.log("页面被打开");
     },
 });
 
@@ -89,6 +89,8 @@ function getMessageInfo(this_) {
         url: `${common.URL}/message/queryAllMessage`,
         header: common.HEADER,
         success: data => {
+
+            console.log( data.data.data)
             wx.setStorageSync("suggestMessage", data.data.data);
             this_.setData({
                 suggestMessage: data.data.data
