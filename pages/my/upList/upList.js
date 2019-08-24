@@ -23,7 +23,10 @@ Component({
 
             wx.request({
                 url: `${common.URL}/message/addMessage`,
-                header: common.HEADER,
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'X_Auth_Token': app.globalData.token
+                },
                 data: {
                     message: e.detail.value
                 },
@@ -60,8 +63,6 @@ Component({
     attached: function () {
         getDevelopInfo(this); // 获取更新信息
         getMessageInfo(this); // 获取留言板信息
-        console.log(this.data.baseUser);
-        console.log("页面被打开");
     },
 });
 
@@ -70,7 +71,10 @@ Component({
 function getDevelopInfo(this_) {
     wx.request({
         url: `${common.URL}/version/queryVersionUpdate`,
-        header: common.HEADER,
+        header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'X_Auth_Token': app.globalData.token
+        },
         method: 'GET',
         success: data => {
             if (data.statusCode === 200 && data.data.code === '000') {
@@ -87,10 +91,11 @@ function getDevelopInfo(this_) {
 function getMessageInfo(this_) {
     wx.request({
         url: `${common.URL}/message/queryAllMessage`,
-        header: common.HEADER,
+        header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'X_Auth_Token': app.globalData.token
+        },
         success: data => {
-
-            console.log( data.data.data)
             wx.setStorageSync("suggestMessage", data.data.data);
             this_.setData({
                 suggestMessage: data.data.data
@@ -103,7 +108,10 @@ function getMessageInfo(this_) {
 function deleteMessage(messageId, this_) {
     wx.request({
         url: `${common.URL}/message/deleteMessage`,
-        header: common.HEADER,
+        header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'X_Auth_Token': app.globalData.token
+        },
         data: {
             id: messageId
         },

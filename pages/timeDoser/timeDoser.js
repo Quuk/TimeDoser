@@ -92,7 +92,10 @@ Page({
     finishTask: function (id) {
         wx.request({
             url: `${common.URL}/planTask/finishOne`,
-            header: common.HEADER,
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'X_Auth_Token': app.globalData.token
+            },
             dataType: 'json',
             method: "POST",
             data: {

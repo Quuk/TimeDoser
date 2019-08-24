@@ -6,7 +6,6 @@ App({
         // 登录接口
         wx.login({
             success: data => {
-                console.log("开始登录.....");
                 wx.request({
                     url: `${common.URL}/login/getBaseInfo`,
                     header: common.HEADER_NOTOKEN,
@@ -14,9 +13,10 @@ App({
                     method: "POST",
                     success: data => {
                         if (data.statusCode === 200 && data.data.code === '000') {
-                            console.log("登录成功....");
                             // 存入全局变量
                             this.globalData.baseUser = data.data.data;
+                            wx.setStorageSync('token', data.data.data.token);
+
                             // 存入缓存区
                             wx.setStorage({
                                 key: 'baseUser',
@@ -39,6 +39,7 @@ App({
     },
     globalData: {
         baseUser: null,
-        userInfo: null
+        userInfo: null,
+        token: null
     }
 });
