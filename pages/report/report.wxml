@@ -1,0 +1,8 @@
+<view class="padding-top-xxl"/>
+
+<view class="cu-bar align-start bg-white margin-top-xs">
+    <view class="action border-title">
+        <text class="text-xl text-bold">任务历史</text>
+        <text class="bg-grey" style="width:2rem"></text>
+    </view>
+</view>

@@ -1,0 +1,29 @@
+<view class="pageBac">
+    <view class="setting-head-box">
+        <view class="pageBox padding-sm">
+            <block wx:if="{{!hasUserInfo}}" class="padding-sm">
+                <image class="cu-avatar round lg"
+                       src="https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/icon/dufuleAvater.png"/>
+                <button class="margin text-gray text-sm" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+                    点击登录一起学习吧
+                </button>
+            </block>
+
+            <block wx:else>
+                <image class="cu-avatar round lg" src="{{userInfo.avatarUrl}}"/>
+                <text class="margin userinfo-nickname">{{userInfo.nickName}}</text>
+            </block>
+        </view>
+    </view>
+
+    <view class="cu-list menu sm-border card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+
+        <navigator class="cu-item arrow" url="/pages/my/upList/upList">
+            <view class="content">
+                <text class="cuIcon-creative text-cyan"></text>
+                <text class="text-grey">更新说明</text>
+            </view>
+        </navigator>
+
+    </view>
+</view>

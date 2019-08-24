@@ -1,0 +1,27 @@
+@import "/app.wxss";
+
+page {
+    background: #ffffff;
+}
+
+.page-wait {
+    margin-top: 30%;
+    width: 100%;
+    font-size: 15px;
+}
+
+.todo-card-opacity {
+    opacity: 0.8;
+}
+
+.todolist-card-main {
+    height: 100%;
+    width: 100%;
+}
+
+.todolist-card-start {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
