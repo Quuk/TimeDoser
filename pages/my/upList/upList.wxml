@@ -40,10 +40,10 @@
             <text class="cuIcon-command text-gray"/>
             <text class="text-xxs text-gray">联系作者</text>
         </button>
-        <button class="cu-btn version-remark-logo">
-            <text class="cuIcon-time lg text-gray"></text>
-            <text class="text-xxs text-gray">赞赏</text>
-        </button>
+<!--        <button class="cu-btn version-remark-logo">-->
+<!--            <text class="cuIcon-time lg text-gray"></text>-->
+<!--            <text class="text-xxs text-gray">赞赏</text>-->
+<!--        </button>-->
     </view>
 </view>
 

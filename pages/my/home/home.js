@@ -6,9 +6,6 @@ Page({});
 Component({
     data: {
         baseUser: wx.getStorageSync("baseUser"),
-        userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
     methods: {
         getUserInfo: function (e) {
@@ -17,6 +14,16 @@ Component({
                 userInfo: e.detail.userInfo,
                 hasUserInfo: true
             });
+
+            // 添加微信资料进缓存
+            wx.getUserInfo({
+                success: res => {
+                    this.setData({userInfo: res.userInfo});
+                    wx.setStorageSync('userInfo', res.userInfo);
+                }
+            });
+
+            // 更新数据库中个人资料
             wx.request({
                 url: `${common.URL}/user/updateUserInfo`,
                 header: {
@@ -27,47 +34,28 @@ Component({
         }
     },
     lifetimes: {
-        created: function () {
-
-            // 如果点击了同意使用用户信息就把用户信息加上去
-            if (!this.data.hasUserInfo) {
-                setUserInfo(this);
-            }
-        },
-        attached: function () {
-
-        },
+        created() {
+            console.log(this.data.baseUser)
+        }
     },
 });
 
+//
+// // 验证缓存中是否有用户信息,没有就加上
+// function setUserInfo(this_) {
+//
+//     // 微信基础信息加载
+//     wx.getSetting({
+//         success: res => {
+//             if (res.authSetting['scope.userInfo']) {
 
-// 验证缓存中是否有用户信息,没有就加上
-function setUserInfo(this_) {
-
-    // 微信基础信息加载
-    wx.getSetting({
-        success: res => {
-            if (res.authSetting['scope.userInfo']) {
-                wx.getUserInfo({
-                    success: res => {
-                        this_.setData({
-                            userInfo: res.userInfo,
-                            hasUserInfo: true,
-                        });
-                        app.globalData.userInfo = res.userInfo;
-                        wx.setStorage({
-                            key: 'userInfo',
-                            data: res.userInfo
-                        });
-                    }
-                });
-            }
-        }
-    });
-
-    // 全局基础信息加载
-    if (app.globalData.userInfo == null) {
-        app.globalData.userInfo = this_.data.userInfo;
-    }
-}
+//             }
+//         }
+//     });
+//
+//     // 全局基础信息加载
+//     if (app.globalData.userInfo == null) {
+//         app.globalData.userInfo = this_.data.userInfo;
+//     }
+// }
 
