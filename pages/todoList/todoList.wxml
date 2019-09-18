@@ -2,7 +2,7 @@
 
 <scroll-view scroll-y class="scrollPage">
 
-    <view class="cu-bar align-start bg-white margin-top-xs">
+    <view class="cu-bar align-start margin-top-xs">
         <view class="action border-title">
             <text class="text-xl text-bold">待办任务</text>
             ({{allTask.waitTaskCount}})
@@ -51,7 +51,7 @@
         </view>
     </view>
 
-    <view class="cu-bar align-start bg-white margin-top-xs margin-top-xxl">
+    <view class="cu-bar align-start margin-top-xs margin-top-xxl">
         <view class="action border-title">
             <text class="text-xl text-bold">已完成任务</text>
             ({{allTask.finishTaskCount}})

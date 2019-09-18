@@ -1,5 +1,5 @@
 <view class="pageBac">
-    <view class="setting-head-box">
+    <view class="setting-head-box shadow">
         <view class="pageBox padding-sm">
             <block wx:if="{{!baseUser}}" class="padding-sm">
                 <image class="cu-avatar round lg"

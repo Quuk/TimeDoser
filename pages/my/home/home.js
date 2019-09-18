@@ -35,7 +35,6 @@ Component({
     },
     lifetimes: {
         created() {
-            console.log(this.data.baseUser)
         }
     },
 });

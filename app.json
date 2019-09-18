@@ -1,12 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/todoList/todoList",
-    "pages/timeDoser/timeDoser",
-    "pages/my/upList/upList",
-    "pages/my/home/home",
-    "pages/report/report",
-    "pages/class/class"
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
