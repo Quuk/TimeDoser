@@ -15,7 +15,7 @@
           style="background: #dad8de;" bindtap="showModal">
         <view class="pageBox">
             <text class="cuIcon-add"/>
-            <text class="text-xs">添加一个新的任务</text>
+            <text class="text-xs">添加一个新的番茄</text>
         </view>
     </view>
 
