@@ -1,6 +1,6 @@
 import util from "../../utils/util.js";
 import common from '../../common.js';
-
+const app = getApp();
 
 const initDeg = {
     left: 45,
@@ -96,7 +96,6 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded',
                 'X_Auth_Token': app.globalData.token
             },
-            dataType: 'json',
             method: "POST",
             data: {
                 taskId: id

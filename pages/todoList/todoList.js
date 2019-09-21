@@ -48,7 +48,6 @@ Component({
                     'content-type': 'application/x-www-form-urlencoded',
                     'X_Auth_Token': app.globalData.token
                 },
-                dataType: 'json',
                 method: "POST",
                 data: {
                     name: data.detail.value.name || "默认番茄",
@@ -82,7 +81,6 @@ Component({
                     'content-type': 'application/x-www-form-urlencoded',
                     'X_Auth_Token': app.globalData.token
                 },
-                dataType: 'json',
                 method: "POST",
                 data: {
                     taskId: e.currentTarget.dataset.id
@@ -114,7 +112,6 @@ Component({
                     'content-type': 'application/x-www-form-urlencoded',
                     'X_Auth_Token': app.globalData.token
                 },
-                dataType: 'json',
                 method: "POST",
                 data: {
                     taskId: e.currentTarget.dataset.id

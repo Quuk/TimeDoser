@@ -1,7 +1,7 @@
 <view class="pageBac">
     <view class="setting-head-box shadow">
         <view class="pageBox padding-sm">
-            <block wx:if="{{!baseUser}}" class="padding-sm">
+            <block wx:if="{{baseUser.avatarUrl==null||baseUser.avatarUrl==''}}" class="padding-sm">
                 <image class="cu-avatar round lg"
                        src="https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/icon/dufuleAvater.png"/>
                 <button class="margin text-gray text-sm" open-type="getUserInfo" bindgetuserinfo="getUserInfo">

@@ -5,56 +5,56 @@ const app = getApp();
 Page({});
 Component({
     data: {
-        baseUser: wx.getStorageSync("baseUser"),
+        baseUser: wx.getStorageSync("baseUser")
     },
     methods: {
         getUserInfo: function (e) {
-            app.globalData.userInfo = e.detail.userInfo;
-            this.setData({
-                userInfo: e.detail.userInfo,
-                hasUserInfo: true
-            });
 
-            // 添加微信资料进缓存
-            wx.getUserInfo({
-                success: res => {
-                    this.setData({userInfo: res.userInfo});
-                    wx.setStorageSync('userInfo', res.userInfo);
-                }
-            });
+            // 如果用户同意授权
+            if (e.detail.userInfo !== undefined) {
 
-            // 更新数据库中个人资料
-            wx.request({
-                url: `${common.URL}/user/updateUserInfo`,
-                header: {
-                    'X_Auth_Token': this.data.baseUser.token
-                },
-                data: {userInfo: e.detail.userInfo},
-            })
+                let that = this;
+
+                // 添加微信资料进缓存
+                wx.getUserInfo({
+                    success: res => {
+                        app.globalData.userInfo = res.userInfo;
+                        wx.setStorageSync('userInfo', res.userInfo);
+                    }
+                });
+
+                // 更新数据库中个人资料
+                wx.request({
+                    url: `${common.URL}/user/updateUserInfo`,
+                    header: {
+                        'content-type': 'application/x-www-form-urlencoded',
+                        'X_Auth_Token': app.globalData.token
+                    },
+                    method: "POST",
+                    data: {userInfo: JSON.stringify(e.detail.userInfo)},
+                    success(res) {
+                        wx.setStorage({
+                            key: 'baseUser',
+                            data: res.data.data
+                        });
+                        that.setData({baseUser: res.data.data})
+                    }
+                });
+            }
         }
     },
     lifetimes: {
         created() {
+            checkData(this);
         }
     },
 });
 
-//
-// // 验证缓存中是否有用户信息,没有就加上
-// function setUserInfo(this_) {
-//
-//     // 微信基础信息加载
-//     wx.getSetting({
-//         success: res => {
-//             if (res.authSetting['scope.userInfo']) {
+// 数据校验
+function checkData(that) {
 
-//             }
-//         }
-//     });
-//
-//     // 全局基础信息加载
-//     if (app.globalData.userInfo == null) {
-//         app.globalData.userInfo = this_.data.userInfo;
-//     }
-// }
-
+    // 个人主页出现了数据加载异常bug
+    if (that.data.baseUser === "") {
+        that.setData({baseUser: wx.getStorageSync("baseUser")})
+    }
+}
