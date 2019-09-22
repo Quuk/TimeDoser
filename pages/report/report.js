@@ -40,9 +40,9 @@ function addNum(that, data) {
 // 递增
 function setTime(that, num, day, week, all) {
     that.setData({
-        dayCount: day < 10 ? 0 : num,
-        weekCount: week < 10 ? 0 : num,
-        allCount: all < 10 ? 0 : num
+        dayCount: day === undefined || day < 10 ? 0 : num,
+        weekCount: week === undefined || week < 10 ? 0 : num,
+        allCount: all === undefined || all < 10 ? 0 : num
     });
     num++;
     if (num <= 25) {
@@ -57,8 +57,8 @@ function setTime(that, num, day, week, all) {
 // 截止
 function setTimeEnd(that, day, week, all) {
     that.setData({
-        dayCount: day,
-        weekCount: week,
-        allCount: all
+        dayCount: day === undefined ? 0 : day,
+        weekCount: week === undefined ? 0 : week,
+        allCount: all === undefined ? 0 : all
     });
 }

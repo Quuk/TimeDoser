@@ -9,12 +9,15 @@ Component({
         minute: 44,
         logName: "默认番茄",
         form_minute: 25,  // 页面默认25分钟
-        allTask: {}
+        allTask: wx.getStorageSync("allTask")
     },
     created: function () {
 
         // 检查token
         checkToken(this);
+
+    },
+    attached: function () {
 
         // 加载页面数据
         if (app.globalData.token != null) {
@@ -22,6 +25,11 @@ Component({
         }
     },
     methods: {
+
+        onPullDownRefresh() {
+            console.log("下拉了")
+            common.sout("下拉了")
+        },
 
         // 开始任务
         toStart(e) {
@@ -148,8 +156,9 @@ Component({
  * @param that
  */
 function getAllTask(that) {
+    console.log(wx.getStorageSync("allTask"));
     wx.getStorage({
-        key: 'allTask',
+        key: "allTask",
         success(res) {
             that.setData({allTask: res.data});
         },
@@ -164,7 +173,7 @@ function getAllTask(that) {
                     if (data.statusCode === 200 && data.data.code === '000') {
                         that.setData({allTask: data.data.data});
                         wx.setStorage({
-                            key: 'allTask',
+                            key: "allTask",
                             data: data.data.data
                         })
                     }

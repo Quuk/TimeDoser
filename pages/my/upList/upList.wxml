@@ -57,8 +57,8 @@
         <view class="text-grey">
             <text class="text-sm text-bold padding-xs" wx:if="{{itemName.username}}">{{itemName.username}}</text>
             <text class="text-sm text-bold padding-xs" wx:else>游客</text>
-            <view wx:if="{{itemName.accountType==99}}" class="cu-tag round bg-orange sm">作者</view>
-            <view wx:if="{{itemName.accountType==98}}" class="cu-tag round bg-orange sm">管理员</view>
+            <view wx:if="{{itemName.accountType==3}}" class="cu-tag round bg-orange sm">作者</view>
+            <view wx:if="{{itemName.accountType==4}}" class="cu-tag round bg-orange sm">管理员</view>
         </view>
         <view class="text-gray flex ">
             <text class="text-sm padding-xs">
