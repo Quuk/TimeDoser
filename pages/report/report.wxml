@@ -2,7 +2,30 @@
 
 <view class="cu-bar align-start margin-top-xs">
     <view class="action border-title">
-        <text class="text-xl text-bold">任务历史</text>
+        <text class="text-xl text-bold">统计信息</text>
         <text class="bg-grey" style="width:2rem"></text>
+    </view>
+</view>
+<view class="flex  p-xs margin-bottom-sm mb-sm">
+    <view class="flex-sub padding-sm margin-xs radius pageBox" style="background: #dad8de;">
+        <view class="flex align-end">
+            <view class="text-lg text-brown padding-xs">{{dayCount}}</view>
+            <view class="text-xs">分钟</view>
+        </view>
+        <view class="text-grey text-xs margin-top-xs">今日学习</view>
+    </view>
+    <view class="flex-sub padding-sm margin-xs radius pageBox" style="background: #dad8de;">
+        <view class="flex align-end">
+            <view class="text-lg text-brown padding-xs">{{weekCount}}</view>
+            <view class="text-xs">分钟</view>
+        </view>
+        <view class="text-grey text-xs margin-top-xs">本周学习</view>
+    </view>
+    <view class="flex-sub padding-sm margin-xs radius pageBox" style="background: #dad8de;">
+        <view class="flex align-end">
+            <view class="text-lg text-brown padding-xs">{{allCount}}</view>
+            <view class="text-xs">分钟</view>
+        </view>
+        <view class="text-grey text-xs margin-top-xs">累计学习</view>
     </view>
 </view>
