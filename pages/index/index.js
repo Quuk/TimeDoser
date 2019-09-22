@@ -1,6 +1,6 @@
 Page({
     data: {
-        PageCur: 'report'  // report todoList class my
+        PageCur: 'todoList'  // report todoList class my
     },
     NavChange(e) {
         this.setData({
