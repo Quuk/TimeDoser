@@ -4,10 +4,13 @@ const app = getApp();
 
 Page({});
 Component({
-    data: {
-    },
+    data: {},
     methods: {
-
+        exit() {
+            wx.redirectTo({
+                url: '/pages/index/index'
+            });
+        },
     },
     lifetimes: {
         created() {
