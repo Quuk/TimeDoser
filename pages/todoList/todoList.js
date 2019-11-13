@@ -156,7 +156,6 @@ Component({
  * @param that
  */
 function getAllTask(that) {
-    console.log(wx.getStorageSync("allTask"));
     wx.getStorage({
         key: "allTask",
         success(res) {

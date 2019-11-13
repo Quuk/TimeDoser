@@ -52,10 +52,8 @@ Component({
 
 // 数据校验
 function checkData(that) {
-
     // 个人主页出现了数据加载异常bug
-    if (that.data.baseUser === null || that.data.baseUser === "" ||
-        that.data.baseUser.avatarUrl === null || that.data.baseUser.avatarUrl === "") {
+    if (that.data.baseUser === null || that.data.baseUser === "" || that.data.baseUser.avatarUrl === null || that.data.baseUser.avatarUrl === "") {
         that.setData({baseUser: wx.getStorageSync("baseUser")});
     }
 }
