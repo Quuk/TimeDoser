@@ -10,6 +10,7 @@ Component({
         thisVersion: null,
         versionDetails: null,
         suggestMessage: null,
+        suggestMessageCount: null,
         inputValue: null,
         baseUser: wx.getStorageSync("baseUser"),
         userInfo: wx.getStorageSync("userInfo"),
@@ -98,6 +99,7 @@ function getDevelopInfo(this_) {
 function getMessageInfo(this_) {
     wx.request({
         url: `${common.URL}/message/queryAllMessage`,
+        method: "POST",
         header: {
             'content-type': 'application/x-www-form-urlencoded',
             'X_Auth_Token': app.globalData.token
@@ -105,7 +107,8 @@ function getMessageInfo(this_) {
         success: data => {
             wx.setStorageSync("suggestMessage", data.data.data);
             this_.setData({
-                suggestMessage: data.data.data
+                suggestMessage: data.data.data,
+                suggestMessageCount: data.data.count
             });
         }
     });
@@ -115,16 +118,16 @@ function getMessageInfo(this_) {
 function deleteMessage(messageId, this_) {
     wx.request({
         url: `${common.URL}/message/deleteMessage`,
+        method: "POST",
         header: {
             'content-type': 'application/x-www-form-urlencoded',
             'X_Auth_Token': app.globalData.token
         },
-        data: {
-            id: messageId
-        },
+        data: {id: messageId},
         success: data => {
             if (data.statusCode === 200 && data.data.code === 200) {
                 wx.removeStorageSync('suggestMessage');
+                wx.removeStorageSync('suggestMessageCount');
                 getMessageInfo(this_);
             }
         }

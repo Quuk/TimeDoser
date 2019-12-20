@@ -32,7 +32,7 @@
 <view class="cu-bar align-start bg-white">
     <view class="action border-title">
         <text class="text-xl text-bold">留言板</text>
-        ({{suggestMessage.Count}})
+        ({{suggestMessageCount}})
         <text class="bg-grey" style="width:2rem"></text>
     </view>
     <view class="text-gray text-sm version-remark">
@@ -40,15 +40,15 @@
             <text class="cuIcon-command text-gray"/>
             <text class="text-xxs text-gray">联系作者</text>
         </button>
-<!--        <button class="cu-btn version-remark-logo">-->
-<!--            <text class="cuIcon-time lg text-gray"></text>-->
-<!--            <text class="text-xxs text-gray">赞赏</text>-->
-<!--        </button>-->
+        <!--        <button class="cu-btn version-remark-logo">-->
+        <!--            <text class="cuIcon-time lg text-gray"></text>-->
+        <!--            <text class="text-xxs text-gray">赞赏</text>-->
+        <!--        </button>-->
     </view>
 </view>
 
 <!-- 留言 -->
-<view class="bg-white padding flex" wx:for="{{suggestMessage.Data}}" wx:key wx:for-item="itemName">
+<view class="bg-white padding flex" wx:for="{{suggestMessage}}" wx:key wx:for-item="itemName">
     <view class="version-avatar ">
         <image class="cu-avatar round sm" wx:if="{{itemName.avatarUrl}}" src="{{itemName.avatarUrl}}"/>
         <image class="cu-avatar round sm" wx:else src="/dist/img/defultChat(1).jpg"/>
@@ -95,6 +95,7 @@
     <input class="version-input" type="text" placeholder="添加评论..." bindconfirm="addOne" value='{{inputValue}}'/>
 </view>
 
+<!-- 更新记录 -->
 <view class="bg-white padding  margin-top-xs"/>
 <view class="cu-bar align-start bg-white">
     <view class="action border-title">
@@ -102,6 +103,7 @@
     </view>
 </view>
 
+<!-- 更新记录 -->
 <view class="cu-timeline" wx:for="{{versionDetails}}" wx:key wx:for-item="itemName">
     <view class="cu-time">{{dateUtil.dateFormat(itemName.createdate,'MM-dd')}}</view>
     <view class="cu-item">
