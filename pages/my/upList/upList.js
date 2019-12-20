@@ -38,7 +38,7 @@ Component({
                     message: e.detail.value
                 },
                 success: data => {
-                    if (data.statusCode === 200 && data.data.code === '000') {
+                    if (data.statusCode === 200 && data.data.code === 200) {
                         wx.removeStorageSync('suggestMessage');
                         getMessageInfo(this);
                     } else {
@@ -84,7 +84,7 @@ function getDevelopInfo(this_) {
         },
         method: 'GET',
         success: data => {
-            if (data.statusCode === 200 && data.data.code === '000') {
+            if (data.statusCode === 200 && data.data.code === 200) {
                 this_.setData({
                     thisVersion: data.data.data.thisVersion,
                     versionDetails: data.data.data.versionDetails,
@@ -123,7 +123,7 @@ function deleteMessage(messageId, this_) {
             id: messageId
         },
         success: data => {
-            if (data.statusCode === 200 && data.data.code === '000') {
+            if (data.statusCode === 200 && data.data.code === 200) {
                 wx.removeStorageSync('suggestMessage');
                 getMessageInfo(this_);
             }

@@ -13,7 +13,7 @@ App({
                     data: {appCode: data.code},
                     method: "POST",
                     success: data => {
-                        if (data.statusCode === 200 && data.data.code === '000') {
+                        if (data.statusCode === 200 && data.data.code === 200) {
                             // 存入全局变量
                             this.globalData.baseUser = data.data.data;
                             this.globalData.token = data.data.data.token;

@@ -62,7 +62,7 @@ Component({
                     minute: parseInt(data.detail.value.minute)
                 },
                 success: data => {
-                    if (data.statusCode === 200 && data.data.code === '000') {
+                    if (data.statusCode === 200 && data.data.code === 200) {
 
                         common.sout("添加成功");
 
@@ -94,7 +94,7 @@ Component({
                     taskId: e.currentTarget.dataset.id
                 },
                 success: data => {
-                    if (data.statusCode === 200 && data.data.code === '000') {
+                    if (data.statusCode === 200 && data.data.code === 200) {
                         common.sout("删除成功");
 
                         // 重新加载页面
@@ -125,7 +125,7 @@ Component({
                     taskId: e.currentTarget.dataset.id
                 },
                 success: data => {
-                    if (data.statusCode === 200 && data.data.code === '000') {
+                    if (data.statusCode === 200 && data.data.code === 200) {
                         // 重新加载页面
                         wx.removeStorage({key: 'allTask'});
                         getAllTask(this);
@@ -163,13 +163,13 @@ function getAllTask(that) {
         },
         fail() {
             wx.request({
-                url: `${common.URL}/planTask/getAllTask_12`,
+                url: `${common.URL}/planTask/getAll`,
                 header: {
                     'content-type': 'application/x-www-form-urlencoded',
                     'X_Auth_Token': app.globalData.token
                 },
                 success: data => {
-                    if (data.statusCode === 200 && data.data.code === '000') {
+                    if (data.statusCode === 200 && data.data.code === 200) {
                         that.setData({allTask: data.data.data});
                         wx.setStorage({
                             key: "allTask",
@@ -185,14 +185,14 @@ function getAllTask(that) {
 
 // 检查token(微信首次登录的一个大坑...)
 function checkToken(that) {
-    let token = app.globalData.token;
-    if (token === "" || token === null) {
+    if (wx.getStorageSync("token") === null) {
+
         // 避免操作
         wx.showToast({
             title: "加载中...",
             icon: "loading",
             mask: true,
-            duration: 10000
+            duration: 5000
         });
 
         // 登录接口
@@ -201,31 +201,19 @@ function checkToken(that) {
                 wx.request({
                     url: `${common.URL}/login/getBaseInfo`,
                     header: common.HEADER_NOTOKEN,
+                    method: "POST",
                     data: {appCode: data.code},
                     success: requsData => {
-                        if (requsData.statusCode === 200 && requsData.data.code === '000') {
-                            app.globalData.token = requsData.data.data.token;
-
-                            // 存入缓存区
-                            wx.setStorage({
-                                key: 'baseUser',
-                                data: requsData.data.data
-                            });
-
-                            // 存入全局变量
-                            app.globalData.baseUser = requsData.data.data;
+                        if (requsData.statusCode === 200 && requsData.data.code === 200) {
+                            wx.setStorageSync('token', requsData.data.data.token);
 
                             // 重新加载页面
                             getAllTask(that);
-
                             wx.hideToast();
-                            return requsData.data.data.token;
                         }
                     }
                 });
-            }
+            },
         });
-    } else {
-        return token;
     }
 }

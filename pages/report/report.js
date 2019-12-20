@@ -23,7 +23,7 @@ function loadBaseData(that) {
         url: `${common.URL}/report/pageData`,
         header: {'X_Auth_Token': app.globalData.token},
         success: data => {
-            if (data.statusCode === 200 && data.data.code === '000') {
+            if (data.statusCode === 200 && data.data.code === 200) {
                 that.setData({pageData: data.data.data});
                 // 数字增长效果
                 addNum(that, data.data.data);
