@@ -1,5 +1,6 @@
 import util from "../../utils/util.js";
 import common from '../../common.js';
+
 const app = getApp();
 
 const initDeg = {
@@ -97,9 +98,7 @@ Page({
                 'X_Auth_Token': app.globalData.token
             },
             method: "POST",
-            data: {
-                taskId: id
-            }
+            data: {taskId: id}
         });
     },
 
@@ -123,6 +122,9 @@ Page({
                 completed: true
             });
             this.stopTimer();
+
+            this.finishTask(this.id);
+            wx.removeStorageSync('allTask');
             return
         }
 
@@ -149,8 +151,6 @@ Page({
     },
 
     over: function () {
-        this.finishTask(this.id);
-        wx.removeStorage({key:'allTask'});
         wx.redirectTo({
             url: '/pages/index/index'
         });

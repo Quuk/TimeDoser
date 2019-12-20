@@ -18,11 +18,7 @@ Component({
 
     },
     attached: function () {
-
-        // 加载页面数据
-        if (app.globalData.token != null) {
-            getAllTask(this);
-        }
+        getAllTask(this);
     },
     methods: {
 
@@ -206,6 +202,7 @@ function checkToken(that) {
                     success: requsData => {
                         if (requsData.statusCode === 200 && requsData.data.code === 200) {
                             wx.setStorageSync('token', requsData.data.data.token);
+                            app.globalData.token = requsData.data.data.token;
 
                             // 重新加载页面
                             getAllTask(that);
