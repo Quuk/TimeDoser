@@ -1,32 +1,32 @@
-<report wx:if="{{PageCur=='report'}}"/>
+<!--<report wx:if="{{PageCur=='report'}}"/>-->
 <todoList wx:if="{{PageCur=='todoList'}}"/>
-<class wx:if="{{PageCur=='class'}}"/>
+<!--<class wx:if="{{PageCur=='class'}}"/>-->
 <my wx:if="{{PageCur=='my'}}"/>
 
 <view class="cu-bar tabbar bg-brown shadow foot">
-    <view class="action" bindtap="NavChange" data-cur="report">
-        <view class="cuIcon-cu-image">
-            <text class="cuIcon-time lg text-{{PageCur=='report'?'green':'gray'}}"/>
-        </view>
-        <view class="text-{{PageCur=='report'?'green':'gray'}}">Report</view>
-    </view>
+    <!--    <view class="action" bindtap="NavChange" data-cur="report">-->
+    <!--        <view class="cuIcon-cu-image">-->
+    <!--            <text class="cuIcon-time lg text-{{PageCur=='report'?'green':'gray'}}"/>-->
+    <!--        </view>-->
+    <!--        <view class="text-{{PageCur=='report'?'green':'gray'}}">Report</view>-->
+    <!--    </view>-->
     <view class="action" bindtap="NavChange" data-cur="todoList">
         <view class="cuIcon-cu-image">
             <text class="cuIcon-calendar lg text-{{PageCur=='todoList'?'green':'gray'}}"/>
         </view>
         <view class="text-{{PageCur=='todoList'?'green':'gray'}}">TodoList</view>
     </view>
-    <view class="action" bindtap="NavChange" data-cur="class">
-        <view class="cuIcon-cu-image">
-            <text class="cuIcon-group lg text-{{PageCur=='class'?'green':'gray'}}"/>
-<!--            <view class="cu-tag badge">99</view>-->
-        </view>
-        <view class="text-{{PageCur=='class'?'green':'gray'}}">Class</view>
-    </view>
+    <!--    <view class="action" bindtap="NavChange" data-cur="class">-->
+    <!--        <view class="cuIcon-cu-image">-->
+    <!--            <text class="cuIcon-group lg text-{{PageCur=='class'?'green':'gray'}}"/>-->
+    <!--            &lt;!&ndash;            <view class="cu-tag badge">99</view>&ndash;&gt;-->
+    <!--        </view>-->
+    <!--        <view class="text-{{PageCur=='class'?'green':'gray'}}">Class</view>-->
+    <!--    </view>-->
     <view class="action" bindtap="NavChange" data-cur="my">
         <view class="cuIcon-cu-image">
             <text class="cuIcon-my lg text-{{PageCur=='my'?'green':'gray'}}"/>
-<!--            <view class="cu-tag badge"/>-->
+            <!--            <view class="cu-tag badge"/>-->
         </view>
         <view class="text-{{PageCur=='my'?'green':'gray'}}">My</view>
     </view>

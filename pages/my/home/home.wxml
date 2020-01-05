@@ -1,29 +1,45 @@
 <view class="pageBac">
-    <view class="setting-head-box shadow">
-        <view class="pageBox padding-sm">
-            <block wx:if="{{baseUser.avatarUrl==null||baseUser.avatarUrl==''}}" class="padding-sm">
-                <image class="cu-avatar round lg"
-                       src="https://qinghi.oss-cn-qingdao.aliyuncs.com/tcyeee_temp/icon/dufuleAvater.png"/>
-                <button class="margin text-gray text-sm" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-                    点击登录一起学习吧
-                </button>
-            </block>
 
-            <block wx:else>
-                <image class="cu-avatar round lg" src="{{baseUser.avatarUrl}}"/>
-                <text class="margin userinfo-nickname">{{baseUser.username}}</text>
-            </block>
+    <!--  头部部分  -->
+    <view class="setting-head-box flex">
+        <view class="avatar-diy flex flex-direction">
+            <image class="cu-avatar round xxl" src="{{baseUser.avatarUrl}}"/>
+            <view class="response flex margin">
+                <view class="cu-btn bg-grey sm radius margin-left" style="height: 23px">
+                    <text class="cuIcon-settingsfill lg"></text>
+                </view>
+                <view class="cu-btn bg-orange sm radius margin-left-xs" style="height: 23px">更多</view>
+            </view>
+        </view>
+        <view class="avatar-name-diy flex justify-end align-center padding">
+            <text>{{baseUser.username}}</text>
         </view>
     </view>
 
-    <view class="cu-list menu sm-border card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <!--  分割线  -->
+    <view class="my-line margin-lr"/>
 
-        <navigator class="cu-item arrow" url="/pages/my/upList/upList">
-            <view class="content">
-                <text class="cuIcon-creative text-cyan"></text>
-                <text class="text-grey">更新说明</text>
+    <view class="flex margin">
+        <view class="flex-sub padding-sm margin-xs radius pageBox" style="background: #dad8de;">
+            <view class="flex align-end">
+                <view class="text-lg text-brown padding-xs">{{dayCount}}</view>
+                <view class="text-xs">分钟</view>
             </view>
-        </navigator>
-
+            <view class="text-grey text-xs margin-top-xs">今日学习</view>
+        </view>
+        <view class="flex-sub padding-sm margin-xs radius pageBox" style="background: #dad8de;">
+            <view class="flex align-end">
+                <view class="text-lg text-brown padding-xs">{{weekCount}}</view>
+                <view class="text-xs">分钟</view>
+            </view>
+            <view class="text-grey text-xs margin-top-xs">本周学习</view>
+        </view>
+        <view class="flex-sub padding-sm margin-xs radius pageBox" style="background: #dad8de;">
+            <view class="flex align-end">
+                <view class="text-lg text-brown padding-xs">{{allCount}}</view>
+                <view class="text-xs">分钟</view>
+            </view>
+            <view class="text-grey text-xs margin-top-xs">累计学习</view>
+        </view>
     </view>
 </view>

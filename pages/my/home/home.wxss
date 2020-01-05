@@ -1,9 +1,8 @@
 @import "/app.wxss";
 
 .setting-head-box {
-    padding-top: 150rpx;
-    background: olive;
-    height: 400rpx;
+    padding-top: 30px;
+    height: 400 rpx;
     width: 100%;
 }
 
@@ -11,4 +10,24 @@
     height: 1000px;
     width: 100%;
     background: #EFEFEF;
+}
+
+.avatar-diy {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.avatar-name-diy {
+    width: 70%;
+    font-family: "Andale Mono";
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.my-line {
+    border: 0.5px dashed grey;
 }
