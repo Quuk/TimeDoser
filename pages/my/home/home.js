@@ -2,22 +2,33 @@ import common from "../../../common.js";
 
 const app = getApp();
 
-Page({
-    created() {
-        loadBaseData(this);
-    },
-});
+Page({});
 Component({
     data: {
+        StatusBar: app.globalData.StatusBar,
+        CustomBar: app.globalData.CustomBar,
         baseUser: wx.getStorageSync("baseUser"),
         dayCount: 0,
         weekCount: 0,
         allCount: 0
     },
     attached: function () {
+        checkData(this);
         loadBaseData(this);
     },
     methods: {
+        toSetting() {
+            wx.navigateTo({
+                url: "/pages/timeDoser/timeDoser"
+            });
+        },
+
+        toUserInfo() {
+            wx.navigateTo({
+                url: "/pages/my/other/other"
+            });
+        },
+
         getUserInfo: function (e) {
 
             // 如果用户同意授权
@@ -52,11 +63,6 @@ Component({
                 });
             }
         }
-    },
-    lifetimes: {
-        created() {
-            checkData(this);
-        },
     },
 });
 

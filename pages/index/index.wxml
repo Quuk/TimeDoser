@@ -1,15 +1,8 @@
-<!--<report wx:if="{{PageCur=='report'}}"/>-->
 <todoList wx:if="{{PageCur=='todoList'}}"/>
 <!--<class wx:if="{{PageCur=='class'}}"/>-->
 <my wx:if="{{PageCur=='my'}}"/>
 
 <view class="cu-bar tabbar bg-brown shadow foot">
-    <!--    <view class="action" bindtap="NavChange" data-cur="report">-->
-    <!--        <view class="cuIcon-cu-image">-->
-    <!--            <text class="cuIcon-time lg text-{{PageCur=='report'?'green':'gray'}}"/>-->
-    <!--        </view>-->
-    <!--        <view class="text-{{PageCur=='report'?'green':'gray'}}">Report</view>-->
-    <!--    </view>-->
     <view class="action" bindtap="NavChange" data-cur="todoList">
         <view class="cuIcon-cu-image">
             <text class="cuIcon-calendar lg text-{{PageCur=='todoList'?'green':'gray'}}"/>

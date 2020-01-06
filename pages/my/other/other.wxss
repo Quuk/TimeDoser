@@ -1,1 +1,10 @@
 @import "/app.wxss";
+
+.userInfo-line {
+    margin:0 30rpx ;
+    border: 0.5px solid #d6d6d6;
+}
+
+.userInfo-item {
+    height: 50px;
+}

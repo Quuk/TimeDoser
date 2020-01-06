@@ -1,3 +1,20 @@
-<view>
-    <h1>temp</h1>
+<cu-custom isCustom="{{true}}">
+    <view slot="content">个人信息</view>
+</cu-custom>
+<view style="margin-top: 20px">
+    <view class="userInfo-item flex justify-between align-center padding-lr">
+        <view>昵称</view>
+        <view class="line-gray">狐狸的胸针</view>
+    </view>
+    <view class="userInfo-line"/>
+    <view class="userInfo-item flex justify-between align-center padding-lr">
+        <view>性别</view>
+        <view class="line-gray">男</view>
+    </view>
+    <view class="userInfo-line"/>
+    <view class="userInfo-item flex justify-between align-center padding-lr">
+        <view>个性签名</view>
+        <view class="line-gray">good good stary day day up</view>
+    </view>
+    <view class="userInfo-line"/>
 </view>

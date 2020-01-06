@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/my/other/other",
     "pages/my/home/home",
     "pages/todoList/todoList",
     "pages/timeDoser/timeDoser",
     "pages/my/upList/upList",
-    "pages/report/report",
     "pages/class/class"
   ],
   "window": {

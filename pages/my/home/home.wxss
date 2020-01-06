@@ -1,7 +1,6 @@
 @import "/app.wxss";
 
 .setting-head-box {
-    padding-top: 30px;
     height: 400 rpx;
     width: 100%;
 }
@@ -23,9 +22,18 @@
 
 .avatar-name-diy {
     width: 70%;
+}
+
+.avatar-name-head-diy {
     font-family: "Andale Mono";
     font-weight: bold;
-    font-size: 22px;
+    font-size: 27px;
+}
+
+.avatar-name-remark-diy {
+    margin-top: 5px;
+    font-size: 12px;
+    color: grey;
 }
 
 .my-line {

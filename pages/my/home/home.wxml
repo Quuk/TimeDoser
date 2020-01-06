@@ -1,18 +1,21 @@
-<view class="pageBac">
+<view class="pageBac" style="padding-top:{{StatusBar}}px">
 
     <!--  头部部分  -->
     <view class="setting-head-box flex">
         <view class="avatar-diy flex flex-direction">
-            <image class="cu-avatar round xxl" src="{{baseUser.avatarUrl}}"/>
-            <view class="response flex margin">
-                <view class="cu-btn bg-grey sm radius margin-left" style="height: 23px">
-                    <text class="cuIcon-settingsfill lg"></text>
-                </view>
-                <view class="cu-btn bg-orange sm radius margin-left-xs" style="height: 23px">更多</view>
-            </view>
+            <image class="cu-avatar round xxl margin-bottom-lg" src="{{baseUser.avatarUrl}}"/>
+            <!--            <view class="response flex margin">-->
+            <!--                <view class="cu-btn bg-grey sm radius margin-left" bindtap="toSetting" style="height: 23px">-->
+            <!--                    <text class="cuIcon-settingsfill lg"></text>-->
+            <!--                </view>-->
+            <!--                <view class="cu-btn bg-orange sm radius margin-left-xs" style="height: 23px">更多-->
+            <!--                </view>-->
+            <!--            </view>-->
         </view>
-        <view class="avatar-name-diy flex justify-end align-center padding">
-            <text>{{baseUser.username}}</text>
+        <view class="avatar-name-diy flex flex-direction justify-start align-end padding" bindtap="toUserInfo"
+              style="padding-top:{{CustomBar}}px;">
+            <text class="avatar-name-head-diy">{{baseUser.username}}</text>
+            <text class="avatar-name-remark-diy">这个人很懒,还有没签名</text>
         </view>
     </view>
 
