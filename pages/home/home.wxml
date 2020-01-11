@@ -1,0 +1,31 @@
+<view style="height:{{CustomBar-StatusBar}}px;margin-top:{{StatusBar}}px;" bindtap="toMyspase">
+    <view class="home-avatar">
+        <image class="cu-avatar round sm margin-sm" src="{{baseUser.avatarUrl}}" animation="amimationIndex"/>
+        <view style="color: gray">{{baseUser.username}}</view>
+    </view>
+</view>
+<!--  分割线  -->
+<view class="home-line margin-lr"/>
+<view style="height: 400px;margin-top: 120rpx" class="flex justify-center align-center">
+    <view style="border-radius: 10000px;margin: 20px;height: 500rpx;width:500rpx;border: #c6c6c6 solid 1rpx"
+          class="flex align-center justify-center flex-direction">
+        <view style="font-size: 80px;color: black">10:00</view>
+        <view class="flex margin-top-xs align-center" style="width: 60%">
+            <view class="cu-capsule">
+                <view class="cu-tag sm bg-grey">
+                    <text class="cuIcon-likefill"></text>
+                </view>
+                <view class="cu-tag sm line-grey">
+                    <view>120</view>
+                    <view style="margin-left: 4rpx;">h</view>
+                </view>
+            </view>
+            <view class="margin-left margin-left-sm" style="font-size: 12px;color: gray">进行中..</view>
+        </view>
+    </view>
+</view>
+<view class="index-setting">
+    <view class="index-setting-icon flex align-center justify-center">
+        <text style="font-size: 20px;color: grey" class="cuIcon-top"></text>
+    </view>
+</view>

@@ -1,0 +1,28 @@
+@import "/app.wxss";
+
+.home-avatar {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100%;
+}
+
+.home-line {
+    border: 0.5px dashed grey;
+}
+
+.index-setting {
+    min-height: 100rpx;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.index-setting-icon {
+    margin-left: 64.81%;
+    position: fixed;
+    bottom: 0;
+    width: 90rpx;
+    height: 65rpx;
+    box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
