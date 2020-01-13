@@ -24,10 +24,10 @@
         </view>
     </view>
 </view>
-<view class="margin-top flex justify-center" style="height: 50px">
+<view class="margin-top flex justify-center" style="height: 40px">
     <text id="am-home-start-icon" wx:if="{{!hasWork}}" style="font-size: 40px;color: grey" class="cuIcon-playfill"
           bindtap="startTime"></text>
-    <text id="am-home-start-icon" wx:else style="font-size: 50px;color: grey" class="cuIcon-stop"
+    <text id="am-home-start-icon" wx:else style="font-size: 40px;color: grey" class="cuIcon-stop"
           bindtap="endTime"></text>
 </view>
 

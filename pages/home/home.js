@@ -85,31 +85,31 @@ function startTime(that) {
     that.animate('#am-home-date', [
         {scale: [1, 1], opacity: 0.5},
         {scale: [1.2, 1.2], opacity: 0.8},
-    ], 150);
+    ], 300);
 
     // 2.计时备注变化1
     that.animate('#am-home-remark', [
         {translate: [0, 0], opacity: 0, scale: [1, 1]},
         {translate: [-5, 12], opacity: 1, scale: [0.9, 0.9]},
-    ], 150);
+    ], 300);
 
     // 3.标签变化
     that.animate('#am-home-tag', [
         {translate: [0, 0], opacity: 1, scale: [1, 1]},
         {translate: [12, 12], opacity: 0.3, scale: [0.8, 0.8]},
-    ], 150);
+    ], 300);
 
     // 4.计时备注变化2
     that.animate('#am-home-remark-end', [
         {translate: [0, 0], opacity: 1, scale: [1, 1]},
         {translate: [-5, 12], opacity: 0, scale: [0.9, 0.9]},
-    ], 150);
+    ], 300);
 
     // 5.开始按钮变化
     that.animate('#am-home-start-icon', [
         {scale: [1.5, 1.5], opacity: 0},
         {scale: [1, 1], opacity: 1},
-    ], 150, function () {
+    ], 300, function () {
         that.setData({changedue: false});
     });
 }
@@ -122,23 +122,23 @@ function endTime(that) {
     that.animate('#am-home-date', [
         {scale: [1.2, 1.2], opacity: 0.8},
         {scale: [1, 1], opacity: 0.5},
-    ], 150);
+    ], 300);
     that.animate('#am-home-remark', [
         {opacity: 1, scale: [0.9, 0.9]},
         {opacity: 0, scale: [1, 1]},
-    ], 150);
+    ], 300);
     that.animate('#am-home-tag', [
         {translate: [12, 12], opacity: 0.3, scale: [0.8, 0.8]},
         {translate: [0, 0], opacity: 1, scale: [1, 1]},
-    ], 150);
+    ], 300);
     that.animate('#am-home-remark-end', [
         {translate: [-5, 12], opacity: 0, scale: [0.9, 0.9]},
         {translate: [0, 0], opacity: 1, scale: [1, 1]},
-    ], 150);
+    ], 300);
     that.animate('#am-home-start-icon', [
         {scale: [1.5, 1.5], opacity: 0},
         {scale: [1, 1], opacity: 1},
-    ], 150, function () {
+    ], 300, function () {
         that.setData({changedue: false});
     });
 }
