@@ -26,3 +26,7 @@
     height: 65rpx;
     box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
 }
+
+.temp {
+    background-image: linear-gradient(to bottom right, aquamarine, #e4ff88);
+}

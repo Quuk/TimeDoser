@@ -6,7 +6,32 @@ Page({
         CustomBar: app.globalData.CustomBar,
         baseUser: wx.getStorageSync("baseUser"),
         hasWork: false,      // 是否处于工作状态
-        changedue: false     // 是否除于动画过程
+        changedue: false,    // 是否除于动画过程
+        timeList: [{
+            title: '15',
+            name: 'orange',
+            color: '#f37b1d'
+        }, {
+            title: '25',
+            name: 'yellow',
+            color: '#fbbd08'
+        }, {
+            title: '45',
+            name: 'olive',
+            color: '#8dc63f'
+        }, {
+            title: '60',
+            name: 'green',
+            color: '#39b54a'
+        }, {
+            title: '90',
+            name: 'cyan',
+            color: '#1cbbb4'
+        }, {
+            title: '120',
+            name: 'blue',
+            color: '#0081ff'
+        }]
     },
     onReady() {
         // 设置初始透明度

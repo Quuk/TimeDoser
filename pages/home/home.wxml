@@ -39,16 +39,14 @@
 
 <!-- 番茄 model -->
 <view class="home-time-model {{modalName=='time'?'show':''}}" bindtap="hideModal">
-    <view class="cu-dialog" catchtap>
-        <radio-group class="block">
-            <view class="cu-list menu text-left">
-                <view class="cu-item" wx:for="{{5}}" wx:key>
-                    <label class="flex justify-between align-center flex-sub">
-                        <view class="flex-sub">Item {{index +1}}</view>
-                        <radio class="round"></radio>
-                    </label>
+    <view class="home-time-model-content" catchtap>
+        <view class="grid col-3 bg-white padding-sm">
+            <view class="padding-sm" wx:for="{{timeList}}" wx:key>
+                <view class="bg-{{item.name}} padding radius text-center light">
+                    <view class="text-xl">{{item.title}}</view>
+                    <view class="margin-top-xs">分钟</view>
                 </view>
             </view>
-        </radio-group>
+        </view>
     </view>
 </view>

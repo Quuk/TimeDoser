@@ -74,8 +74,8 @@
     opacity: 0;
     outline: 0;
     text-align: center;
-    -ms-transform: translateY(30px);
-    transform: translateY(30px);
+    -ms-transform: scale(1.185);
+    transform: scale(1.185);
     backface-visibility: hidden;
     perspective: 2000rpx;
     transition: all 200ms ease-in-out 0s;
@@ -99,4 +99,20 @@
     display: inline-block;
     height: 100%;
     vertical-align: middle;
+}
+
+.home-time-model-content {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    width: 580rpx;
+    max-width: 100%;
+    background-color: #f8f8f8;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+
+.tem {
 }

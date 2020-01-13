@@ -36,7 +36,3 @@
     font-size: 13px;
     color: #868686;
 }
-
-.temp{
-    border: red 1px solid;
-}

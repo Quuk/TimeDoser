@@ -6,8 +6,7 @@
 </view>
 <!--  分割线  -->
 <view class="home-line margin-lr"/>
-<view style="height: 400px;margin-top: 120rpx" class="flex justify-center align-center test">
-    <view id="box" class="tmpAma" style="height: 20px;width: 20px;border: 1px grey solid;background-color: aqua"></view>
+<view style="height: 400px;margin-top: 120rpx" class="flex justify-center align-center test temp">
 </view>
 <view class="index-setting" bindtap="startTime">
     <view class="index-setting-icon flex align-center justify-center">
