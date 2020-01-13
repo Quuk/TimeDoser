@@ -1,0 +1,16 @@
+<view style="height:{{CustomBar-StatusBar}}px;margin-top:{{StatusBar}}px;">
+    <view class="home-avatar">
+        <image class="cu-avatar round sm margin-sm" src="{{baseUser.avatarUrl}}"/>
+        <view style="color: gray">{{baseUser.username}}</view>
+    </view>
+</view>
+<!--  分割线  -->
+<view class="home-line margin-lr"/>
+<view style="height: 400px;margin-top: 120rpx" class="flex justify-center align-center test">
+    <view id="box" class="tmpAma" style="height: 20px;width: 20px;border: 1px grey solid;background-color: aqua"></view>
+</view>
+<view class="index-setting" bindtap="startTime">
+    <view class="index-setting-icon flex align-center justify-center">
+        <text style="font-size: 20px;color: grey" class="cuIcon-top"></text>
+    </view>
+</view>

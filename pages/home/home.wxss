@@ -26,3 +26,41 @@
     height: 65rpx;
     box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
 }
+
+.index-project-name{
+    margin-left: 15rpx;
+    font-size: 15px;
+    color: #484848;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    opacity: 0;
+}
+
+.index-time-remark-start {
+    opacity: 0;
+    margin-left: 30rpx;
+    color: black;
+    animation: index-time-remark-start-s 4s linear infinite;
+}
+
+.home-main-time-box {
+    border-radius: 10000px;
+    margin: 20px;
+    height: 540rpx;
+    width: 540rpx;
+    border: #c6c6c6 solid 1rpx;
+}
+
+@keyframes index-time-remark-start-s {
+    0% {
+        color: #2b2b2b;
+    }
+    50% {
+        color: #cecece;
+    }
+    100% {
+        color: #2b2b2b;
+    }
+}
+
