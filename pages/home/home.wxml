@@ -24,13 +24,30 @@
         </view>
     </view>
 </view>
-<view class="margin-top flex justify-center" style="height: 40px">
-    <text wx:if="{{!hasWork}}" style="font-size: 40px;color: grey" class="cuIcon-playfill" bindtap="startTime"></text>
-    <text wx:else style="font-size: 40px;color: grey" class="cuIcon-stop" bindtap="endTime"></text>
+<view class="margin-top flex justify-center" style="height: 50px">
+    <text id="am-home-start-icon" wx:if="{{!hasWork}}" style="font-size: 40px;color: grey" class="cuIcon-playfill" bindtap="startTime"></text>
+    <text id="am-home-start-icon" wx:else style="font-size: 50px;color: grey" class="cuIcon-stop" bindtap="endTime"></text>
 </view>
 
 <view class="index-setting">
-    <view class="index-setting-icon flex align-center justify-center">
+    <view class="index-setting-icon flex align-center justify-center" bindtap="showModal" data-target="time">
         <text style="font-size: 20px;color: grey" class="cuIcon-top"></text>
+    </view>
+</view>
+
+<!-- 番茄 model -->
+<view class="home-time-model {{modalName=='time'?'show':''}}">
+    <view class="cu-dialog">
+        <view class="bg-img"
+              style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big91012.jpg');height:200px;">
+            <view class="cu-bar justify-end text-white">
+                <view class="action" bindtap="hideModal">
+                    <text class="cuIcon-close "></text>
+                </view>
+            </view>
+        </view>
+        <view class="cu-bar bg-white">
+            <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">我知道了</view>
+        </view>
     </view>
 </view>

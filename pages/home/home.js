@@ -5,7 +5,8 @@ Page({
         StatusBar: app.globalData.StatusBar,
         CustomBar: app.globalData.CustomBar,
         baseUser: wx.getStorageSync("baseUser"),
-        hasWork: false,
+        hasWork: false,      // 是否处于工作状态
+        changedue: false     // 是否除于动画过程
     },
     onReady() {
         // 设置初始透明度
@@ -24,6 +25,18 @@ Page({
         this.setData({hasWork: false});
         endTime(this)   // 字体变化
     },
+
+    showModal(e) {
+        this.setData({
+            modalName: e.currentTarget.dataset.target
+        })
+    },
+
+    hideModal(e) {
+        this.setData({
+            modalName: null
+        })
+    }
 });
 
 function setRemarkOpecity(that) {
@@ -63,6 +76,12 @@ function startTime(that) {
         {translate: [0, 0], opacity: 1, scale: [1, 1]},
         {translate: [-5, 12], opacity: 0, scale: [0.9, 0.9]},
     ], 150);
+
+    // 5.开始按钮变化
+    that.animate('#am-home-start-icon', [
+        {scale: [1.5, 1.5], opacity: 0},
+        {scale: [1, 1], opacity: 1},
+    ], 150);
 }
 
 /**
@@ -85,5 +104,9 @@ function endTime(that) {
     that.animate('#am-home-remark-end', [
         {translate: [-5, 12], opacity: 0, scale: [0.9, 0.9]},
         {translate: [0, 0], opacity: 1, scale: [1, 1]},
+    ], 150);
+    that.animate('#am-home-start-icon', [
+        {scale: [1.5, 1.5], opacity: 0},
+        {scale: [1, 1], opacity: 1},
     ], 150);
 }

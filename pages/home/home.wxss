@@ -64,3 +64,39 @@
     }
 }
 
+.home-time-model {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1110;
+    opacity: 0;
+    outline: 0;
+    text-align: center;
+    -ms-transform: translateY(30px);
+    transform: translateY(30px);
+    backface-visibility: hidden;
+    perspective: 2000rpx;
+    transition: all 200ms ease-in-out 0s;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.home-time-model.show {
+    opacity: 1;
+    transition-duration: 200ms;
+    -ms-transform: scale(1);
+    transform: scale(1);
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: auto;
+
+}
+
+.home-time-model::before {
+    content: "\200B";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
