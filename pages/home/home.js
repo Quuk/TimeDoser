@@ -11,19 +11,22 @@ Page({
     onReady() {
         // 设置初始透明度
         setRemarkOpecity(this);
-        console.log(this.data.hasWork)
     },
 
     // 开始计时了
     startTime() {
-        this.setData({hasWork: true});
-        startTime(this) // 字体变化
+        if (!this.data.changedue) {
+            this.setData({hasWork: true, changedue: true});
+            startTime(this) // 字体变化
+        }
     },
 
     // 结束计时
     endTime() {
-        this.setData({hasWork: false});
-        endTime(this)   // 字体变化
+        if (!this.data.changedue) {
+            this.setData({hasWork: false, changedue: true});
+            endTime(this)   // 字体变化
+        }
     },
 
     showModal(e) {
@@ -81,7 +84,9 @@ function startTime(that) {
     that.animate('#am-home-start-icon', [
         {scale: [1.5, 1.5], opacity: 0},
         {scale: [1, 1], opacity: 1},
-    ], 150);
+    ], 150, function () {
+        that.setData({changedue: false});
+    });
 }
 
 /**
@@ -108,5 +113,7 @@ function endTime(that) {
     that.animate('#am-home-start-icon', [
         {scale: [1.5, 1.5], opacity: 0},
         {scale: [1, 1], opacity: 1},
-    ], 150);
+    ], 150, function () {
+        that.setData({changedue: false});
+    });
 }
