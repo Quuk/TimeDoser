@@ -9,7 +9,7 @@
 <view style="margin-top: 180rpx" class="flex justify-center align-center">
     <view class="home-main-time-box flex align-center justify-center flex-direction">
         <view id="am-home-date" style="opacity: 0.5;font-size: 80px" bindtap="showModal" data-target="time">25:00</view>
-        <view class="flex align-center" style="width: 65%;height: 30px;">
+        <view class="flex align-center" style="width: 65%;height: 30px;" bindtap="showModal" data-target="project">
             <view id="am-home-tag" class="cu-capsule radius">
                 <view class="cu-tag bg-red">
                     <text class="cuIcon-likefill"></text>
@@ -32,7 +32,7 @@
 </view>
 
 <view class="index-setting">
-    <view class="index-setting-icon flex align-center justify-center">
+    <view class="index-setting-icon flex align-center justify-center" bindtap="showModal" data-target="setting">
         <text style="font-size: 20px;color: grey" class="cuIcon-top"></text>
     </view>
 </view>
@@ -48,5 +48,377 @@
                 </view>
             </view>
         </view>
+    </view>
+</view>
+
+<!-- 项目 model -->
+<view class="home-time-model {{modalName=='project'?'show':''}}" bindtap="hideModal">
+    <scroll-view class="home-time-model-content" catchtap>
+        <view class="bg-orange margin radius flex" style="height: 70px">
+            <view class="flex justify-center align-center">
+                <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);" class="cuIcon-emoji"/>
+            </view>
+            <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+            <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                <view class="flex margin-top-xs align-center " style="width: 100%">
+                    <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                    <view class="margin-left-xs flex justify-start"
+                          style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                        小程序研发
+                    </view>
+                </view>
+                <view class="home-project-card-text">
+                    制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                </view>
+            </view>
+        </view>
+        <view class="bg-yellow margin radius flex" style="height: 70px">
+            <view class="flex justify-center align-center">
+                <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);" class="cuIcon-favor"/>
+            </view>
+            <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+            <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                <view class="flex margin-top-xs align-center " style="width: 100%">
+                    <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                    <view class="margin-left-xs flex justify-start"
+                          style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                        小程序研发
+                    </view>
+                </view>
+                <view class="home-project-card-text">
+                    制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                </view>
+            </view>
+        </view>
+        <view class="bg-olive margin radius flex" style="height: 70px">
+            <view class="flex justify-center align-center">
+                <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                      class="cuIcon-discover"/>
+            </view>
+            <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+            <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                <view class="flex margin-top-xs align-center " style="width: 100%">
+                    <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                    <view class="margin-left-xs flex justify-start"
+                          style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                        小程序研发
+                    </view>
+                </view>
+                <view class="home-project-card-text">
+                    制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                </view>
+            </view>
+        </view>
+        <view class="bg-green margin radius flex" style="height: 70px">
+            <view class="flex justify-center align-center">
+                <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                      class="cuIcon-creative"/>
+            </view>
+            <view class="flex align-center justify-center response" style="font-size: 23px;opacity: 0.7;color: white">
+                创造新的
+            </view>
+        </view>
+    </scroll-view>
+</view>
+
+<!-- setting -->
+<view class="cu-modal bottom-modal {{modalName=='setting'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap style="height: {{windowHeight-StatusBar}}px;margin-top:{{StatusBar}}px">
+        <view class="cu-bar bg-white">
+            <view class="action text-blue" bindtap="hideModal">返回</view>
+        </view>
+        <scroll-view class="margin-tb-lg">
+            <view class="cu-bar align-start">
+                <view class="action border-title">
+                    <text class="text-xl text-bold">所有任务</text>
+                    <text class="bg-grey" style="width:2rem"></text>
+                </view>
+            </view>
+            <view class="bg-olive radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-discover"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+            <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                          class="cuIcon-emoji"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
+                    <view class="flex margin-top-xs align-center " style="width: 100%">
+                        <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
+                        <view class="margin-left-xs flex justify-start"
+                              style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
+                            小程序研发
+                        </view>
+                    </view>
+                    <view class="home-project-card-text">
+                        制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
     </view>
 </view>

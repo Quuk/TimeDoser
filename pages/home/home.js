@@ -4,6 +4,7 @@ Page({
     data: {
         StatusBar: app.globalData.StatusBar,
         CustomBar: app.globalData.CustomBar,
+        windowHeight: wx.getSystemInfoSync().windowHeight,
         baseUser: wx.getStorageSync("baseUser"),
         hasWork: false,      // 是否处于工作状态
         changedue: false,    // 是否除于动画过程
