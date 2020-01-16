@@ -59,17 +59,10 @@
                 <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);" class="cuIcon-emoji"/>
             </view>
             <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
-            <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
-                <view class="flex margin-top-xs align-center " style="width: 100%">
-                    <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
-                    <view class="margin-left-xs flex justify-start"
-                          style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
-                        小程序研发
-                    </view>
-                </view>
-                <view class="home-project-card-text">
-                    制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
-                </view>
+            <view class="padding-sm" style="width: 100%;overflow: hidden;text-align: left">
+                <view class="home-project-card-name">小程序研发</view>
+                <view class="cu-tag bg-white sm radius margin-top-xs" style="opacity: 0.5">997 min</view>
+                <view class="cu-tag bg-white sm radius margin-top-xs" style="opacity: 0.5">紧急</view>
             </view>
         </view>
         <view class="bg-yellow margin radius flex" style="height: 70px">
@@ -77,17 +70,9 @@
                 <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);" class="cuIcon-favor"/>
             </view>
             <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
-            <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
-                <view class="flex margin-top-xs align-center " style="width: 100%">
-                    <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
-                    <view class="margin-left-xs flex justify-start"
-                          style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
-                        小程序研发
-                    </view>
-                </view>
-                <view class="home-project-card-text">
-                    制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
-                </view>
+            <view class="padding-sm" style="width: 100%;overflow: hidden;text-align: left">
+                <view class="home-project-card-name">英语考研</view>
+                <view class="cu-tag bg-white sm radius margin-top-xs" style="opacity: 0.5">15 min</view>
             </view>
         </view>
         <view class="bg-olive margin radius flex" style="height: 70px">
@@ -96,17 +81,9 @@
                       class="cuIcon-discover"/>
             </view>
             <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
-            <view class="flex flex-direction align-start padding-right-xs" style="width: 100%">
-                <view class="flex margin-top-xs align-center " style="width: 100%">
-                    <view class="cu-tag bg-white sm radius" style="opacity: 0.5">997 min</view>
-                    <view class="margin-left-xs flex justify-start"
-                          style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">
-                        小程序研发
-                    </view>
-                </view>
-                <view class="home-project-card-text">
-                    制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序
-                </view>
+            <view class="padding-sm" style="width: 100%;overflow: hidden;text-align: left">
+                <view class="home-project-card-name">java进阶</view>
+                <view class="cu-tag bg-white sm radius margin-top-xs" style="opacity: 0.5">9 min</view>
             </view>
         </view>
         <view class="bg-green margin radius flex" style="height: 70px">
@@ -123,12 +100,13 @@
 
 <!-- setting -->
 <view class="cu-modal bottom-modal {{modalName=='setting'?'show':''}}" bindtap="hideModal">
-    <view class="cu-dialog" catchtap style="height: {{windowHeight-StatusBar}}px;margin-top:{{StatusBar}}px">
-        <view class="cu-bar bg-white">
+    <view class="cu-dialog" catchtap
+          style="height: {{windowHeight-StatusBar}}px;margin-top:{{StatusBar}}px;overflow:scroll">
+        <view class="cu-bar bg-white" style="height: 50px;min-height: 50px;">
             <view class="action text-blue" bindtap="hideModal">返回</view>
         </view>
-        <scroll-view class="margin-tb-lg">
-            <view class="cu-bar align-start">
+        <scroll-view scroll-y:true class="test" style="height: {{windowHeight-StatusBar-50}}px">
+            <view class="cu-bar align-start margin-top">
                 <view class="action border-title">
                     <text class="text-xl text-bold">所有任务</text>
                     <text class="bg-grey" style="width:2rem"></text>
@@ -153,6 +131,7 @@
                     </view>
                 </view>
             </view>
+            <!-- 测试展开 -->
             <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
                 <view class="flex justify-center align-center">
                     <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
@@ -419,6 +398,7 @@
                     </view>
                 </view>
             </view>
+            <view>底部</view>
         </scroll-view>
     </view>
 </view>

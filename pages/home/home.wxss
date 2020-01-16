@@ -128,3 +128,14 @@
     -webkit-box-orient: vertical;
     text-align:left;
 }
+
+.home-project-card-name{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: black;
+    opacity: 0.4;
+    font-weight: bold;
+    font-size: 18px;
+}
