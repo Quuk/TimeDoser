@@ -66,6 +66,18 @@ Page({
         this.setData({
             modalName: null
         })
+    },
+
+    // 对项目的相关操作
+    projectUpdata(e){
+        console.log(e.currentTarget.dataset.target)
+    },
+
+    // 进入设置页面
+    toSetting(){
+        this.setData({
+            modalName: 'setting'
+        });
     }
 });
 

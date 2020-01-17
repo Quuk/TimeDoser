@@ -90,14 +90,14 @@
                     <view class="cu-tag bg-white sm radius margin-top-xs" style="opacity: 0.5">9 min</view>
                 </view>
             </view>
-            <view class="bg-green margin radius flex" style="height: 70px">
+            <view class="bg-green margin radius flex" style="height: 70px;" bindtap="toSetting">
                 <view class="flex justify-center align-center">
                     <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
                           class="cuIcon-creative"/>
                 </view>
                 <view class="flex align-center justify-center response"
-                      style="font-size: 23px;opacity: 0.7;color: white">
-                    创造新的
+                      style="font-size: 23px;opacity: 0.7;color: white;">
+                    更多
                 </view>
             </view>
         </scroll-view>
@@ -119,9 +119,11 @@
                 </view>
                 <view class="bg-olive radius flex home-project-card">
                     <view class="flex justify-center align-center">
-                        <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);" class="cuIcon-discover"/>
+                        <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
+                              class="cuIcon-discover"/>
                     </view>
-                    <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
+                    <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;"
+                          class="margin-lr-sm"/>
                     <view class="padding-right-xs response tmp-tree" style="position:relative">
 
                         <!-- 未触发 -->
@@ -141,15 +143,16 @@
                         <!-- 触发 -->
                         <view class="flex justify-between align-center padding-sm response tmp-two"
                               style="height: 100%;position:absolute;z-index: 2;">
-                            <text class="home-project-card-icon cuIcon-usefull" style="transform:rotate(90deg)"/>
-                            <text class="home-project-card-icon cuIcon-edit"/>
-                            <text class="home-project-card-icon cuIcon-delete"/>
+                            <text class="home-project-card-icon cuIcon-usefull" style="transform:rotate(90deg)"
+                                  data-target="1" bindtap="projectUpdata"/>
+                            <text class="home-project-card-icon cuIcon-edit" data-target="2" bindtap="projectUpdata"/>
+                            <text class="home-project-card-icon cuIcon-delete" data-target="3" bindtap="projectUpdata"/>
                         </view>
                     </view>
                 </view>
 
                 <!-- 点击以后的效果 -->
-                <view class="bg-orange radius flex" wx:for="{{2}}" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
+                <view class="bg-orange radius flex" style="height: 70px;margin: 0 30rpx 30rpx 30rpx">
                     <view class="flex justify-center align-center">
                         <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
                               class="cuIcon-emoji"/>
@@ -178,6 +181,18 @@
                             <text class="home-project-card-icon cuIcon-edit"/>
                             <text class="home-project-card-icon cuIcon-delete"/>
                         </view>
+                    </view>
+                </view>
+
+                <!-- 添加一个新的 -->
+                <view class="bg-grey margin radius flex" style="height: 70px" bindtap="toSetting">
+                    <view class="flex justify-center align-center">
+                        <text style="font-size: 90px;color: white;opacity: 0.6;"
+                              class="cuIcon-add"/>
+                    </view>
+                    <view class="flex align-center justify-center response"
+                          style="font-size: 23px;opacity: 0.7;color: white">
+                        创建一个小目标
                     </view>
                 </view>
             </view>

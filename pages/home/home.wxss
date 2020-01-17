@@ -173,6 +173,7 @@
 .tmp-two {
     opacity: 0;
     transition: all 200ms ease;
+    pointer-events:none;
 }
 
 .tmp-tree:hover .tmp-one {
@@ -181,4 +182,5 @@
 
 .tmp-tree:hover .tmp-two {
     opacity:1;
+    pointer-events: all;
 }
