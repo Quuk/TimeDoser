@@ -54,10 +54,10 @@
     background: rgba(255,255,255,0.3);
     border-radius: 10000px;
     margin: 20px;
-    height: 540rpx;
-    width: 540rpx;
-    border: #c6c6c6 solid 1rpx;
+    height: 560rpx;
+    width: 560rpx;
     overflow: hidden;
+    box-shadow: 0 0 11px 1rpx gray;
 }
 
 @keyframes index-time-remark-start-s {
@@ -65,8 +65,7 @@
         color: #2b2b2b;
     }
     50% {
-        color: #cec
-        ece;
+        color: #cecece;
     }
     100% {
         color: #2b2b2b;
@@ -147,4 +146,20 @@
     opacity: 0.4;
     font-weight: bold;
     font-size: 18px;
+}
+
+.home-project-card{
+    height: 70px;
+    margin: 0 30rpx 30rpx 30rpx;
+}
+
+.home-project-card:hover{
+    height: 70px;
+    margin: 0 30rpx 30rpx 30rpx;
+}
+
+.home-project-card-icon {
+    font-size: 48px;
+    opacity: 0.6;
+    color: white;
 }
