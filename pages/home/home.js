@@ -8,7 +8,7 @@ Page({
         baseUser: wx.getStorageSync("baseUser"),
         hasWork: false,      // 是否处于工作状态
         changedue: false,    // 是否除于动画过程
-        checkProject: true, // 是否点击动画
+        checkProject: false,  // 是否点击项目
         timeList: [{
             title: '15',
             name: 'orange',
