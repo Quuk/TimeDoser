@@ -5,10 +5,12 @@
     justify-content: left;
     align-items: center;
     height: 100%;
+    margin-left: 10rpx;
 }
 
 .home-line {
     border: 0.5px dashed grey;
+    opacity: 0.1;
 }
 
 .index-setting {
@@ -57,7 +59,8 @@
         color: #2b2b2b;
     }
     50% {
-        color: #cecece;
+        color: #cec
+        ece;
     }
     100% {
         color: #2b2b2b;

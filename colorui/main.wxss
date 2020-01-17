@@ -2499,7 +2499,7 @@ button.icon.lg {
 	max-width: 100%;
 	background-color: #f8f8f8;
 	border-radius: 10rpx;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 .cu-modal.bottom-modal::before {

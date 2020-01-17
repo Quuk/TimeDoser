@@ -1,7 +1,7 @@
 <view style="height:{{CustomBar-StatusBar}}px;margin-top:{{StatusBar}}px;">
     <view class="home-avatar">
-        <image class="cu-avatar round sm margin-sm" src="{{baseUser.avatarUrl}}"/>
-        <view style="color: gray">{{baseUser.username}}</view>
+        <open-data class="cu-avatar round sm margin-sm" type="userAvatarUrl" style="overflow:hidden"/>
+        <open-data type="userNickName"/>
     </view>
 </view>
 <!--  分割线  -->
@@ -99,13 +99,13 @@
 </view>
 
 <!-- setting -->
-<view class="cu-modal bottom-modal {{modalName=='setting'?'':'show'}}" bindtap="hideModal">
+<view class="cu-modal bottom-modal {{modalName=='setting'?'show':''}}" bindtap="hideModal">
     <view class="cu-dialog" catchtap
           style="height: {{windowHeight-StatusBar}}px;margin-top:{{StatusBar}}px;overflow:scroll">
         <view class="cu-bar bg-white" style="height: 50px;min-height: 50px;">
             <view class="action text-blue" bindtap="hideModal">返回</view>
         </view>
-        <scroll-view scroll-y:true class="test" style="height: {{windowHeight-StatusBar-50}}px">
+        <view scroll-y:true class="test" style="height: {{windowHeight-StatusBar-50}}px;overflow: scroll">
             <view class="cu-bar align-start margin-top">
                 <view class="action border-title">
                     <text class="text-xl text-bold">所有任务</text>
@@ -392,6 +392,6 @@
                 </view>
             </view>
             <view>底部</view>
-        </scroll-view>
+        </view>
     </view>
 </view>

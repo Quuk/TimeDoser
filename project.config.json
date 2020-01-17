@@ -15,7 +15,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.10.0",
 	"appid": "wxaaff018e79374ad2",
-	"projectname": "TimeDoser",
+	"projectname": "timeDoser_wx",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
