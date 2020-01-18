@@ -6,10 +6,10 @@ Page({
         CustomBar: app.globalData.CustomBar,
         windowHeight: wx.getSystemInfoSync().windowHeight,
         baseUser: wx.getStorageSync("baseUser"),
-        hasWork: false,      // 是否处于工作状态
-        changedue: false,    // 是否除于动画过程
-        checkProject: false,  // 是否点击项目
-        createProject: false, // 创建项目窗口
+        hasWork: false,        // 是否处于工作状态
+        changedue: false,      // 是否除于动画过程
+        checkProject: false,   // 是否点击项目
+        createProject: false,  // 创建项目窗口
         timeList: [{
             title: '15',
             name: 'orange',
@@ -47,11 +47,9 @@ Page({
             {inex: 8, color: 'mauve'},
             {inex: 9, color: 'pink'},
             {inex: 10, color: 'brown'},
-            {inex: 11, color: 'grey'},
-            {inex: 12, color: 'black'},
-            {inex: 13, color: 'darkGray'},
-            {inex: 14, color: 'gray'},
-            {inex: 15, color: 'ghostWhite'},
+            {inex: 11, color: 'black'},
+            {inex: 12, color: 'darkGray'},
+            {inex: 13, color: 'ghostWhite'},
         ],
         color2: [
             {index: 0, color: 'redLight'},
@@ -126,6 +124,12 @@ Page({
             {index: 55, icon: 'skin'},
             {index: 56, icon: 'usefull'},
         ],
+        newProjectInfo: {
+            name: '',
+            remark: '',
+            icon: '',
+            color: ''
+        }
     },
     onReady() {
         // 设置初始透明度
@@ -160,20 +164,45 @@ Page({
 
     // 新建一个项目
     createOneOpen() {
-        this.setData({createProject: true});
+
+        const iconList = this.data.icon;
+        const iconIndex = parseInt(Math.random() * iconList.length);
+        const icon = iconList[iconIndex].icon;
+
+        const colorList = this.data.color1;
+        const colorIndex = parseInt(Math.random() * colorList.length);
+        const color = colorList[colorIndex].color;
+
+        console.log(this.data.newProjectInfo)
+        this.setData({
+            newProjectInfo: {
+                icon: icon,
+                color: color
+            },
+            createProject: true
+        });
+
         this.animate('#am-project-create', [
             {scale: [1.1, 1.1], opacity: 0},
             {scale: [1, 1], opacity: 1},
-        ], 100).export();
+        ], 100);
     },
     createOneClose() {
         this.setData({createProject: false});
         this.animate('#am-project-create', [
             {scale: [1.1, 1.1], opacity: 0},
             {scale: [1, 1], opacity: 1},
-        ], 100).export();
+        ], 100);
     },
-
+    create(e) {
+        console.log(this.data.newProjectInfo)
+    },
+    setProjectRemark(e) {
+        this.data.newProjectInfo.remark = e.detail.value;
+    },
+    setProjectName(e) {
+        this.data.newProjectInfo.name = e.detail.value;
+    },
 
     // 进入设置页面
     toSetting() {
