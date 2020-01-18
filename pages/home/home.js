@@ -47,9 +47,7 @@ Page({
             {inex: 8, color: 'mauve'},
             {inex: 9, color: 'pink'},
             {inex: 10, color: 'brown'},
-            {inex: 11, color: 'black'},
-            {inex: 12, color: 'darkGray'},
-            {inex: 13, color: 'ghostWhite'},
+            {inex: 12, color: 'grey'},
         ],
         color2: [
             {index: 0, color: 'redLight'},
@@ -129,7 +127,59 @@ Page({
             remark: '',
             icon: '',
             color: ''
+        },
+        projectList: [{
+            name: '小程序研发',
+            remark: '制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序',
+            icon: 'like',
+            color: 'pink',
+            score: 996
+        }, {
+            name: '英语学习',
+            remark: '滴滴滴滴这是一个学习序',
+            icon: 'mail',
+            color: 'green',
+            score: 39
+        }, {
+            name: '考研',
+            remark: '好好学习好好考研',
+            icon: 'vipcard',
+            color: 'cyan',
+            score: 50
+        }, {
+            name: 'UI学习',
+            remark: '学一下好用的东西',
+            icon: 'magic',
+            color: 'purple',
+            score: 25
+        }],
+        projectListLimit: [{
+            name: '小程序研发',
+            remark: '制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序',
+            icon: 'like',
+            color: 'pink',
+            score: 996
+        }, {
+            name: '英语学习',
+            remark: '滴滴滴滴这是一个学习序',
+            icon: 'mail',
+            color: 'green',
+            score: 39
+        }, {
+            name: '考研',
+            remark: '好好学习好好考研',
+            icon: 'vipcard',
+            color: 'cyan',
+            score: 50
+        }],
+        project:{
+            name: '小程序研发',
+            remark: '制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序',
+            icon: 'like',
+            color: 'pink',
+            score: 996
         }
+
     },
     onReady() {
         // 设置初始透明度
@@ -164,7 +214,6 @@ Page({
 
     // 新建一个项目
     createOneOpen() {
-
         const iconList = this.data.icon;
         const iconIndex = parseInt(Math.random() * iconList.length);
         const icon = iconList[iconIndex].icon;
@@ -173,7 +222,6 @@ Page({
         const colorIndex = parseInt(Math.random() * colorList.length);
         const color = colorList[colorIndex].color;
 
-        console.log(this.data.newProjectInfo)
         this.setData({
             newProjectInfo: {
                 icon: icon,
