@@ -9,6 +9,7 @@ Page({
         hasWork: false,      // 是否处于工作状态
         changedue: false,    // 是否除于动画过程
         checkProject: false,  // 是否点击项目
+        createProject: false, // 创建项目窗口
         timeList: [{
             title: '15',
             name: 'orange',
@@ -33,7 +34,98 @@ Page({
             title: '120',
             name: 'blue',
             color: '#0081ff'
-        }]
+        }],
+        color1: [
+            {inex: 0, color: 'red'},
+            {inex: 1, color: 'orange'},
+            {inex: 2, color: 'yellow'},
+            {inex: 3, color: 'olive'},
+            {inex: 4, color: 'green'},
+            {inex: 5, color: 'cyan'},
+            {inex: 6, color: 'blue'},
+            {inex: 7, color: 'purple'},
+            {inex: 8, color: 'mauve'},
+            {inex: 9, color: 'pink'},
+            {inex: 10, color: 'brown'},
+            {inex: 11, color: 'grey'},
+            {inex: 12, color: 'black'},
+            {inex: 13, color: 'darkGray'},
+            {inex: 14, color: 'gray'},
+            {inex: 15, color: 'ghostWhite'},
+        ],
+        color2: [
+            {index: 0, color: 'redLight'},
+            {index: 1, color: 'orangeLight'},
+            {index: 2, color: 'yellowLight'},
+            {index: 3, color: 'oliveLight'},
+            {index: 4, color: 'greenLight'},
+            {index: 5, color: 'cyanLight'},
+            {index: 6, color: 'blueLight'},
+            {index: 7, color: 'purpleLight'},
+            {index: 8, color: 'mauveLight'},
+            {index: 9, color: 'pinkLight'},
+            {index: 10, color: 'brownLight'},
+            {index: 11, color: 'greyLight'},
+        ],
+        icon: [
+            {index: 0, icon: 'appreciate'},
+            {index: 1, icon: 'emoji'},
+            {index: 2, icon: 'favor'},
+            {index: 3, icon: 'loading'},
+            {index: 4, icon: 'roundcheck'},
+            {index: 5, icon: 'search'},
+            {index: 6, icon: 'time'},
+            {index: 7, icon: 'warn'},
+            {index: 8, icon: 'camera'},
+            {index: 9, icon: 'like'},
+            {index: 10, icon: 'deliver'},
+            {index: 11, icon: 'evaluate'},
+            {index: 12, icon: 'send'},
+            {index: 13, icon: 'shop'},
+            {index: 14, icon: 'ticket'},
+            {index: 15, icon: 'discover'},
+            {index: 16, icon: 'footprint'},
+            {index: 17, icon: 'cart'},
+            {index: 18, icon: 'remind'},
+            {index: 19, icon: 'lock'},
+            {index: 20, icon: 'goods'},
+            {index: 21, icon: 'selection'},
+            {index: 22, icon: 'explore'},
+            {index: 23, icon: 'present'},
+            {index: 24, icon: 'round'},
+            {index: 25, icon: 'game'},
+            {index: 26, icon: 'vipcard'},
+            {index: 27, icon: 'light'},
+            {index: 28, icon: 'notice'},
+            {index: 29, icon: 'upstage'},
+            {index: 30, icon: 'baby'},
+            {index: 31, icon: 'clothes'},
+            {index: 32, icon: 'creative'},
+            {index: 33, icon: 'female'},
+            {index: 34, icon: 'male'},
+            {index: 35, icon: 'rank'},
+            {index: 36, icon: 'bad'},
+            {index: 37, icon: 'cameraadd'},
+            {index: 38, icon: 'focus'},
+            {index: 39, icon: 'file'},
+            {index: 40, icon: 'attention'},
+            {index: 41, icon: 'read'},
+            {index: 42, icon: 'magic'},
+            {index: 43, icon: 'tag'},
+            {index: 44, icon: 'all'},
+            {index: 45, icon: 'write'},
+            {index: 46, icon: 'crown'},
+            {index: 47, icon: 'musicfill'},
+            {index: 48, icon: 'record'},
+            {index: 49, icon: 'cardboard'},
+            {index: 50, icon: 'mail'},
+            {index: 51, icon: 'goodsnew'},
+            {index: 52, icon: 'medal'},
+            {index: 53, icon: 'newshot'},
+            {index: 54, icon: 'news'},
+            {index: 55, icon: 'skin'},
+            {index: 56, icon: 'usefull'},
+        ],
     },
     onReady() {
         // 设置初始透明度
@@ -57,27 +149,35 @@ Page({
     },
 
     showModal(e) {
-        this.setData({
-            modalName: e.currentTarget.dataset.target
-        })
+        if (!this.data.hasWork) {
+            this.setData({modalName: e.currentTarget.dataset.target})
+        }
     },
 
-    hideModal(e) {
-        this.setData({
-            modalName: null
-        })
+    hideModal() {
+        this.setData({modalName: null})
     },
 
-    // 对项目的相关操作
-    projectUpdata(e){
-        console.log(e.currentTarget.dataset.target)
+    // 新建一个项目
+    createOneOpen() {
+        this.setData({createProject: true});
+        this.animate('#am-project-create', [
+            {scale: [1.1, 1.1], opacity: 0},
+            {scale: [1, 1], opacity: 1},
+        ], 100).export();
     },
+    createOneClose() {
+        this.setData({createProject: false});
+        this.animate('#am-project-create', [
+            {scale: [1.1, 1.1], opacity: 0},
+            {scale: [1, 1], opacity: 1},
+        ], 100).export();
+    },
+
 
     // 进入设置页面
-    toSetting(){
-        this.setData({
-            modalName: 'setting'
-        });
+    toSetting() {
+        this.setData({modalName: 'setting'});
     }
 });
 

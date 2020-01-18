@@ -184,3 +184,10 @@
     opacity:1;
     pointer-events: all;
 }
+
+.home-project-create-color {
+    background-color: gold;
+    height: 45rpx;
+    width: 45rpx;
+    border-radius: 1000px;
+}
