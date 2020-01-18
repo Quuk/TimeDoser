@@ -13,27 +13,21 @@ Page({
         timeList: [{
             title: '15',
             name: 'orange',
-            color: '#f37b1d'
         }, {
             title: '25',
             name: 'yellow',
-            color: '#fbbd08'
         }, {
             title: '45',
             name: 'olive',
-            color: '#8dc63f'
         }, {
             title: '60',
             name: 'green',
-            color: '#39b54a'
         }, {
             title: '90',
             name: 'cyan',
-            color: '#1cbbb4'
         }, {
             title: '120',
             name: 'blue',
-            color: '#0081ff'
         }],
         color1: [
             {inex: 0, color: 'red'},
@@ -172,13 +166,14 @@ Page({
             color: 'cyan',
             score: 50
         }],
-        project:{
+        project: {
             name: '小程序研发',
             remark: '制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序',
             icon: 'like',
             color: 'pink',
             score: 996
-        }
+        },
+        nowMin: 25   // 现在的时间
 
     },
     onReady() {
@@ -210,6 +205,25 @@ Page({
 
     hideModal() {
         this.setData({modalName: null})
+    },
+
+    // 选中一个项目
+    chooseProject(e) {
+        const index = e.currentTarget.dataset.index;
+        const project = this.data.projectListLimit[index];
+        this.setData({
+            modalName: null,
+            project: project
+        })
+    },
+
+    // 选中时间
+    chooseMin(e) {
+        const min = e.currentTarget.dataset.min;
+        this.setData({
+            modalName: null,
+            nowMin: min
+        })
     },
 
     // 新建一个项目
