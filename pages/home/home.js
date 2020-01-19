@@ -182,6 +182,7 @@ Page({
         },
         nowMin: 25,   // 现在的时间
         nowUpdataProjectId: null,  // 现在修改的项目ID
+        exitInfo: false    // 退出警告
 
     },
     onShow() {
@@ -193,14 +194,27 @@ Page({
     startTime() {
         if (!this.data.changedue) {
             this.setData({hasWork: true, changedue: true});
-            startTime(this) // 字体变化
+            startTime(this, 300) // 字体变化
         }
+    },
+
+    // 弹出关闭警告
+    endWran() {
+        this.setData({exitInfo: true});
+    },
+    endWranClose() {
+        this.setData({exitInfo: false});
+        startTime(this, 100) // 字体变化
     },
 
     // 结束计时
     endTime() {
         if (!this.data.changedue) {
-            this.setData({hasWork: false, changedue: true});
+            this.setData({
+                hasWork: false,
+                changedue: true,
+                exitInfo: false
+            });
             endTime(this)   // 字体变化
         }
     },
@@ -337,37 +351,37 @@ function setRemarkOpecity(that) {
  * 1.颜色变深
  * 2.字体变大
  */
-function startTime(that) {
+function startTime(that, time) {
 
     // 1.计时字体变化
     that.animate('#am-home-date', [
         {scale: [1, 1], opacity: 0.5},
         {scale: [1.2, 1.2], opacity: 0.8},
-    ], 300);
+    ], time);
 
     // 2.计时备注变化1
     that.animate('#am-home-remark', [
         {translate: [0, 0], opacity: 0, scale: [1, 1]},
         {translate: [-5, 12], opacity: 1, scale: [0.9, 0.9]},
-    ], 300);
+    ], time);
 
     // 3.标签变化
     that.animate('#am-home-tag', [
         {translate: [0, 0], opacity: 1, scale: [1, 1]},
         {translate: [12, 12], opacity: 0.3, scale: [0.8, 0.8]},
-    ], 300);
+    ], time);
 
     // 4.计时备注变化2
     that.animate('#am-home-remark-end', [
         {translate: [0, 0], opacity: 1, scale: [1, 1]},
         {translate: [-5, 12], opacity: 0, scale: [0.9, 0.9]},
-    ], 300);
+    ], time);
 
     // 5.开始按钮变化
     that.animate('#am-home-start-icon', [
         {scale: [1.5, 1.5], opacity: 0},
         {scale: [1, 1], opacity: 1},
-    ], 300, function () {
+    ], time, function () {
         that.setData({changedue: false});
     });
 }

@@ -8,7 +8,7 @@
     <!--  分割线  -->
     <view class="home-line margin-lr"/>
     <view style="margin-top: 180rpx" class="flex justify-center align-center">
-        <view class="home-main-time-box flex align-center justify-center flex-direction">
+        <view wx:if="{{!exitInfo}}" class="home-main-time-box flex align-center justify-center flex-direction">
             <view id="am-home-date" style="opacity: 0.5;font-size: 80px" bindtap="showModal" data-target="time">
                 {{nowMin}}:00
             </view>
@@ -26,15 +26,29 @@
                 <view id="am-home-remark-end" wx:else class="index-project-name">{{project.name}}</view>
             </view>
         </view>
+        <view wx:else class="home-main-time-box">
+            <view class="flex justify-center align-center flex-direction"
+                  style="margin-bottom: 10px;height: 30%;margin-top: 20%">
+                <view style="font-size: 30px;font-weight: bold;opacity: 0.7;color: white;">确定要放弃计时吗?</view>
+                <view class="bg-grey radius padding-lr-xs" style="margin: 4rpx">已产生的时间种子将会消失</view>
+                <view class="bg-grey radius padding-lr-xs" style="margin: 4rpx">同时扣除1个硬币</view>
+            </view>
+            <view class="response flex padding justify-between">
+                <button class="cu-btn" style="background-color: #d2d2d2;width: 25%"
+                        bindtap="endTime">是的
+                </button>
+                <button class="cu-btn bg-green" style="width: 65%;opacity: 0.7" bindtap="endWranClose">点错了</button>
+            </view>
+        </view>
     </view>
     <view class="margin-top flex justify-center" style="height: 40px">
         <text id="am-home-start-icon" wx:if="{{!hasWork}}" style="font-size: 40px;color: grey" class="cuIcon-playfill"
               bindtap="startTime"></text>
-        <text id="am-home-start-icon" wx:else style="font-size: 40px;color: grey" class="cuIcon-stop"
-              bindtap="endTime"></text>
+        <text id="am-home-start-icon" wx:else style="font-size: 40px;color: grey" class="cuIcon-close"
+              bindtap="endWran"></text>
     </view>
 
-    <view class="index-setting">
+    <view class="index-setting" >
         <view class="index-setting-icon flex align-center justify-center" bindtap="showModal" data-target="setting">
             <text style="font-size: 20px;color: grey" class="cuIcon-top"></text>
         </view>
