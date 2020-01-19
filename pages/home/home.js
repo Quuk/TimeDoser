@@ -184,9 +184,9 @@ Page({
         nowUpdataProjectId: null,  // 现在修改的项目ID
 
     },
-    onReady() {
+    onShow() {
         // 设置初始透明度
-        setRemarkOpecity(this);
+        // setRemarkOpecity(this);
     },
 
     // 开始计时了
@@ -255,6 +255,11 @@ Page({
                 color: color
             },
         });
+
+        this.animate('#am-project-create', [
+            {scale: [1.1, 1.1], opacity: 0},
+            {scale: [1, 1], opacity: 1},
+        ], 100);
     },
 
     // 新建一个项目
@@ -324,9 +329,7 @@ Page({
 
 function setRemarkOpecity(that) {
     // 设置初始透明度
-    that.animate('#am-home-remark-end', [
-        {opacity: 1},
-    ], 1);
+    that.animate('#am-home-remark-end', [{opacity: 1}], 1);
 }
 
 /**

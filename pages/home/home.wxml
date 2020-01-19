@@ -148,7 +148,7 @@
                             <text style="font-size: 40px;opacity: 0.7" bindtap="randomIcon"
                                   class="cuIcon-{{item.icon}} line-white bg-{{item.color}} radius margin padding-xs"/>
                             <input style="font-size: 23px;opacity: 0.7;text-align:left;"
-                                   placeholder="在这里写上目标名称" maxlength="7" focus="true" value="{{item.name}}"
+                                   placeholder="在这里写上目标名称" maxlength="7" value="{{item.name}}"
                                    bindblur="setProjectName" class="line-white margin-sm response"/>
                         </view>
                         <view class="margin-lr" style="border: 1px white dashed;opacity: 0.5"/>
