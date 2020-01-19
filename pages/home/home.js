@@ -123,24 +123,28 @@ Page({
             color: ''
         },
         projectList: [{
+            id: 1,
             name: '小程序研发',
             remark: '制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序',
             icon: 'like',
             color: 'pink',
             score: 996
         }, {
+            id: 2,
             name: '英语学习',
             remark: '滴滴滴滴这是一个学习序',
             icon: 'mail',
             color: 'green',
             score: 39
         }, {
+            id: 3,
             name: '考研',
             remark: '好好学习好好考研',
             icon: 'vipcard',
             color: 'cyan',
             score: 50
         }, {
+            id: 4,
             name: 'UI学习',
             remark: '学一下好用的东西',
             icon: 'magic',
@@ -148,18 +152,21 @@ Page({
             score: 25
         }],
         projectListLimit: [{
+            id: 1,
             name: '小程序研发',
             remark: '制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序',
             icon: 'like',
             color: 'pink',
             score: 996
         }, {
+            id: 2,
             name: '英语学习',
             remark: '滴滴滴滴这是一个学习序',
             icon: 'mail',
             color: 'green',
             score: 39
         }, {
+            id: 3,
             name: '考研',
             remark: '好好学习好好考研',
             icon: 'vipcard',
@@ -173,7 +180,8 @@ Page({
             color: 'pink',
             score: 996
         },
-        nowMin: 25   // 现在的时间
+        nowMin: 25,   // 现在的时间
+        nowUpdataProjectId: null,  // 现在修改的项目ID
 
     },
     onReady() {
@@ -204,7 +212,11 @@ Page({
     },
 
     hideModal() {
-        this.setData({modalName: null})
+        this.setData({
+            modalName: null,
+            nowUpdataProjectId: null,  // 关掉修改窗口
+            createProject: false       // 关掉新增窗口
+        })
     },
 
     // 选中一个项目
@@ -226,6 +238,25 @@ Page({
         })
     },
 
+
+    // 随机更新一种颜色
+    randomIcon() {
+        const iconList = this.data.icon;
+        const iconIndex = parseInt(Math.random() * iconList.length);
+        const icon = iconList[iconIndex].icon;
+
+        const colorList = this.data.color1;
+        const colorIndex = parseInt(Math.random() * colorList.length);
+        const color = colorList[colorIndex].color;
+
+        this.setData({
+            newProjectInfo: {
+                icon: icon,
+                color: color
+            },
+        });
+    },
+
     // 新建一个项目
     createOneOpen() {
         const iconList = this.data.icon;
@@ -241,7 +272,8 @@ Page({
                 icon: icon,
                 color: color
             },
-            createProject: true
+            createProject: true,
+            nowUpdataProjectId: null  // 关掉修改窗口
         });
 
         this.animate('#am-project-create', [
@@ -264,6 +296,24 @@ Page({
     },
     setProjectName(e) {
         this.data.newProjectInfo.name = e.detail.value;
+    },
+
+    // 修改项目
+    projectUpdata(e) {
+        const type = e.currentTarget.dataset.target;
+        const index = e.currentTarget.dataset.index;
+
+        this.setData({
+            nowUpdataProjectId: index,
+            createProject: false    // 关掉新增窗口
+        });
+        this.animate('#am-project-update', [
+            {scale: [0.9, 0.9], opacity: 0},
+            {scale: [1, 1], opacity: 1},
+        ], 100);
+    },
+    updateOneClose() {
+        this.setData({nowUpdataProjectId: null});
     },
 
     // 进入设置页面
