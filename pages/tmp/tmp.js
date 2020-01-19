@@ -5,8 +5,6 @@ Page({
         StatusBar: app.globalData.StatusBar,
         CustomBar: app.globalData.CustomBar,
         baseUser: wx.getStorageSync("baseUser"),
-        hasWork: false,
-        tmpStyle: '',
     },
 
     startTime: function () {
@@ -32,4 +30,13 @@ Page({
             }.bind(this)
         )
     },
+    start: function () {
+        console.log("点击了开始");
+
+        // this.animate('#main', [
+        //     {scale: [1, 1], filter: none},
+        //     {scale: [0.5, 0.5],filter: grayscale(100%)},
+        // ], 1000)
+
+    }
 });

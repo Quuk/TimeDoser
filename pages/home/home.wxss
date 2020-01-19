@@ -190,3 +190,31 @@
     width: 45rpx;
     border-radius: 1000px;
 }
+
+.bacFilterStart{
+    animation: bacFilterStart 2s both;
+}
+
+.bacFilterEnd{
+    animation: bacFilterEnd 1ms both;
+}
+
+@keyframes bacFilterStart {
+    from {
+        filter: grayscale(0%);
+    }
+
+    to {
+        filter: grayscale(70%);
+    }
+}
+
+@keyframes bacFilterEnd {
+    from {
+        filter: grayscale(70%);
+    }
+
+    to {
+        filter: grayscale(0%);
+    }
+}

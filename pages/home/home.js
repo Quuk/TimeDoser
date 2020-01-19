@@ -182,7 +182,7 @@ Page({
         },
         nowMin: 25,   // 现在的时间
         nowUpdataProjectId: null,  // 现在修改的项目ID
-        exitInfo: false    // 退出警告
+        exitInfo: false,    // 退出警告
 
     },
     onShow() {
