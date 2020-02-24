@@ -1,3 +1,5 @@
+import common from '../../common.js';
+
 const app = getApp();
 
 Page({
@@ -178,16 +180,20 @@ Page({
             remark: '制作一个番茄时钟软件,作为自己的面试作品,也为了能够更好的使用小程序',
             icon: 'like',
             color: 'pink',
-            score: 996
+            sumMinute: 996
         },
         nowMin: 25,   // 现在的时间
         nowUpdataProjectId: null,  // 现在修改的项目ID
         exitInfo: false,    // 退出警告
 
     },
-    onShow() {
+    onLoad() {
         // 设置初始透明度
         // setRemarkOpecity(this);
+
+        // 获取所有的项目信息
+        findAll(this);
+
     },
 
     // 开始计时了
@@ -413,4 +419,65 @@ function endTime(that) {
     ], 300, function () {
         that.setData({changedue: false});
     });
+}
+
+function findAll(that) {
+    app.userOpenidReadyCallback = () => {
+
+        // 加载缓存信息
+        const proejctInfo = wx.getStorageSync("project");
+        const projectListInfo = wx.getStorageSync("projectList");
+        const projectListLimitInfo = [];
+        projectListInfo.forEach(function (item, index) {
+            if (index < 3) {
+                projectListLimitInfo.push(item)
+            }
+        });
+
+        if (proejctInfo) {
+            that.setData({
+                project: proejctInfo,
+                projectList: projectListInfo,
+                projectListLimit: projectListLimitInfo
+            });
+        }
+
+
+        // 关掉首页的提示窗口
+        wx.hideToast();
+
+        // 请求所有的项目信息
+        wx.request({
+            url: `${common.URL}/project/findAll`,
+            header: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'X_Auth_Token': app.globalData.token
+            },
+            method: "get",
+            success: requsData => {
+                if (requsData.statusCode === 200 && requsData.data.code === 200) {
+                    console.log(requsData.data.data);
+
+                    // 设置最近一次项目
+                    requsData.data.data.forEach(function (item) {
+                        if (item.lastProject) {
+                            that.setData({project: item});
+
+                            wx.setStorage({
+                                key: 'project',
+                                data: item
+                            });
+
+                        }
+                    });
+
+                    that.setData({projectList: requsData.data.data});
+                    wx.setStorage({
+                        key: 'projectList',
+                        data: requsData.data.data
+                    });
+                }
+            }
+        });
+    }
 }

@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <view id="home-body" class="{{exitInfo==true?'bacFilterStart':'bacFilterEnd'}}" style="height:{{windowHeight}}px">
     <view style="height:{{CustomBar-StatusBar}}px;margin-top:{{StatusBar}}px;">
         <view class="home-avatar">
@@ -18,7 +19,7 @@
                         <text class="cuIcon-{{project.icon}}"></text>
                     </view>
                     <view class="cu-tag line-{{project.color}}">
-                        <view>{{project.score}}\t</view>
+                        <view>{{project.sumMinute}}\t</view>
                         <view style="margin-left: 3rpx;">min</view>
                     </view>
                 </view>
@@ -80,7 +81,7 @@
                 <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
                 <view class="padding-sm" style="width: 100%;overflow: hidden;text-align: left">
                     <view class="home-project-card-name">{{item.name}}</view>
-                    <view class="cu-tag bg-white sm radius margin-top-xs" style="opacity: 0.5">{{item.score}} min</view>
+                    <view class="cu-tag bg-white sm radius margin-top-xs" style="opacity: 0.5">{{item.sumMinute}} min</view>
                 </view>
             </view>
             <view class="bg-green margin radius flex" style="height: 70px;" bindtap="toSetting">
@@ -128,7 +129,7 @@
                             <!-- 未触发 -->
                             <view class="response tmp-one" style="height: 100%;position:absolute;z-index: 1;">
                                 <view class="flex margin-top-xs align-center response">
-                                    <view class="cu-tag bg-white sm radius" style="opacity: 0.5">{{item.score}}min
+                                    <view class="cu-tag bg-white sm radius" style="opacity: 0.5">{{item.sumMinute}} min
                                     </view>
                                     <view class="margin-left-xs flex justify-start"
                                           style="width:190rpx; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;color: black;opacity: 0.5">

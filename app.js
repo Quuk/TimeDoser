@@ -3,7 +3,13 @@ import common from 'common.js';
 App({
     onLaunch: function () {
 
-        common.sout("加载中...");
+        wx.showToast({
+            title: "登录中...",
+            icon: "loading",
+            mask: true,
+            duration: 10000
+        });
+
         // 登录接口
         wx.login({
             success: data => {
@@ -18,14 +24,11 @@ App({
                             this.globalData.baseUser = data.data.data;
                             this.globalData.token = data.data.data.token;
                             wx.setStorageSync('token', data.data.data.token);
+                            wx.setStorageSync('baseUser', data.data.data);
 
-                            // 存入缓存区
-                            wx.setStorage({
-                                key: 'baseUser',
-                                data: data.data.data
-                            });
-
-                            wx.hideToast();
+                            if (this.userOpenidReadyCallback) {
+                                this.userOpenidReadyCallback()
+                            }
                         }
                     }
                 });
