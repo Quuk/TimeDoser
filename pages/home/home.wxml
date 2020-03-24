@@ -49,7 +49,7 @@
               bindtap="endWran"></text>
     </view>
 
-    <view class="index-setting" >
+    <view class="index-setting">
         <view class="index-setting-icon flex align-center justify-center" bindtap="showModal" data-target="setting">
             <text style="font-size: 20px;color: grey" class="cuIcon-top"></text>
         </view>
@@ -81,7 +81,8 @@
                 <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;" class="margin-lr-sm"/>
                 <view class="padding-sm" style="width: 100%;overflow: hidden;text-align: left">
                     <view class="home-project-card-name">{{item.name}}</view>
-                    <view class="cu-tag bg-white sm radius margin-top-xs" style="opacity: 0.5">{{item.sumMinute}} min</view>
+                    <view class="cu-tag bg-white sm radius margin-top-xs" style="opacity: 0.5">{{item.sumMinute}} min
+                    </view>
                 </view>
             </view>
             <view class="bg-green margin radius flex" style="height: 70px;" bindtap="toSetting">
@@ -115,9 +116,34 @@
                 <!-- 一张任务卡片 -->
                 <view wx:for="{{projectList}}" wx:key>
 
+
+                    <!-- 修改界面 -->
+                    <view wx:if="{{item.id==nowUpdataProjectId && nowUpdataProjectId!=null}}"
+                          class="bg-{{item.color}} margin radius"
+                          bindtap="createOne" id="am-project-update">
+                        <view class="flex justify-start align-center">
+                            <text style="font-size: 40px;opacity: 0.7" bindtap="randomIcon"
+                                  class="cuIcon-{{item.icon}} line-white bg-{{item.color}} radius margin padding-xs"/>
+                            <input style="font-size: 23px;opacity: 0.7;text-align:left;"
+                                   placeholder="在这里写上目标名称" maxlength="7" value="{{item.name}}"
+                                   bindblur="setProjectName" class="line-white margin-sm response"/>
+                        </view>
+                        <view class="margin-lr" style="border: 1px white dashed;opacity: 0.5"/>
+                        <view style="text-align: left;margin: 30rpx 30rpx 10rpx 30rpx" class="flex align-center">
+                            <view style="opacity:0.7;margin-left: 5px">备注:</view>
+                            <input bindblur="setProjectRemark" value="{{item.remark}}" maxlength="24"
+                                   class="margin-left-sm" type="text" placeholder="写点备注吧"/>
+                        </view>
+                        <view class="flex padding justify-between">
+                            <button class="cu-btn lg" style="background-color: #d2d2d2;width: 45%"
+                                    bindtap="updateOneClose">算了
+                            </button>
+                            <button class="cu-btn lg bg-green" style="width: 45%" bindtap="create">改好啦</button>
+                        </view>
+                    </view>
+
                     <!-- 正常显示 -->
-                    <view wx:if="{{item.id!=nowUpdataProjectId}}"
-                          class="bg-{{item.color}} radius flex home-project-card">
+                    <view wx:else class="bg-{{item.color}} radius flex home-project-card">
                         <view class="flex justify-center align-center">
                             <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);"
                                   class="cuIcon-{{item.icon}}"/>
@@ -149,36 +175,12 @@
                                 <text class="home-project-card-icon cuIcon-edit" data-target="2"
                                       data-index="{{item.id}}"
                                       bindtap="projectUpdata"/>
-                                <text class="home-project-card-icon cuIcon-delete" data-target="3"
-                                      data-index="{{item.id}}"
-                                      bindtap="projectUpdata"/>
+                                <text class="home-project-card-icon cuIcon-delete" data-index="{{item.id}}"
+                                      bindtap="projectDelete"/>
                             </view>
                         </view>
                     </view>
 
-                    <!-- 修改界面 -->
-                    <view wx:else class="bg-{{item.color}} margin radius" bindtap="createOne"
-                          id="am-project-update">
-                        <view class="flex justify-start align-center">
-                            <text style="font-size: 40px;opacity: 0.7" bindtap="randomIcon"
-                                  class="cuIcon-{{item.icon}} line-white bg-{{item.color}} radius margin padding-xs"/>
-                            <input style="font-size: 23px;opacity: 0.7;text-align:left;"
-                                   placeholder="在这里写上目标名称" maxlength="7" value="{{item.name}}"
-                                   bindblur="setProjectName" class="line-white margin-sm response"/>
-                        </view>
-                        <view class="margin-lr" style="border: 1px white dashed;opacity: 0.5"/>
-                        <view style="text-align: left;margin: 30rpx 30rpx 10rpx 30rpx" class="flex align-center">
-                            <view style="opacity:0.7;margin-left: 5px">备注:</view>
-                            <input bindblur="setProjectRemark" value="{{item.remark}}" maxlength="24"
-                                   class="margin-left-sm" type="text" placeholder="写点备注吧"/>
-                        </view>
-                        <view class="flex padding justify-between">
-                            <button class="cu-btn lg" style="background-color: #d2d2d2;width: 45%"
-                                    bindtap="updateOneClose">算了
-                            </button>
-                            <button class="cu-btn lg bg-green" style="width: 45%" bindtap="create">改好啦</button>
-                        </view>
-                    </view>
                 </view>
 
 
