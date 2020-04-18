@@ -16,16 +16,10 @@ Component({
         allTask: wx.getStorageSync("allTask")
     },
     created: function () {
-
-        // 检查token
-        checkToken(this);
-
-    },
-    attached: function () {
+        console.log("开始")
         getAllTask(this);
     },
     methods: {
-
         onPullDownRefresh() {
             console.log("下拉了")
             common.sout("下拉了")
@@ -42,7 +36,7 @@ Component({
             });
         },
 
-        toHomePage(){
+        toHomePage() {
             wx.navigateTo({
                 url: "/pages/my/home/home"
             });
@@ -79,24 +73,15 @@ Component({
 
         // 删除任务
         deleteOne(e) {
-            wx.request({
-                url: `${common.URL}/planTask/deleteOne`,
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'X_Auth_Token': app.globalData.token
-                },
-                method: "POST",
-                data: {
-                    taskId: e.currentTarget.dataset.id
-                },
-                success: data => {
-                    if (data.statusCode === 200 && data.data.code === 200) {
-                        common.sout("删除成功");
 
-                        // 重新加载页面
-                        wx.removeStorage({key: 'allTask'});
-                        getAllTask(this);
-                    }
+            ajax.myRequest({
+                url: '/planTask/deleteOne',
+                data: {taskId: e.currentTarget.dataset.id},
+                success: () => {
+                    common.sout("删除成功");
+                    // 重新加载页面
+                    wx.removeStorage({key: 'allTask'});
+                    getAllTask(this);
                 }
             });
         },
@@ -152,57 +137,12 @@ Component({
  * @param that
  */
 function getAllTask(that) {
-    wx.getStorage({
-        key: "allTask",
-        success(res) {
+    ajax.myRequest({
+        url: '/planTask/getAll',
+        method: 'get',
+        success: res => {
             that.setData({allTask: res.data});
-        },
-        fail() {
-            ajax.myRequest({
-                url: '/planTask/getAll',
-                method: 'get',
-                success: res => {
-                    that.setData({allTask: res.data});
-                    wx.setStorage({key: "allTask", data: res.data});
-                }
-            });
+            wx.setStorage({key: "allTask", data: res.data});
         }
     });
-}
-
-
-// 检查token(微信首次登录的一个大坑...)
-function checkToken(that) {
-    if (wx.getStorageSync("token") === null) {
-
-        // 避免操作
-        wx.showToast({
-            title: "加载中...",
-            icon: "loading",
-            mask: true,
-            duration: 5000
-        });
-
-        // 登录接口
-        wx.login({
-            success: data => {
-                wx.request({
-                    url: `${common.URL}/login/getBaseInfo`,
-                    header: common.HEADER_NOTOKEN,
-                    method: "POST",
-                    data: {appCode: data.code},
-                    success: requsData => {
-                        if (requsData.statusCode === 200 && requsData.data.code === 200) {
-                            wx.setStorageSync('token', requsData.data.data.token);
-                            app.globalData.token = requsData.data.data.token;
-
-                            // 重新加载页面
-                            getAllTask(that);
-                            wx.hideToast();
-                        }
-                    }
-                });
-            },
-        });
-    }
 }
