@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/todoList/todoList",
+    "pages/index/index",
     "pages/my/home/home",
     "pages/my/other/other",
     "pages/timeDoser/timeDoser"

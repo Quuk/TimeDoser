@@ -1,5 +1,5 @@
 <cu-custom isCustom="{{true}}" style="padding-top:{{StatusBar}}px">
-    <view slot="content">个人信息</view>
+    <view slot="content">主页</view>
 </cu-custom>
 
 <view class="pageBac" >
