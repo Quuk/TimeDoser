@@ -14,7 +14,7 @@
     <view class="userInfo-line"/>
     <view class="userInfo-item flex justify-between align-center padding-lr">
         <view>个性签名</view>
-        <view class="line-gray">这个人很懒,还有没签名</view>
+        <view class="line-gray">然鹅这个作者并没开发签名功能hhhhh</view>
     </view>
     <view class="userInfo-line"/>
 </view>

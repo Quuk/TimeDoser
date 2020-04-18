@@ -55,7 +55,7 @@
         <!-- 开始任务 -->
         <view class="todolist-card-start" bindtap="toStart" data-minute="{{item.tomatoWorkTime}}"
               data-name="{{item.name}}" data-id="{{item.id}}">
-            <text class="cuIcon-right"/>
+            <text class="cuIcon-playfill"/>
         </view>
     </view>
 
@@ -95,7 +95,7 @@
         <!-- 重新开始任务 -->
         <view class="todolist-card-start" bindtap="toReStart" data-id="{{item.id}}"
               data-name="{{item.name}}">
-            <text class="cuIcon-add"/>
+            <text class="cuIcon-refresh"/>
         </view>
     </view>
 
