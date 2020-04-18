@@ -4,17 +4,17 @@
 <view style="margin-top: 20px">
     <view class="userInfo-item flex justify-between align-center padding-lr">
         <view>昵称</view>
-        <view class="line-gray">狐狸的胸针</view>
+        <open-data type="userNickName" class="line-gray"/>
     </view>
     <view class="userInfo-line"/>
     <view class="userInfo-item flex justify-between align-center padding-lr">
         <view>性别</view>
-        <view class="line-gray">男</view>
+        <open-data type="userGender" lang="zh_CN" class="line-gray"/>
     </view>
     <view class="userInfo-line"/>
     <view class="userInfo-item flex justify-between align-center padding-lr">
         <view>个性签名</view>
-        <view class="line-gray">good good stary day day up</view>
+        <view class="line-gray">这个人很懒,还有没签名</view>
     </view>
     <view class="userInfo-line"/>
 </view>

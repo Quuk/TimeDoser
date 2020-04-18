@@ -1,11 +1,15 @@
 import common from '../../common.js';
 
+const ajax = require('../../utils/ajax.js');
+
 let app = getApp();
 
 Page({});
 
 Component({
     data: {
+        StatusBar: app.globalData.StatusBar,
+        CustomBar: app.globalData.CustomBar,
         minute: 44,
         logName: "默认番茄",
         form_minute: 25,  // 页面默认25分钟
@@ -38,40 +42,36 @@ Component({
             });
         },
 
+        toHomePage(){
+            wx.navigateTo({
+                url: "/pages/my/home/home"
+            });
+        },
+
         // 添加任务
         addOne(data) {
-
             if (data.detail.value.minute === "0") {
                 common.sout("时间不可设置为0");
                 return;
             }
 
-            wx.request({
-                url: `${common.URL}/planTask/addOne`,
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'X_Auth_Token': app.globalData.token
-                },
-                method: "POST",
+            ajax.myRequest({
+                url: '/planTask/addOne',
                 data: {
                     name: data.detail.value.name || "默认番茄",
                     minute: parseInt(data.detail.value.minute)
                 },
-                success: data => {
-                    if (data.statusCode === 200 && data.data.code === 200) {
+                success: () => {
+                    common.sout("添加成功");
+                    // 重新加载页面
+                    wx.removeStorage({key: 'allTask'});
+                    getAllTask(this);
 
-                        common.sout("添加成功");
-
-                        // 重新加载页面
-                        wx.removeStorage({key: 'allTask'});
-                        getAllTask(this);
-
-                        // 清空表格数据
-                        this.setData({
-                            form_name: '',
-                            form_minute: 25
-                        })
-                    }
+                    // 清空表格数据
+                    this.setData({
+                        form_name: '',
+                        form_minute: 25
+                    })
                 }
             });
             this.hideModal();
@@ -158,20 +158,12 @@ function getAllTask(that) {
             that.setData({allTask: res.data});
         },
         fail() {
-            wx.request({
-                url: `${common.URL}/planTask/getAll`,
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'X_Auth_Token': app.globalData.token
-                },
-                success: data => {
-                    if (data.statusCode === 200 && data.data.code === 200) {
-                        that.setData({allTask: data.data.data});
-                        wx.setStorage({
-                            key: "allTask",
-                            data: data.data.data
-                        })
-                    }
+            ajax.myRequest({
+                url: '/planTask/getAll',
+                method: 'get',
+                success: res => {
+                    that.setData({allTask: res.data});
+                    wx.setStorage({key: "allTask", data: res.data});
                 }
             });
         }

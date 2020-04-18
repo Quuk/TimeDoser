@@ -1,4 +1,8 @@
-<view class="pageBac" style="padding-top:{{StatusBar}}px">
+<cu-custom isCustom="{{true}}" style="padding-top:{{StatusBar}}px">
+    <view slot="content">个人信息</view>
+</cu-custom>
+
+<view class="pageBac" >
 
     <!--  头部部分  -->
     <view class="setting-head-box flex">
@@ -15,7 +19,7 @@
         </view>
         <view class="avatar-name-diy flex flex-direction justify-start align-end padding" bindtap="toUserInfo"
               style="padding-top:{{CustomBar}}px;">
-            <text class="avatar-name-head-diy">{{baseUser.username}}</text>
+            <open-data type="userNickName" class="avatar-name-head-diy"/>
             <text class="avatar-name-remark-diy">这个人很懒,还有没签名</text>
         </view>
     </view>

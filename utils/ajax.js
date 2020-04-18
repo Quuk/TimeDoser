@@ -53,12 +53,12 @@ const myRequest = options => {
             if (options.method === undefined || options.method === null) {
                 options.method = 'post';
             }
-            if (options.method.toLowerCase() === 'post') {
-                if (options.data) {
-                    let dataStr = JSON.stringify(options.data);
-                    options.data = {param: dataStr};
-                }
-            }
+            // if (options.method.toLowerCase() === 'post') {
+            //     if (options.data) {
+            //         let dataStr = JSON.stringify(options.data);
+            //         options.data = {param: dataStr};
+            //     }
+            // }
 
             //success
             if (options.success && typeof (options.success) === 'function') {

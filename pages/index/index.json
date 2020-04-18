@@ -1,8 +1,0 @@
-{
-  "disableScroll": true,
-  "usingComponents": {
-    "todoList": "/pages/todoList/todoList",
-    "class": "/pages/class/class",
-    "my": "/pages/my/home/home"
-  }
-}

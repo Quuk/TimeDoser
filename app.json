@@ -1,9 +1,8 @@
 {
   "pages": [
-    "pages/my/home/home",
-    "pages/index/index",
-    "pages/my/other/other",
     "pages/todoList/todoList",
+    "pages/my/home/home",
+    "pages/my/other/other",
     "pages/timeDoser/timeDoser"
   ],
   "window": {

@@ -1,7 +1,15 @@
-<view class="padding-top-xxl"/>
+<!-- 状态栏 -->
+<view style="padding-top:{{StatusBar}}px"/>
+
+<!-- 头部 -->
+<view bindtap="toHomePage">
+    <view class="round cu-avatar sm margin-left margin-top-sm margin-bottom" style="overflow: hidden;">
+        <open-data type="userAvatarUrl" style="width: 48rpx;height: 48rpx;"/>
+    </view>
+    <open-data type="userNickName" class="nickName"/>
+</view>
 
 <scroll-view scroll-y class="scrollPage">
-
     <view class="cu-bar align-start margin-top-xs">
         <view class="action border-title">
             <text class="text-xl text-bold">待办任务</text>
