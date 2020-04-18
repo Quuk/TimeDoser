@@ -95,22 +95,13 @@ Component({
         // 重新开始任务
         toReStart(e) {
             common.sout("重新开始此项任务");
-            wx.request({
-                url: `${common.URL}/planTask/restartOne`,
-                header: {
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'X_Auth_Token': app.globalData.token
-                },
-                method: "POST",
-                data: {
-                    taskId: e.currentTarget.dataset.id
-                },
-                success: data => {
-                    if (data.statusCode === 200 && data.data.code === 200) {
-                        // 重新加载页面
-                        wx.removeStorage({key: 'allTask'});
-                        getAllTask(this);
-                    }
+            ajax.myRequest({
+                url: '/planTask/restartOne',
+                method: 'get',
+                data: {taskId: e.currentTarget.dataset.id},
+                success: () => {
+                    wx.removeStorage({key: 'allTask'});
+                    getAllTask(this);
                 }
             });
         },

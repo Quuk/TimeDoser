@@ -1,5 +1,5 @@
 import util from "../../utils/util.js";
-import common from '../../common.js';
+const ajax = require('../../utils/ajax.js');
 
 const app = getApp();
 
@@ -91,13 +91,8 @@ Page({
 
     // 完成一个任务
     finishTask: function (id) {
-        wx.request({
-            url: `${common.URL}/planTask/finishOne`,
-            header: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'X_Auth_Token': app.globalData.token
-            },
-            method: "POST",
+        ajax.myRequest({
+            url: '/planTask/finishOne',
             data: {taskId: id}
         });
     },
