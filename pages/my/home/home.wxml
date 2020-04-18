@@ -3,14 +3,14 @@
     <!--  头部部分  -->
     <view class="setting-head-box flex">
         <view class="avatar-diy flex flex-direction">
-            <image class="cu-avatar round xxl margin-bottom-lg" src="{{baseUser.avatarUrl}}"/>
-            <!--            <view class="response flex margin">-->
-            <!--                <view class="cu-btn bg-grey sm radius margin-left" bindtap="toSetting" style="height: 23px">-->
-            <!--                    <text class="cuIcon-settingsfill lg"></text>-->
-            <!--                </view>-->
-            <!--                <view class="cu-btn bg-orange sm radius margin-left-xs" style="height: 23px">更多-->
-            <!--                </view>-->
-            <!--            </view>-->
+            <view class="round cu-avatar xxl" style="overflow: hidden;">
+                <open-data type="userAvatarUrl" style="width: 168rpx;height: 168rpx;"/>
+            </view>
+            <view class="response flex margin">
+                <view class="cu-btn bg-grey sm radius margin-left" style="height: 23px;opacity: 0.5">
+                    <text class="cuIcon-service lg"> 联系作者</text>
+                </view>
+            </view>
         </view>
         <view class="avatar-name-diy flex flex-direction justify-start align-end padding" bindtap="toUserInfo"
               style="padding-top:{{CustomBar}}px;">

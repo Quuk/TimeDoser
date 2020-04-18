@@ -1,36 +1,5 @@
-import common from 'common.js';
-
 App({
     onLaunch: function () {
-
-        common.sout("加载中...");
-        // 登录接口
-        wx.login({
-            success: data => {
-                wx.request({
-                    url: `${common.URL}/login/getBaseInfo`,
-                    header: common.HEADER_NOTOKEN,
-                    data: {appCode: data.code},
-                    method: "POST",
-                    success: data => {
-                        if (data.statusCode === 200 && data.data.code === 200) {
-                            // 存入全局变量
-                            this.globalData.baseUser = data.data.data;
-                            this.globalData.token = data.data.data.token;
-                            wx.setStorageSync('token', data.data.data.token);
-
-                            // 存入缓存区
-                            wx.setStorage({
-                                key: 'baseUser',
-                                data: data.data.data
-                            });
-
-                            wx.hideToast();
-                        }
-                    }
-                });
-            }
-        });
 
         wx.getSystemInfo({
             success: e => {

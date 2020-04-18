@@ -1,4 +1,5 @@
 import common from "../../../common.js";
+const ajax = require('../../../utils/ajax.js');
 
 const app = getApp();
 
@@ -7,22 +8,15 @@ Component({
     data: {
         StatusBar: app.globalData.StatusBar,
         CustomBar: app.globalData.CustomBar,
-        baseUser: wx.getStorageSync("baseUser"),
+        baseUser: wx.getStorageSync("baseUserInfo"),
         dayCount: 0,
         weekCount: 0,
         allCount: 0
     },
     attached: function () {
-        checkData(this);
         loadBaseData(this);
     },
     methods: {
-        toSetting() {
-            wx.navigateTo({
-                url: "/pages/timeDoser/timeDoser"
-            });
-        },
-
         toUserInfo() {
             wx.navigateTo({
                 url: "/pages/my/other/other"
@@ -66,27 +60,15 @@ Component({
     },
 });
 
-// 数据校验
-function checkData(that) {
-    // 个人主页出现了数据加载异常bug
-    if (that.data.baseUser === null || that.data.baseUser === "" || that.data.baseUser.avatarUrl === null || that.data.baseUser.avatarUrl === "") {
-        that.setData({baseUser: wx.getStorageSync("baseUser")});
-    }
-}
-
-
 // load base data
 function loadBaseData(that) {
-    wx.request({
-        url: `${common.URL}/report/pageData`,
-        header: {'X_Auth_Token': app.globalData.token},
-        success: data => {
-            if (data.statusCode === 200 && data.data.code === 200) {
-                that.setData({pageData: data.data.data});
-                // 数字增长效果
-                addNum(that, data.data.data);
-            }
-        },
+    ajax.myRequest({
+        url: '/report/pageData',
+        success: res => {
+            that.setData({pageData: res.data});
+            // 数字增长效果
+            addNum(that, res.data);
+        }
     });
 }
 
