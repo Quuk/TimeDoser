@@ -13,7 +13,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.0",
+	"libVersion": "2.10.4",
 	"appid": "wxaaff018e79374ad2",
 	"projectname": "timeDoser_wx",
 	"debugOptions": {

@@ -13,7 +13,7 @@
             <view id="am-home-date" style="opacity: 0.5;font-size: 80px" bindtap="showModal" data-target="time">
                 {{nowMin}}:00
             </view>
-            <view class="flex align-center" style="width: 65%;height: 30px;" bindtap="showModal" data-target="project">
+            <view wx:if="{{projectList.length!==0}}" class="flex align-center" style="width: 65%;height: 30px;" bindtap="showModal" data-target="project">
                 <view id="am-home-tag" class="cu-capsule radius">
                     <view class="cu-tag bg-{{project.color}}">
                         <text class="cuIcon-{{project.icon}}"></text>
@@ -26,6 +26,7 @@
                 <view id="am-home-remark" wx:if="{{hasWork}}" class="index-time-remark-start">进行中..</view>
                 <view id="am-home-remark-end" wx:else class="index-project-name">{{project.name}}</view>
             </view>
+            <view wx:if="{{projectList.length===0}}" style="opacity: 0.5;font-size: 10" bindtap="toSetting">点击创建一个新的任务</view>
         </view>
         <view wx:else class="home-main-time-box">
             <view class="flex justify-center align-center flex-direction"

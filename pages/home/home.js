@@ -40,7 +40,6 @@ Page({
 
         // 获取所有的项目信息
         findAll(this);
-
     },
 
     // 开始计时了
@@ -189,6 +188,7 @@ Page({
             }
         });
 
+        setProjectLimit(this);
     },
     setProjectRemark(e) {
         this.data.newProjectInfo.remark = e.detail.value;
@@ -219,20 +219,20 @@ Page({
     projectDelete(index) {
         const projectId = index.target.dataset.index;
 
+        // 在本地数据中移除
+        removeValue(this, projectId);
 
         wx.request({
             url: `${common.URL}/project/deleteOne`,
             header: {
                 'content-type': 'application/x-www-form-urlencoded',
                 'X_Auth_Token': app.globalData.token
-
             },
             method: "get",
             data: {"id": projectId},
-            success: res => {
-                console.log(res);
-                findAll(this);
-            }
+            // success: () => {
+            //     findAll(this);
+            // }
         });
     },
 
@@ -316,25 +316,62 @@ function endTime(that) {
     });
 }
 
+// 移除其中的一个元素
+function removeValue(that, projectId) {
+    const projectListTmp = that.data.projectList;
+    projectListTmp.forEach(function (item, index) {
+        if (item.id === projectId) {
+            projectListTmp.splice(index, 1);
+        }
+    });
+    that.setData({projectList: projectListTmp});
+    setProjectLimit(that);
+}
+
+// 新增或删除项目以后即使更新
+function setProjectLimit(that) {
+    const projectListTmp = that.data.projectList;
+    const projectListLimitInfo = [];
+    let projectTmp = {};
+    projectListTmp.forEach(function (item, index) {
+        if (index < 3) {
+            projectListLimitInfo.push(item)
+        }
+    });
+    projectListTmp.forEach(function (item) {
+        if (item.lastProject) {
+            projectTmp = item;
+        }
+    });
+
+    that.setData({
+        project: projectTmp,
+        projectListLimit: projectListLimitInfo
+    })
+}
+
 function findAll(that) {
     app.userOpenidReadyCallback = () => {
 
         // 加载缓存信息
-        const proejctInfo = wx.getStorageSync("project");
+        const projectInfo = wx.getStorageSync("project");
         const projectListInfo = wx.getStorageSync("projectList");
         const projectListLimitInfo = [];
-        projectListInfo.forEach(function (item, index) {
-            if (index < 3) {
-                projectListLimitInfo.push(item)
-            }
-        });
 
-        if (proejctInfo) {
-            that.setData({
-                project: proejctInfo,
-                projectList: projectListInfo,
-                projectListLimit: projectListLimitInfo
+        if (projectInfo !== '') {
+            projectListInfo.forEach(function (item, index) {
+                if (index < 3) {
+                    projectListLimitInfo.push(item)
+                }
             });
+
+            if (projectInfo) {
+                that.setData({
+                    project: projectInfo,
+                    projectList: projectListInfo,
+                    projectListLimit: projectListLimitInfo
+                });
+            }
         }
 
         // 关掉首页的提示窗口
@@ -368,6 +405,16 @@ function findAll(that) {
                     wx.setStorage({
                         key: 'projectList',
                         data: requsData.data.data
+                    });
+                } else if (requsData.data.code === 201) {
+                    that.setData({
+                        project: {},
+                        projectList: [],
+                        projectListLimit: []
+                    });
+                    wx.setStorage({
+                        key: 'projectList',
+                        data: []
                     });
                 }
             }
