@@ -7,9 +7,10 @@
                 <open-data type="userAvatarUrl" style="width: 168rpx;height: 168rpx;"/>
             </view>
             <view class="response flex margin">
-                <view class="cu-btn bg-grey sm radius margin-left" style="height: 23px;opacity: 0.5">
+                <button class="cu-btn bg-grey sm radius margin-left" style="height: 23px;opacity: 0.5"
+                        open-type="contact">
                     <text class="cuIcon-service lg"> 联系作者</text>
-                </view>
+                </button>
             </view>
         </view>
         <view class="avatar-name-diy flex flex-direction justify-start align-end padding" bindtap="toUserInfo"
