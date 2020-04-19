@@ -98,6 +98,8 @@ Component({
                     })
                 }
             });
+
+            this.createOneClose();
         },
 
         // 删除任务
