@@ -34,7 +34,7 @@
                       class="cuIcon-squarecheck line-white radius margin padding-xs"/>
                 <input style="font-size: 20px;opacity: 0.7;text-align:left;"
                        placeholder="给番茄起个名字吧" maxlength="7" focus="true" name="name" value='{{formName}}'
-                       bindblur="setProjectName" class="line-white margin-sm response"/>
+                       class="line-white margin-sm response"/>
             </view>
             <view class="margin-lr" style="border: 1px white dashed;opacity: 0.5"/>
             <view style="text-align: left;margin: 30rpx 30rpx 10rpx 30rpx;opacity: 0.6"
