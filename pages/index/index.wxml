@@ -19,11 +19,43 @@
     </view>
 
     <!-- 新建任务 -->
-    <view class="radius shadow-blur margin-lr-sm margin-bottom-xl bg-img todo-card-opacity padding"
-          style="background: #dad8de;" bindtap="showModal">
+    <view wx:if="{{!createProject}}"
+          class="radius shadow-blur margin-lr-sm margin-bottom-xl bg-img todo-card-opacity padding"
+          style="background: #dad8de;" bindtap="createOneOpen">
         <view class="pageBox">
             <text class="cuIcon-add"/>
             <text class="text-xs">添加一个新的番茄</text>
+        </view>
+    </view>
+
+    <!-- 新建界面 -->
+    <view wx:if="{{createProject}}" class="bg-red margin radius" id="am-project-create" style="opacity: 0.7">
+        <view class="flex justify-start align-center">
+            <text style="font-size: 40px;" bindtap="randomIcon"
+                  class="cuIcon-squarecheck line-white bg-red radius margin padding-xs"/>
+            <input style="font-size: 20px;opacity: 0.7;text-align:left;"
+                   placeholder="给番茄起个名字吧" maxlength="7" focus="true" name="name" value='{{formName}}'
+                   bindblur="setProjectName" class="line-white margin-sm response"/>
+        </view>
+        <view class="margin-lr" style="border: 1px white dashed;opacity: 0.5"/>
+        <view style="text-align: left;margin: 30rpx 30rpx 10rpx 30rpx" class="flex align-center justify-between">
+            <view class="flex align-center">
+                <view style="opacity:0.8;margin-left: 5px">时长:</view>
+                <input class="margin-left-sm padding-left-sm" type="number" maxlength="2"
+                       value="{{formMinute}}" style="width: 60px;border: 1px #ca6565 solid"/>
+                <view style="opacity:0.8;" class="margin-left-sm">min</view>
+            </view>
+            <view>
+                <view class="cu-tag line-cyan" style="width: 30px" bindtap="setTime" data-min="15">15</view>
+                <view class="cu-tag line-cyan" style="width: 30px" bindtap="setTime" data-min="30">30</view>
+                <view class="cu-tag line-cyan" style="width: 30px" bindtap="setTime" data-min="45">45</view>
+            </view>
+        </view>
+        <view class="flex padding justify-between">
+            <button class="cu-btn lg" style="background-color: #d2d2d2;width: 45%"
+                    bindtap="createOneClose">算了
+            </button>
+            <button class="cu-btn lg bg-green" style="width: 45%" bindtap="addOne">写好啦</button>
         </view>
     </view>
 
@@ -102,36 +134,4 @@
 
     <!-- 底部留白 -->
     <view class="blank-box"/>
-
-    <!-- 对话框 -->
-    <view class="cu-modal {{showModal?'show':''}}">
-        <form bindsubmit="addOne">
-            <view class="cu-dialog">
-                <view class="cu-bar bg-white justify-end">
-                    <view class="content">新建一个番茄</view>
-                    <view class="action" bindtap="hideModal">
-                        <text class="cuIcon-close text-red"></text>
-                    </view>
-                </view>
-                <view>
-                    <view class="cu-form-group">
-                        <view class="title">番茄名称</view>
-                        <input placeholder="给你的番茄取个名字吧" name="name" maxlength="11" value='{{form_name}}'/>
-                    </view>
-                    <view class="cu-form-group">
-                        <view class="title">番茄时长</view>
-                        <input value="{{form_minute}}" name="minute" maxlength="3" bindinput="minuteCheck"/>
-                        <view>分钟</view>
-                    </view>
-                </view>
-                <view class="cu-bar bg-white justify-end">
-                    <view class="action">
-                        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-                        <button class="cu-btn bg-green margin-left" bindtap="reseat" formType="submit">确定</button>
-                    </view>
-                </view>
-            </view>
-        </form>
-    </view>
-
 </scroll-view>

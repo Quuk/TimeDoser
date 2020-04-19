@@ -12,17 +12,26 @@ Component({
         CustomBar: app.globalData.CustomBar,
         minute: 44,
         logName: "默认番茄",
-        form_minute: 25,  // 页面默认25分钟
-        allTask: wx.getStorageSync("allTask")
+        formName: "",
+        formMinute: 25,  // 页面默认25分钟
+        allTask: wx.getStorageSync("allTask"),
+        checkProject: false,   // 是否点击项目
+        createProject: false,  // 创建项目窗口
+        nowUpdataProjectId: null,  // 现在修改的项目ID
     },
     created: function () {
-        console.log("开始")
         getAllTask(this);
     },
     methods: {
+
+        // 番茄时钟快速设置时长
+        setTime(e) {
+            this.setData({formMinute: e.currentTarget.dataset.min});
+        },
+
         onPullDownRefresh() {
-            console.log("下拉了")
-            common.sout("下拉了")
+            console.log("下拉了");
+            common.sout("下拉了");
         },
 
         // 开始任务
@@ -42,9 +51,32 @@ Component({
             });
         },
 
+        createOneOpen() {
+            this.setData({
+                createProject: true,
+                nowUpdataProjectId: null  // 关掉修改窗口
+            });
+
+            this.animate('#am-project-create', [
+                {scale: [1.1, 1.1], opacity: 0},
+                {scale: [1, 1], opacity: 1},
+            ], 100);
+        },
+
+        createOneClose() {
+            this.setData({createProject: false});
+            this.animate('#am-project-create', [
+                {scale: [1.1, 1.1], opacity: 0},
+                {scale: [1, 1], opacity: 1},
+            ], 100);
+        },
+
         // 添加任务
-        addOne(data) {
-            if (data.detail.value.minute === "0") {
+        addOne() {
+            let min = this.data.formMinute;
+            let name = this.data.formName;
+
+            if (min === "0") {
                 common.sout("时间不可设置为0");
                 return;
             }
@@ -52,35 +84,29 @@ Component({
             ajax.myRequest({
                 url: '/planTask/addOne',
                 data: {
-                    name: data.detail.value.name || "默认番茄",
-                    minute: parseInt(data.detail.value.minute)
+                    name: name || "默认番茄",
+                    minute: parseInt(min)
                 },
                 success: () => {
                     common.sout("添加成功");
-                    // 重新加载页面
-                    wx.removeStorage({key: 'allTask'});
                     getAllTask(this);
 
                     // 清空表格数据
                     this.setData({
-                        form_name: '',
-                        form_minute: 25
+                        formName: '',
+                        formMinute: 25
                     })
                 }
             });
-            this.hideModal();
         },
 
         // 删除任务
         deleteOne(e) {
-
             ajax.myRequest({
                 url: '/planTask/deleteOne',
                 data: {taskId: e.currentTarget.dataset.id},
                 success: () => {
                     common.sout("删除成功");
-                    // 重新加载页面
-                    wx.removeStorage({key: 'allTask'});
                     getAllTask(this);
                 }
             });
@@ -100,7 +126,6 @@ Component({
                 method: 'get',
                 data: {taskId: e.currentTarget.dataset.id},
                 success: () => {
-                    wx.removeStorage({key: 'allTask'});
                     getAllTask(this);
                 }
             });
@@ -133,7 +158,6 @@ function getAllTask(that) {
         method: 'get',
         success: res => {
             that.setData({allTask: res.data});
-            wx.setStorage({key: "allTask", data: res.data});
         }
     });
 }
