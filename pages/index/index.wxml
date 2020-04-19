@@ -62,7 +62,7 @@
 
         <!-- 待办任务列表   -->
         <view class="radius shadow-blur margin-lr-sm margin-tb-xl bg-img todo-card-opacity flex justify-between"
-              wx:for="{{allTask.waitTask}}" style="background: burlywood;" wx:key>
+              wx:for="{{allTask.waitTask}}" style="background: burlywood;" wx:key="id">
             <view class="flex flex-direction">
 
                 <!-- 删除任务 -->
@@ -102,7 +102,7 @@
 
         <!-- 已完成任务列表 -->
         <view class="radius shadow-blur margin-lr-sm margin-bottom-xl bg-img todo-card-opacity flex justify-between"
-              wx:for="{{allTask.finishTask}}" style="background: #dad8de;" wx:key>
+              wx:for="{{allTask.finishTask}}" style="background: #dad8de;" wx:key="id">
             <view class="flex flex-direction">
 
                 <!-- 关闭任务 -->
