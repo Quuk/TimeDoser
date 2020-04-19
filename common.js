@@ -12,7 +12,7 @@ const common = new function () {
                 title: msg,
                 icon: "none",
                 mask: true,
-                duration: 100
+                duration: 500
             })
         }
     };

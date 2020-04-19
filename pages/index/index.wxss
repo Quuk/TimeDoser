@@ -25,8 +25,3 @@ page {
     align-items: center;
     justify-content: center;
 }
-
-.nickName{
-    margin-left: 10px;
-    color: grey;
-}

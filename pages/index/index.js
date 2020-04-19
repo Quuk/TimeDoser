@@ -29,11 +29,6 @@ Component({
             this.setData({formMinute: e.currentTarget.dataset.min});
         },
 
-        onPullDownRefresh() {
-            console.log("下拉了");
-            common.sout("下拉了");
-        },
-
         // 开始任务
         toStart(e) {
             let minute = e.currentTarget.dataset.minute;
@@ -43,6 +38,8 @@ Component({
             wx.navigateTo({
                 url: "/pages/timeDoser/timeDoser?minute=" + minute + "&logName=" + name + "&id=" + id
             });
+
+            this.createOneClose();
         },
 
         toHomePage() {
