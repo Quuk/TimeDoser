@@ -30,8 +30,8 @@
         <!-- 新建界面 -->
         <view wx:if="{{createProject}}" class="margin radius bg-brown" id="am-project-create">
             <view class="flex justify-start align-center">
-                <text style="font-size: 40px;" bindtap="randomIcon"
-                      class="cuIcon-squarecheck line-white radius margin-lr margin-tb-sm padding-xs"/>
+                <text style="font-size: 40px;" bindtap="randomIcon" id="am-project-create-icon"
+                      class="cuIcon-{{formIcon}} line-white radius margin-lr margin-tb-sm padding-xs"/>
                 <input style="font-size: 20px;opacity: 0.7;text-align:left;" bindinput='tomotoInput'
                        placeholder="给番茄起个名字吧" maxlength="7" focus="true" value='{{formName}}'
                        class="line-white margin-sm response"/>
@@ -68,8 +68,8 @@
             <view wx:if="{{item.id==nowUpdataProjectId && nowUpdataProjectId!=null}}"
                   class="bg-brown margin radius" id="am-project-update">
                 <view class="flex justify-start align-center">
-                    <text style="font-size: 40px;opacity: 0.7" bindtap="randomIcon"
-                          class="cuIcon-squarecheck line-white radius margin-lr margin-tb-sm padding-xs"/>
+                    <text style="font-size: 23px;opacity: 0.7" bindtap="randomIcon" id="am-project-create-icon"
+                          class="cuIcon-{{formIcon!=null?formIcon:item.icon}} line-white radius margin-lr margin-tb-sm padding-xs"/>
                     <input style="font-size: 23px;opacity: 0.7;text-align:left;"
                            placeholder="在这里写上目标名称" maxlength="7" value="{{item.name}}"
                            bindinput="setProjectName" class="line-white margin-sm response"/>
@@ -104,38 +104,42 @@
                     <button class="cu-btn lg" style="background-color: #d2d2d2;width: 45%"
                             data-id="{{item.id}}" bindtap="updateOneClose">算了
                     </button>
-                    <button class="cu-btn lg bg-green" style="width: 45%" data-id="{{item.id}}" data-tomoto="{{item}}" bindtap="updateOne">改好啦</button>
+                    <button class="cu-btn lg bg-green" style="width: 45%" data-id="{{item.id}}" data-tomoto="{{item}}"
+                            bindtap="updateOne">改好啦
+                    </button>
                 </view>
             </view>
 
             <!-- 正常显示 -->
-            <view class="radius flex home-project-card todo-card-opacity">
+            <view wx:else class="radius flex home-project-card todo-card-opacity">
                 <view class="flex justify-center align-center">
-                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);width: 80px"
-                          class="cuIcon-add"/>
+                    <text style="font-size: 80px;color: white;opacity: 0.6;transform:rotate(-15deg);width: 80px"
+                          class="cuIcon-{{item.icon==null?'add':item.icon}}"/>
                 </view>
                 <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;"
                       class="margin-lr-sm"/>
                 <view class="padding-right-xs response tmp-tree" style="position:relative">
 
                     <!-- 未触发 -->
-                    <view class="response tmp-one">
-                        <view class="flex margin-top-xs align-center response">
-                            <view class="margin-tb-xs text-black text-bold text-lg"
-                                  style="opacity: 0.7">{{item.name}}
-                            </view>
+                    <view class="response flex flex-direction align-start justify-center tmp-one">
+                        <view class="flex align-center response margin-tb-sm text-black text-bold text-xl"
+                              style="opacity: 0.7">{{item.name}}
                         </view>
-                        <view class="cu-capsule radius margin-right-xs">
-                            <view class="cu-tag bg-brown sm">
-                                <text class="cuIcon-time"/>
+                        <view class="margin-bottom-sm">
+                            <view class="cu-capsule radius margin-right-xs">
+                                <view class="cu-tag bg-brown sm">
+                                    <text class="cuIcon-time"/>
+                                </view>
+                                <view class="cu-tag line-brown sm margin-right"> {{item.tomatoWorkTime}}min</view>
                             </view>
-                            <view class="cu-tag line-brown sm margin-right"> {{item.tomatoWorkTime}}min</view>
-                        </view>
-                        <view class="cu-capsule radius margin-right-xs">
-                            <view class="cu-tag bg-brown sm">
-                                <text class="cuIcon-time"/>
+                            <view class="cu-capsule radius margin-right-xs">
+                                <view class="cu-tag bg-brown sm">
+                                    <text class="cuIcon-hot"/>
+                                </view>
+                                <view class="cu-tag line-brown sm margin-right">{{item.sumTime}}</view>
                             </view>
-                            <view class="cu-tag line-brown sm margin-right">125</view>
+                            <view wx:if="{{item.sumTime==0}}" class="cu-tag line-brown sm radius margin-left-xs">new
+                            </view>
                         </view>
                     </view>
 

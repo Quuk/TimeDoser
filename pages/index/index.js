@@ -12,22 +12,25 @@ Component({
         CustomBar: app.globalData.CustomBar,
         minute: 44,
         logName: "默认番茄",
+
         formName: "",
-        formMinute: 25,  // 页面默认25分钟
+        formMinute: 25,     // 页面默认25分钟
+        formIcon: null,     // 新建项目的icon
+
         allTask: wx.getStorageSync("allTask"),
         checkProject: false,       // 是否点击项目
         createProject: false,      // 创建项目窗口
         nowUpdataProjectId: null,  // 现在修改的项目ID
 
+        icon: [], // logo list
         updateName: null,     // 修改后的名称
         updateMin: null,      // 修改后的分钟
-        updateLogo: null,     // 修改后的logo
     },
     created: function () {
         getAllTask(this);
+        setDefaultData(this);
     },
     methods: {
-
         // 打开修改项目窗口
         projectUpdata(e) {
             const index = e.currentTarget.dataset.index;
@@ -53,7 +56,7 @@ Component({
             this.setData({
                 updateName: null,
                 updateMin: null,
-                updateLogo: null,
+                formIcon: null,
             })
         },
 
@@ -62,18 +65,20 @@ Component({
             const tomoto = e.currentTarget.dataset.tomoto;
             tomoto.name = this.data.updateName !== null ? this.data.updateName : tomoto.name;
             tomoto.tomatoWorkTime = this.data.updateMin !== null ? this.data.updateMin : tomoto.tomatoWorkTime;
+            tomoto.icon = this.data.formIcon !== null ? this.data.formIcon : tomoto.icon;
 
             ajax.myRequest({
                 url: '/planTask/updateTask',
                 data: {
                     id: tomoto.id,
                     name: tomoto.name,
+                    icon: tomoto.icon,
                     tomatoWorkTime: tomoto.tomatoWorkTime,
                 },
                 success: () => {
                     getAllTask(this);
                 },
-                complete:()=>{
+                complete: () => {
                     this.updateOneClose(e);
                 }
             });
@@ -146,10 +151,16 @@ Component({
                 {scale: [1.1, 1.1], opacity: 0},
                 {scale: [1, 1], opacity: 1},
             ], 100);
+
+            // 随机给一个logo
+            this.randomIcon();
         },
 
         createOneClose() {
-            this.setData({createProject: false});
+            this.setData({
+                createProject: false,
+                formIcon: null,
+            });
             this.animate('#am-project-create', [
                 {scale: [1.1, 1.1], opacity: 0},
                 {scale: [1, 1], opacity: 1},
@@ -164,6 +175,7 @@ Component({
         addOne() {
             let min = this.data.formMinute;
             let name = this.data.formName;
+            let formIcon = this.data.formIcon;
 
             if (min === "0") {
                 common.sout("时间不可设置为0");
@@ -174,7 +186,8 @@ Component({
                 url: '/planTask/addOne',
                 data: {
                     name: name || "默认番茄",
-                    minute: parseInt(min)
+                    minute: parseInt(min),
+                    formIcon: formIcon || "add",
                 },
                 success: () => {
                     common.sout("添加成功");
@@ -183,6 +196,7 @@ Component({
                     // 清空表格数据
                     this.setData({
                         formName: '',
+                        formIcon: '',
                         formMinute: 25
                     })
                 }
@@ -221,18 +235,17 @@ Component({
             });
         },
 
-        // 展示添加弹窗
-        showModal() {
-            this.setData({
-                showModal: true
-            })
-        },
+        // random icon
+        randomIcon() {
+            const iconList = this.data.icon;
+            const iconIndex = parseInt(Math.random() * iconList.length);
+            const icon = iconList[iconIndex].icon;
+            this.setData({formIcon: icon});
 
-        // 隐藏添加弹窗
-        hideModal() {
-            this.setData({
-                showModal: false
-            })
+            this.animate('#am-project-create-icon', [
+                {scale: [1.1, 1.1], opacity: 0},
+                {scale: [1, 1], opacity: 1},
+            ], 100);
         },
     }
 });
@@ -250,4 +263,68 @@ function getAllTask(that) {
             that.setData({allTask: res.data});
         }
     });
+}
+
+function setDefaultData(that) {
+    that.setData({
+        icon: [
+            {index: 0, icon: 'appreciate'},
+            {index: 1, icon: 'emoji'},
+            {index: 2, icon: 'favor'},
+            {index: 3, icon: 'loading'},
+            {index: 4, icon: 'roundcheck'},
+            {index: 5, icon: 'search'},
+            {index: 6, icon: 'time'},
+            {index: 7, icon: 'warn'},
+            {index: 8, icon: 'camera'},
+            {index: 9, icon: 'like'},
+            {index: 10, icon: 'deliver'},
+            {index: 11, icon: 'evaluate'},
+            {index: 12, icon: 'send'},
+            {index: 13, icon: 'shop'},
+            {index: 14, icon: 'ticket'},
+            {index: 15, icon: 'discover'},
+            {index: 16, icon: 'footprint'},
+            {index: 17, icon: 'cart'},
+            {index: 18, icon: 'remind'},
+            {index: 19, icon: 'lock'},
+            {index: 20, icon: 'goods'},
+            {index: 21, icon: 'selection'},
+            {index: 22, icon: 'explore'},
+            {index: 23, icon: 'present'},
+            {index: 24, icon: 'round'},
+            {index: 25, icon: 'game'},
+            {index: 26, icon: 'vipcard'},
+            {index: 27, icon: 'light'},
+            {index: 28, icon: 'notice'},
+            {index: 29, icon: 'upstage'},
+            {index: 30, icon: 'baby'},
+            {index: 31, icon: 'clothes'},
+            {index: 32, icon: 'creative'},
+            {index: 33, icon: 'female'},
+            {index: 34, icon: 'male'},
+            {index: 35, icon: 'rank'},
+            {index: 36, icon: 'bad'},
+            {index: 37, icon: 'cameraadd'},
+            {index: 38, icon: 'focus'},
+            {index: 39, icon: 'file'},
+            {index: 40, icon: 'attention'},
+            {index: 41, icon: 'read'},
+            {index: 42, icon: 'magic'},
+            {index: 43, icon: 'tag'},
+            {index: 44, icon: 'all'},
+            {index: 45, icon: 'write'},
+            {index: 46, icon: 'crown'},
+            {index: 47, icon: 'musicfill'},
+            {index: 48, icon: 'record'},
+            {index: 49, icon: 'cardboard'},
+            {index: 50, icon: 'mail'},
+            {index: 51, icon: 'goodsnew'},
+            {index: 52, icon: 'medal'},
+            {index: 53, icon: 'newshot'},
+            {index: 54, icon: 'news'},
+            {index: 55, icon: 'skin'},
+            {index: 56, icon: 'usefull'}
+        ]
+    })
 }
