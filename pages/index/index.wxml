@@ -126,19 +126,19 @@
                               style="opacity: 0.7">{{item.name}}
                         </view>
                         <view class="margin-bottom-sm">
+                            <view wx:if="{{item.sumTime==0}}" class="cu-tag bg-red sm radius margin-right-sm">new
+                            </view>
                             <view class="cu-capsule radius margin-right-xs">
                                 <view class="cu-tag bg-brown sm">
                                     <text class="cuIcon-time"/>
                                 </view>
-                                <view class="cu-tag line-brown sm margin-right"> {{item.tomatoWorkTime}}min</view>
+                                <view class="cu-tag line-brown sm "> {{item.tomatoWorkTime}}min</view>
                             </view>
                             <view class="cu-capsule radius margin-right-xs">
                                 <view class="cu-tag bg-brown sm">
                                     <text class="cuIcon-hot"/>
                                 </view>
-                                <view class="cu-tag line-brown sm margin-right">{{item.sumTime}}</view>
-                            </view>
-                            <view wx:if="{{item.sumTime==0}}" class="cu-tag line-brown sm radius margin-left-xs">new
+                                <view class="cu-tag line-brown sm">{{item.sumTime}}</view>
                             </view>
                         </view>
                     </view>
@@ -179,12 +179,21 @@
                 <view class="flex padding-lr-lg padding-tb-sm">
                     <view class=" todolist-card-main flex align-start flex-direction ">
                         <view class="margin-bottom-sm text-black text-bold text-df">{{item.name}}</view>
-                        <view class="cu-capsule radius margin-right-xs">
-                            <view class="cu-tag bg-brown sm">
-                                <text class="cuIcon-time"/>
+                        <view>
+                            <view class="cu-capsule radius margin-right-xs">
+                                <view class="cu-tag bg-brown sm">
+                                    <text class="cuIcon-time"/>
+                                </view>
+                                <view class="cu-tag line-brown sm">
+                                    {{item.tomatoWorkTime}}min
+                                </view>
                             </view>
-                            <view class="cu-tag line-brown sm">
-                                {{item.tomatoWorkTime}}min
+
+                            <view class="cu-capsule radius margin-right-xs">
+                                <view class="cu-tag bg-brown sm">
+                                    <text class="cuIcon-hot"/>
+                                </view>
+                                <view class="cu-tag line-brown sm">{{item.sumTime}}</view>
                             </view>
                         </view>
                     </view>
