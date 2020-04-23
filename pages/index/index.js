@@ -15,16 +15,20 @@ Component({
         formName: "",
         formMinute: 25,  // 页面默认25分钟
         allTask: wx.getStorageSync("allTask"),
-        checkProject: false,   // 是否点击项目
-        createProject: false,  // 创建项目窗口
+        checkProject: false,       // 是否点击项目
+        createProject: false,      // 创建项目窗口
         nowUpdataProjectId: null,  // 现在修改的项目ID
+
+        updateName: null,     // 修改后的名称
+        updateMin: null,      // 修改后的分钟
+        updateLogo: null,     // 修改后的logo
     },
     created: function () {
         getAllTask(this);
     },
     methods: {
 
-        // 修改项目
+        // 打开修改项目窗口
         projectUpdata(e) {
             const index = e.currentTarget.dataset.index;
             this.setData({
@@ -38,8 +42,36 @@ Component({
         },
 
         // 关掉修改项目窗口
-        updateOneClose() {
+        updateOneClose(e) {
             this.setData({nowUpdataProjectId: null});
+            let id = e.currentTarget.dataset.id;
+            this.animate('#tomotoUpdate-' + id, [
+                {scale: [1.1, 1.1], opacity: 0},
+                {scale: [1, 1], opacity: 1},
+            ], 100);
+
+            this.setData({
+                updateName: null,
+                updateMin: null,
+                updateLogo: null,
+            })
+        },
+
+        // 修改一个任务
+        updateOne(e) {
+            const tomoto = e.currentTarget.dataset.tomoto;
+            tomoto.name = this.data.updateName!==null?this.data.updateName:tomoto.name;
+            tomoto.tomatoWorkTime = this.data.updateMin!==null?this.data.updateMin:tomoto.tomatoWorkTime;
+            console.log(tomoto)
+
+            // ajax.myRequest({
+            //     url: '/planTask/updateTask',
+            //     data: {task: tomoto},
+            //     success: () => {
+            //
+            //
+            //     }
+            // });
         },
 
         // 删除项目
@@ -60,6 +92,22 @@ Component({
             this.setData({formMinute: e.currentTarget.dataset.min});
         },
 
+        // 修改的番茄名称
+        setProjectName(e) {
+            this.setData({updateName: e.detail.value});
+        },
+
+        // 修改的番茄分钟
+        setProjectMin(e) {
+            let min = e.detail.value.replace(/\D/g,'');
+            this.setData({updateMin: min});
+        },
+
+        // 快速修改的番茄分钟
+        setProjectMinQuick(e) {
+            this.setData({updateMin: e.currentTarget.dataset.min});
+        },
+
         // 开始任务
         toStart(e) {
             let minute = e.currentTarget.dataset.minute;
@@ -77,6 +125,12 @@ Component({
             wx.navigateTo({
                 url: "/pages/my/home/home"
             });
+        },
+
+        // 新建番茄时校验是否为数字
+        setAddProjectMin(e){
+            let min = e.detail.value.replace(/\D/g,'');
+            this.setData({formMinute: min});
         },
 
         createOneOpen() {

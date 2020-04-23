@@ -31,7 +31,7 @@
         <view wx:if="{{createProject}}" class="margin radius bg-brown" id="am-project-create">
             <view class="flex justify-start align-center">
                 <text style="font-size: 40px;" bindtap="randomIcon"
-                      class="cuIcon-squarecheck line-white radius margin padding-xs"/>
+                      class="cuIcon-squarecheck line-white radius margin-lr margin-tb-sm padding-xs"/>
                 <input style="font-size: 20px;opacity: 0.7;text-align:left;" bindinput='tomotoInput'
                        placeholder="给番茄起个名字吧" maxlength="7" focus="true" value='{{formName}}'
                        class="line-white margin-sm response"/>
@@ -42,7 +42,8 @@
                 <view class="flex align-center">
                     <view style="opacity:0.8;margin-left: 5px">时长:</view>
                     <input class="margin-left-sm padding-left-sm" type="number" maxlength="2"
-                           value="{{formMinute}}" style="width: 60px;border: 1px #ffffff solid"/>
+                           value="{{formMinute}}" style="width: 60px;border: 1px #ffffff solid"
+                           bindinput="setAddProjectMin"/>
                     <view style="opacity:0.8;" class="margin-left-sm">min</view>
                 </view>
                 <view>
@@ -61,30 +62,49 @@
         </view>
 
         <!-- 一张任务卡片 -->
-        <view wx:for="{{allTask.waitTask}}" wx:key="id">
+        <view wx:for="{{allTask.waitTask}}" wx:key="id" id="tomotoUpdate-{{item.id}}">
 
             <!-- 选中任务 -->
             <view wx:if="{{item.id==nowUpdataProjectId && nowUpdataProjectId!=null}}"
-                  class="bg-brown margin radius"
-                  bindtap="createOne" id="am-project-update">
+                  class="bg-brown margin radius" id="am-project-update">
                 <view class="flex justify-start align-center">
                     <text style="font-size: 40px;opacity: 0.7" bindtap="randomIcon"
-                          class="cuIcon-{{item.icon}} line-white bg-{{item.color}} radius margin padding-xs"/>
+                          class="cuIcon-squarecheck line-white radius margin-lr margin-tb-sm padding-xs"/>
                     <input style="font-size: 23px;opacity: 0.7;text-align:left;"
                            placeholder="在这里写上目标名称" maxlength="7" value="{{item.name}}"
-                           bindblur="setProjectName" class="line-white margin-sm response"/>
+                           bindinput="setProjectName" class="line-white margin-sm response"/>
                 </view>
                 <view class="margin-lr" style="border: 1px white dashed;opacity: 0.5"/>
-                <view style="text-align: left;margin: 30rpx 30rpx 10rpx 30rpx" class="flex align-center">
-                    <view style="opacity:0.7;margin-left: 5px">备注:</view>
-                    <input bindblur="setProjectRemark" value="{{item.remark}}" maxlength="24"
-                           class="margin-left-sm" type="text" placeholder="写点备注吧"/>
+                <view style="text-align: left;margin: 30rpx 30rpx 10rpx 30rpx;opacity: 0.6"
+                      class="flex align-center justify-between">
+                    <view class="flex align-center">
+                        <view style="opacity:0.8;margin-left: 5px">时长:</view>
+                        <input class="margin-left-sm padding-left-sm" type="number" maxlength="2"
+                               value="{{updateMin?updateMin:item.tomatoWorkTime}}"
+                               style="width: 60px;border: 1px #ffffff solid" bindinput="setProjectMin"/>
+                        <view style="opacity:0.8;" class="margin-left-sm">min</view>
+                    </view>
+                    <view>
+                        <view class="cu-tag line-white" style="width: 30px" bindtap="setProjectMinQuick" data-min="5">
+                            5
+                        </view>
+                        <view class="cu-tag line-white" style="width: 30px" bindtap="setProjectMinQuick" data-min="15">
+                            15
+                        </view>
+                        <view class="cu-tag line-white" style="width: 30px" bindtap="setProjectMinQuick" data-min="30">
+                            30
+                        </view>
+                        <view class="cu-tag line-white" style="width: 30px" bindtap="setProjectMinQuick" data-min="45">
+                            45
+                        </view>
+                    </view>
                 </view>
+
                 <view class="flex padding justify-between">
                     <button class="cu-btn lg" style="background-color: #d2d2d2;width: 45%"
-                            bindtap="updateOneClose">算了
+                            data-id="{{item.id}}" bindtap="updateOneClose">算了
                     </button>
-                    <button class="cu-btn lg bg-green" style="width: 45%" bindtap="create">改好啦</button>
+                    <button class="cu-btn lg bg-green" style="width: 45%" data-tomoto="{{item}}" bindtap="updateOne">改好啦</button>
                 </view>
             </view>
 
