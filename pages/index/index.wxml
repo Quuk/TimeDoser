@@ -104,7 +104,7 @@
                     <button class="cu-btn lg" style="background-color: #d2d2d2;width: 45%"
                             data-id="{{item.id}}" bindtap="updateOneClose">算了
                     </button>
-                    <button class="cu-btn lg bg-green" style="width: 45%" data-tomoto="{{item}}" bindtap="updateOne">改好啦</button>
+                    <button class="cu-btn lg bg-green" style="width: 45%" data-id="{{item.id}}" data-tomoto="{{item}}" bindtap="updateOne">改好啦</button>
                 </view>
             </view>
 

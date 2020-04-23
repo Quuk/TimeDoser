@@ -60,18 +60,23 @@ Component({
         // 修改一个任务
         updateOne(e) {
             const tomoto = e.currentTarget.dataset.tomoto;
-            tomoto.name = this.data.updateName!==null?this.data.updateName:tomoto.name;
-            tomoto.tomatoWorkTime = this.data.updateMin!==null?this.data.updateMin:tomoto.tomatoWorkTime;
-            console.log(tomoto)
+            tomoto.name = this.data.updateName !== null ? this.data.updateName : tomoto.name;
+            tomoto.tomatoWorkTime = this.data.updateMin !== null ? this.data.updateMin : tomoto.tomatoWorkTime;
 
-            // ajax.myRequest({
-            //     url: '/planTask/updateTask',
-            //     data: {task: tomoto},
-            //     success: () => {
-            //
-            //
-            //     }
-            // });
+            ajax.myRequest({
+                url: '/planTask/updateTask',
+                data: {
+                    id: tomoto.id,
+                    name: tomoto.name,
+                    tomatoWorkTime: tomoto.tomatoWorkTime,
+                },
+                success: () => {
+                    getAllTask(this);
+                },
+                complete:()=>{
+                    this.updateOneClose(e);
+                }
+            });
         },
 
         // 删除项目
@@ -99,7 +104,7 @@ Component({
 
         // 修改的番茄分钟
         setProjectMin(e) {
-            let min = e.detail.value.replace(/\D/g,'');
+            let min = e.detail.value.replace(/\D/g, '');
             this.setData({updateMin: min});
         },
 
@@ -117,8 +122,6 @@ Component({
             wx.navigateTo({
                 url: "/pages/timeDoser/timeDoser?minute=" + minute + "&logName=" + name + "&id=" + id
             });
-
-            this.createOneClose();
         },
 
         toHomePage() {
@@ -128,8 +131,8 @@ Component({
         },
 
         // 新建番茄时校验是否为数字
-        setAddProjectMin(e){
-            let min = e.detail.value.replace(/\D/g,'');
+        setAddProjectMin(e) {
+            let min = e.detail.value.replace(/\D/g, '');
             this.setData({formMinute: min});
         },
 

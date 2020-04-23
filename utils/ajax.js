@@ -7,7 +7,7 @@ function getAccessToken(callback) {
     let baseUserInfo = wx.getStorageSync('baseUserInfo');
     if (baseUserInfo) {
         callback(baseUserInfo);
-    }else{
+    } else {
         wx.login({
             success: data => {
                 wx.request({
@@ -55,8 +55,8 @@ const myRequest = options => {
             }
             // if (options.method.toLowerCase() === 'post') {
             //     if (options.data) {
-            //         let dataStr = JSON.stringify(options.data);
-            //         options.data = {param: dataStr};
+            //         options.data = JSON.stringify(options.data);
+            //         console.log(options.data)
             //     }
             // }
 
