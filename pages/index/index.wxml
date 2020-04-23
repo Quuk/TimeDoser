@@ -60,6 +60,49 @@
             </view>
         </view>
 
+        <!-- 新的任务界面 -->
+        <view class="radius flex tomoto-box-card">
+            <view class="flex justify-center align-center">
+                <text class="cuIcon-add tomoto-box-card-logo"/>
+            </view>
+
+            <!-- 分割线 -->
+            <view class="margin-lr-sm tomoto-box-card-line"/>
+
+            <view class="padding-right-xs response tomoto-box-tree">
+                <!-- 未触发 -->
+                <view class="response tomoto-box-one">
+                    <view class="margin-tb-sm text-black text-bold text-df">小程序编写</view>
+
+                    <view class="flex">
+
+                        <!-- 第1个logo -->
+                        <view class="cu-capsule radius margin-right-xs">
+                            <view class="cu-tag bg-brown sm">
+                                <text class="cuIcon-time"/>
+                            </view>
+                            <view class="cu-tag line-brown sm">
+                                25min
+                            </view>
+                        </view>
+
+                        <!-- 第2个logo -->
+                        <view class="cu-capsule radius margin-right-xs">
+                            <view class="cu-tag bg-brown sm">
+                                <text class="cuIcon-time"/>
+                            </view>
+                            <view class="cu-tag line-brown sm">
+                                25min
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+                <!-- 触发 -->
+
+            </view>
+        </view>
+
         <!-- 待办任务列表   -->
         <view class="radius shadow-blur margin-lr-sm margin-tb-xl bg-img todo-card-opacity flex justify-between"
               wx:for="{{allTask.waitTask}}" style="background: burlywood;" wx:key="id">
