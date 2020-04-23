@@ -19,7 +19,7 @@
 
         <!-- 新建任务 -->
         <view wx:if="{{!createProject}}" id="am-project-create"
-              class="radius shadow-blur margin-lr-sm margin-bottom-xl bg-img todo-card-opacity padding"
+              class="radius shadow-blur margin-lr margin-bottom-lg bg-img todo-card-opacity padding"
               style="background: #dad8de;" bindtap="createOneOpen">
             <view class="pageBox">
                 <text class="cuIcon-add"/>
@@ -28,12 +28,12 @@
         </view>
 
         <!-- 新建界面 -->
-        <view wx:if="{{createProject}}" class="margin radius" id="am-project-create" style="background-color:#ffa98c;">
+        <view wx:if="{{createProject}}" class="margin radius bg-brown" id="am-project-create">
             <view class="flex justify-start align-center">
                 <text style="font-size: 40px;" bindtap="randomIcon"
                       class="cuIcon-squarecheck line-white radius margin padding-xs"/>
-                <input style="font-size: 20px;opacity: 0.7;text-align:left;"
-                       placeholder="给番茄起个名字吧" maxlength="7" focus="true" name="name" value='{{formName}}'
+                <input style="font-size: 20px;opacity: 0.7;text-align:left;" bindinput='tomotoInput'
+                       placeholder="给番茄起个名字吧" maxlength="7" focus="true" value='{{formName}}'
                        class="line-white margin-sm response"/>
             </view>
             <view class="margin-lr" style="border: 1px white dashed;opacity: 0.5"/>
@@ -42,14 +42,14 @@
                 <view class="flex align-center">
                     <view style="opacity:0.8;margin-left: 5px">时长:</view>
                     <input class="margin-left-sm padding-left-sm" type="number" maxlength="2"
-                           value="{{formMinute}}" style="width: 60px;border: 1px #ca5648 solid"/>
+                           value="{{formMinute}}" style="width: 60px;border: 1px #ffffff solid"/>
                     <view style="opacity:0.8;" class="margin-left-sm">min</view>
                 </view>
                 <view>
-                    <view class="cu-tag line-brown" style="width: 30px" bindtap="setTime" data-min="5">5</view>
-                    <view class="cu-tag line-brown" style="width: 30px" bindtap="setTime" data-min="15">15</view>
-                    <view class="cu-tag line-brown" style="width: 30px" bindtap="setTime" data-min="30">30</view>
-                    <view class="cu-tag line-brown" style="width: 30px" bindtap="setTime" data-min="45">45</view>
+                    <view class="cu-tag line-white" style="width: 30px" bindtap="setTime" data-min="5">5</view>
+                    <view class="cu-tag line-white" style="width: 30px" bindtap="setTime" data-min="15">15</view>
+                    <view class="cu-tag line-white" style="width: 30px" bindtap="setTime" data-min="30">30</view>
+                    <view class="cu-tag line-white" style="width: 30px" bindtap="setTime" data-min="45">45</view>
                 </view>
             </view>
             <view class="flex padding justify-between">
@@ -60,78 +60,77 @@
             </view>
         </view>
 
-        <!-- 新的任务界面 -->
-        <view class="radius flex tomoto-box-card">
-            <view class="flex justify-center align-center">
-                <text class="cuIcon-add tomoto-box-card-logo"/>
+        <!-- 一张任务卡片 -->
+        <view wx:for="{{allTask.waitTask}}" wx:key="id">
+
+            <!-- 选中任务 -->
+            <view wx:if="{{item.id==nowUpdataProjectId && nowUpdataProjectId!=null}}"
+                  class="bg-brown margin radius"
+                  bindtap="createOne" id="am-project-update">
+                <view class="flex justify-start align-center">
+                    <text style="font-size: 40px;opacity: 0.7" bindtap="randomIcon"
+                          class="cuIcon-{{item.icon}} line-white bg-{{item.color}} radius margin padding-xs"/>
+                    <input style="font-size: 23px;opacity: 0.7;text-align:left;"
+                           placeholder="在这里写上目标名称" maxlength="7" value="{{item.name}}"
+                           bindblur="setProjectName" class="line-white margin-sm response"/>
+                </view>
+                <view class="margin-lr" style="border: 1px white dashed;opacity: 0.5"/>
+                <view style="text-align: left;margin: 30rpx 30rpx 10rpx 30rpx" class="flex align-center">
+                    <view style="opacity:0.7;margin-left: 5px">备注:</view>
+                    <input bindblur="setProjectRemark" value="{{item.remark}}" maxlength="24"
+                           class="margin-left-sm" type="text" placeholder="写点备注吧"/>
+                </view>
+                <view class="flex padding justify-between">
+                    <button class="cu-btn lg" style="background-color: #d2d2d2;width: 45%"
+                            bindtap="updateOneClose">算了
+                    </button>
+                    <button class="cu-btn lg bg-green" style="width: 45%" bindtap="create">改好啦</button>
+                </view>
             </view>
 
-            <!-- 分割线 -->
-            <view class="margin-lr-sm tomoto-box-card-line"/>
+            <!-- 正常显示 -->
+            <view class="radius flex home-project-card todo-card-opacity">
+                <view class="flex justify-center align-center">
+                    <text style="font-size: 90px;color: white;opacity: 0.6;transform:rotate(-15deg);width: 80px"
+                          class="cuIcon-add"/>
+                </view>
+                <view style="width: 1rpx;height: 100%;border: white 3rpx dashed;opacity: 0.4;"
+                      class="margin-lr-sm"/>
+                <view class="padding-right-xs response tmp-tree" style="position:relative">
 
-            <view class="padding-right-xs response tomoto-box-tree">
-                <!-- 未触发 -->
-                <view class="response tomoto-box-one">
-                    <view class="margin-tb-sm text-black text-bold text-df">小程序编写</view>
-
-                    <view class="flex">
-
-                        <!-- 第1个logo -->
-                        <view class="cu-capsule radius margin-right-xs">
-                            <view class="cu-tag bg-brown sm">
-                                <text class="cuIcon-time"/>
-                            </view>
-                            <view class="cu-tag line-brown sm">
-                                25min
+                    <!-- 未触发 -->
+                    <view class="response tmp-one">
+                        <view class="flex margin-top-xs align-center response">
+                            <view class="margin-tb-xs text-black text-bold text-lg"
+                                  style="opacity: 0.7">{{item.name}}
                             </view>
                         </view>
-
-                        <!-- 第2个logo -->
                         <view class="cu-capsule radius margin-right-xs">
                             <view class="cu-tag bg-brown sm">
                                 <text class="cuIcon-time"/>
                             </view>
-                            <view class="cu-tag line-brown sm">
-                                25min
-                            </view>
+                            <view class="cu-tag line-brown sm margin-right"> {{item.tomatoWorkTime}}min</view>
                         </view>
-                    </view>
-                </view>
-
-                <!-- 触发 -->
-
-            </view>
-        </view>
-
-        <!-- 待办任务列表   -->
-        <view class="radius shadow-blur margin-lr-sm margin-tb-xl bg-img todo-card-opacity flex justify-between"
-              wx:for="{{allTask.waitTask}}" style="background: burlywood;" wx:key="id">
-            <view class="flex flex-direction">
-
-                <!-- 删除任务 -->
-                <view class="flex align-start">
-                    <text class="cuIcon-close shadow-lg" bindtap="deleteOne" data-id="{{item.id}}"/>
-                </view>
-
-                <view class="flex padding-lr-lg padding-tb-sm">
-                    <view class=" todolist-card-main flex align-start flex-direction ">
-                        <view class="margin-bottom-sm text-black text-bold text-df">{{item.name}}</view>
                         <view class="cu-capsule radius margin-right-xs">
                             <view class="cu-tag bg-brown sm">
                                 <text class="cuIcon-time"/>
                             </view>
-                            <view class="cu-tag line-brown sm">
-                                {{item.tomatoWorkTime}}min
-                            </view>
+                            <view class="cu-tag line-brown sm margin-right">125</view>
                         </view>
                     </view>
-                </view>
-            </view>
 
-            <!-- 开始任务 -->
-            <view class="todolist-card-start" bindtap="toStart" data-minute="{{item.tomatoWorkTime}}"
-                  data-name="{{item.name}}" data-id="{{item.id}}">
-                <text class="cuIcon-playfill"/>
+                    <!-- 触发 -->
+                    <view class="flex justify-between align-center padding-xl response tmp-two">
+                        <text class="home-project-card-icon cuIcon-delete" data-index="{{item.id}}"
+                              bindtap="projectDelete"/>
+                        <text class="home-project-card-icon cuIcon-edit" data-target="2"
+                              data-index="{{item.id}}"
+                              bindtap="projectUpdata"/>
+                        <text class="home-project-card-icon cuIcon-usefull" style="transform:rotate(90deg)"
+                              bindtap="toStart" data-minute="{{item.tomatoWorkTime}}"
+                              data-name="{{item.name}}" data-id="{{item.id}}"/>
+                    </view>
+                </view>
             </view>
         </view>
 

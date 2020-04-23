@@ -4,14 +4,9 @@ page {
     background: #ffffff;
 }
 
-.page-wait {
-    margin-top: 30%;
-    width: 100%;
-    font-size: 15px;
-}
-
 .todo-card-opacity {
     opacity: 0.8;
+    background: burlywood;
 }
 
 .todolist-card-main {
@@ -26,63 +21,45 @@ page {
     justify-content: center;
 }
 
-
 /*----------------------------*/
-.tomoto-box-one {
+
+.tmp-one {
     transition: all 200ms ease;
     height: 100%;
     position: absolute;
     z-index: 1;
 }
 
-.tomoto-box-tree {
-    position:relative;
-    transition: all 200ms ease;
+.home-project-card{
+    height: 70px;
+    margin: 0 30rpx 30rpx 30rpx;
 }
 
-.tomoto-box-tree:hover .tomoto-box-one {
+.home-project-card:hover{
+    height: 70px;
+    margin: 0 30rpx 30rpx 30rpx;
+}
+
+.tmp-two {
+    opacity: 0;
+    transition: all 200ms ease;
+    pointer-events:none;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+}
+
+.tmp-tree:hover .tmp-one {
     filter: blur(10px);
 }
 
-.tomoto-box-card-line {
-    margin-left: 0;
-    width: 1rpx;
-    height: 100%;
-    border: white 3rpx dashed;
-    opacity: 0.4;
+.tmp-tree:hover .tmp-two {
+    opacity:1;
+    pointer-events: all;
 }
 
-.tomoto-box-card-logo{
-    font-size: 130px;
-    color: white;
+.home-project-card-icon {
+    font-size: 30px;
     opacity: 0.6;
-    transform: rotate(-15deg);
-    width: 210rpx;
-    overflow: hidden;
-    margin-left: -20px;
-}
-
-.tomoto-box-card{
-    opacity: 0.8;
-    height: 70px;
-    margin: 0 20rpx 20rpx 20rpx;
-    background: burlywood;
-}
-
-.tomoto-box-card:hover{
-    margin: 0 20rpx 20rpx 20rpx;
-}
-
-.tomoto-box-card-remark {
-    font-size: 12px;
-    color: black;
-    opacity: 0.5;
-    display: -webkit-box;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    white-space: normal !important;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    text-align:left;
+    color: white;
 }

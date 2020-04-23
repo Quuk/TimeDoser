@@ -24,6 +24,37 @@ Component({
     },
     methods: {
 
+        // 修改项目
+        projectUpdata(e) {
+            const index = e.currentTarget.dataset.index;
+            this.setData({
+                nowUpdataProjectId: index,
+                createProject: false    // 关掉新增窗口
+            });
+            this.animate('#am-project-update', [
+                {scale: [0.9, 0.9], opacity: 0},
+                {scale: [1, 1], opacity: 1},
+            ], 100);
+        },
+
+        // 关掉修改项目窗口
+        updateOneClose() {
+            this.setData({nowUpdataProjectId: null});
+        },
+
+        // 删除项目
+        projectDelete(e) {
+            let index = e.currentTarget.dataset.index;
+            ajax.myRequest({
+                url: '/planTask/deleteOne',
+                data: {taskId: index},
+                success: () => {
+                    common.sout("删除成功");
+                    getAllTask(this);
+                }
+            });
+        },
+
         // 番茄时钟快速设置时长
         setTime(e) {
             this.setData({formMinute: e.currentTarget.dataset.min});
@@ -68,6 +99,10 @@ Component({
             ], 100);
         },
 
+        tomotoInput(e) {
+            this.setData({formName: e.detail.value});
+        },
+
         // 添加任务
         addOne() {
             let min = this.data.formMinute;
@@ -110,7 +145,6 @@ Component({
                 }
             });
         },
-
 
         // 监测输入
         minuteCheck(e) {
