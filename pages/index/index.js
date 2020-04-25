@@ -187,7 +187,7 @@ Component({
                 data: {
                     name: name || "默认番茄",
                     minute: parseInt(min),
-                    formIcon: formIcon || "add",
+                    icon: formIcon || "add",
                 },
                 success: () => {
                     common.sout("添加成功");

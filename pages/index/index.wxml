@@ -11,7 +11,7 @@
     <scroll-view scroll-y class="scrollPage">
         <view class="cu-bar align-start margin-top-xs">
             <view class="action border-title">
-                <text class="text-xl text-bold">待办任务</text>
+                <text class="text-xl text-bold">现有的番茄</text>
                 ({{allTask.waitTaskCount}})
                 <text class="bg-grey" style="width:2rem"></text>
             </view>
@@ -160,7 +160,7 @@
 
         <view class="cu-bar align-start margin-top-xs margin-top-xxl">
             <view class="action border-title">
-                <text class="text-xl text-bold">已完成任务</text>
+                <text class="text-xl text-bold">已完成番茄</text>
                 ({{allTask.finishTaskCount}})
                 <text class="bg-grey" style="width:2rem"></text>
             </view>
